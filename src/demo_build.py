@@ -125,6 +125,7 @@ def page(lang):
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>{e(d["title"])}</title>
 <meta name="description" content="{e(d["desc"])}">
+<meta name="robots" content="noindex">
 <link rel="canonical" href="{SITE}{base}">
 <link rel="alternate" hreflang="en" href="{SITE}/demo/">
 <link rel="alternate" hreflang="cs" href="{SITE}/demo/cs/">
