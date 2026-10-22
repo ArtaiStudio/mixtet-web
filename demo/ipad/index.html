@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=1180, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<title>Mixtet – iPad hub</title>
+<link rel="stylesheet" href="/demo/ipad/tokens.css">
+<link rel="stylesheet" href="/demo/ipad/ipad.css">
+<script src="/demo/ipad/texts.js"></script>
+<script src="/demo/ipad/ipad.js" defer></script>
+</head>
+<body>
+<div id="live" class="sr" role="status" aria-live="polite"></div>
+<div id="toast" class="toast" role="status"><span id="toastT"></span><button id="toastB" hidden></button></div>
+<header>
+  <span class="brand">Mixtet</span>
+  <span class="chip" id="conn"><i class="dot"></i><span id="connT"></span></span>
+  <span class="chip" id="hubChip"></span>
+  <nav id="nav" aria-label="Pages"></nav>
+  <div class="seg" id="modeSeg" role="group"></div>
+</header>
+<div class="banner" id="banner" role="alert"></div>
+<main id="page"></main>
+<footer>
+  <div class="banks" id="banks" role="group"></div>
+  <span class="chip" id="ctrlChip" hidden></span>
+  <span class="grow"></span>
+  <button class="btn" id="chanB"></button>
+  <button class="btn" id="undoB" disabled></button>
+</footer>
+</body>
+</html>

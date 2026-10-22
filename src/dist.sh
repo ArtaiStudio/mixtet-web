@@ -10,5 +10,5 @@ rm -rf dist && mkdir dist
 cp -R index.html cs feedback demo img video site.css site.js _worker.js _headers robots.txt sitemap.xml privacy.html ochrana-udaju.html dist/
 # Aktualizace Mac appky (Sparkle): release/appcast.xml → /appcast.xml, release/download/* → /download/
 if [ -f release/appcast.xml ]; then cp release/appcast.xml dist/; fi
-if compgen -G "release/download/*.dmg" > /dev/null; then mkdir -p dist/download && cp release/download/*.dmg release/download/*.html dist/download/ 2>/dev/null || true; fi
+if compgen -G "release/download/*" > /dev/null; then mkdir -p dist/download && cp release/download/* dist/download/; fi
 find dist -type f | wc -l

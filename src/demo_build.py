@@ -55,6 +55,10 @@ def copy_app():
     css = tokens_css()
     for name in ["member.html", "fullmix.html"]:
         open(os.path.join(DEMO, name), "w", encoding="utf-8").write(app_page(name, css))
+    # iPad hub v ukázce (demo/ipad/) bere stejné tokeny jako stránky appky
+    os.makedirs(os.path.join(DEMO, "ipad"), exist_ok=True)
+    open(os.path.join(DEMO, "ipad", "tokens.css"), "w", encoding="utf-8").write(
+        "/* Vygenerováno src/demo_build.py z repa Mixtetu (web/tokens.css) – needitovat ručně. */\n" + css + "\n")
     shutil.copyfile(os.path.join(ROOT, "img", "znacka.png"), os.path.join(DEMO, "logo.png"))
     pdir = os.path.join(REPO, "Sources", "KRAIMixMIDI", "profiles")
     out = os.path.join(DEMO, "profiles")
@@ -108,7 +112,7 @@ def page(lang):
         f'<li class="step" id="step-{k}"><span class="mark" aria-hidden="true">{i}</span><div><p class="st-t">{e(d["t"]["tour" + k.upper()])} <span class="sr st-s"></span></p>'
         f'<p class="st-h">{e(d["t"]["tour" + k.upper() + "Hint"])}</p>'
         + (f'<button type="button" class="btn ghost sm" id="toTom">{e(d["t"]["tourASwitch"])}</button>' if k == "a" else "")
-        + "</div></li>" for i, k in enumerate("abc", 1))
+        + "</div></li>" for i, k in enumerate("abcde", 1))
     miss = "".join(f"<li><h3>{e(a)}</h3><p>{e(b)}</p></li>" for a, b in d["miss"])
     shots = ""
     for name, cap in d["missShots"]:
@@ -117,12 +121,13 @@ def page(lang):
             shots += f'<figure><img src="/img/screens/{name}.webp" width="{w}" height="{h}" alt="{e(cap)}" loading="lazy" decoding="async"><figcaption>{e(cap)}</figcaption></figure>'
     cfg = {"lang": lang, "signup": signup, "t": d["t"]}
     mac = mac_gallery(d)
-    note = f'<p class="tnote">{e(d["tabletNote"])}</p>' if d["tabletNote"] else ""
+    note = f'<p class="soon">{e(d["tabletNote"])}</p>' if d["tabletNote"] else ""
     return f"""<!doctype html>
 <html lang="{lang}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow"><!-- dokud ukázku Martin neschválí: mimo vyhledávače i sitemap -->
 <title>{e(d["title"])}</title>
 <meta name="description" content="{e(d["desc"])}">
 <meta name="robots" content="noindex">
@@ -241,7 +246,17 @@ def page(lang):
 """
 
 
+def check_ipad():
+    """Soubory iPad hubu (demo/ipad/) píšeme ručně – i v nich nesmí být skutečná jména členů KRAI."""
+    for f in ["ipad.js", "texts.js", "ipad.css", "index.html"]:
+        txt = open(os.path.join(DEMO, "ipad", f), encoding="utf-8").read()
+        bad = REAL_NAMES.findall(txt)
+        if bad:
+            sys.exit(f"demo/ipad/{f}: skutečná jména: {sorted(set(bad))}")
+
+
 if __name__ == "__main__":
+    check_ipad()
     copied = copy_app()
     open(os.path.join(DEMO, "index.html"), "w", encoding="utf-8").write(page("en"))
     os.makedirs(os.path.join(DEMO, "cs"), exist_ok=True)

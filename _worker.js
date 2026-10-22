@@ -250,6 +250,7 @@ export default {
 function demoHeaders(h) {
   h.set('x-frame-options', 'SAMEORIGIN');
   h.set('content-security-policy', DEMO_CSP);
+  h.set('x-robots-tag', 'noindex, nofollow');   // ukázka zatím mimo vyhledávače (dokud ji Martin neschválí)
 }
 const DEMO_CSP = "default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; " +
   "connect-src 'self'; frame-src 'self'; frame-ancestors 'self'; base-uri 'self'; form-action 'self'";

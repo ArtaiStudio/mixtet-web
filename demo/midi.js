@@ -260,9 +260,12 @@
       absAddr(kind + i, a, v, s.name, kind === 'knob');
     }
     function toggle(a) { if (!hub.write(a, hub.get(a) === 1 ? 0 : 1, 'midi')) on({type: 'offline'}); }
-    function setBank(n) {
+    function setBank(n, quiet) {
       bank = n; resetPickup(); motor.reset(); on(bankInfo()); updateLEDs(true);
+      if (!quiet && hub.noteBank) hub.noteBank(bank);   // iPad hub posune pásy na stejnou banku
     }
+    // banka vybraná na iPadu → ovladač jde za ní
+    if (hub.on) hub.on('bankReq', e => { const n = Math.min(banks().length - 1, Math.max(0, e.bank)); if (n !== bank) setBank(n); else hub.noteBank(bank); });
     function button(slot, i) {
       const s = i != null ? bankStrips()[i] : null;
       switch (slot) {
@@ -304,7 +307,7 @@
         case 'touch': motor.touch(ev.strip, ev.touched); return {slot: 'touch', index: ev.strip, value: {pressed: ev.touched}};
         case 'fader': {
           if (p.motorized) motor.moved(ev.strip, ev.value);
-          if (ev.strip === MCU.masterStrip) absAddr('master', '/lr/mix/fader', ev.value, hub.lang === 'cs' ? 'Sál' : 'Main');
+          if (ev.strip === MCU.masterStrip) absAddr('master', '/lr/mix/fader', ev.value, hub.lang === 'cs' ? 'Sál' : 'House');
           else absolute('fader', ev.strip, ev.value);
           return {slot: ev.strip === MCU.masterStrip ? 'master' : 'fader', index: ev.strip === MCU.masterStrip ? null : ev.strip, value: {absolute: ev.value}};
         }

@@ -19,7 +19,9 @@
   var phone = $('fPhone'), tablet = $('fTablet');
   var memberUrl = function () { return '/demo/member.html?lang=' + lang + '&m=' + hub.memberBus; };
   phone.src = memberUrl();
-  tablet.src = '/demo/fullmix.html';
+  tablet.src = '/demo/ipad/?lang=' + lang;   // iPad jako samostatný hub (ADR-022) – celá appka, ne jen Celý mix
+  // pro iPad hub v rámečku: „Dát mobil vpravo“ z Kapely
+  window.MixtetDemo = {setMember: function (b) { setMember(b); }};
 
   // MARK: - počítadlo zájmu: jen typ události, žádné ID ani cookies
   function demoEvent(type) {
@@ -142,25 +144,27 @@
   var base = {}; // výchozí sendy do odposlechu Toma (2)
   ['/ch/11/mix/02/level', '/ch/12/mix/02/level', '/ch/04/mix/02/level', '/ch/05/mix/02/level', '/ch/06/mix/02/level'].forEach(function (a) { base[a] = hub.known(a); });
   var aDown = false, aUp = false;
+  var KEYS = ['a', 'b', 'c', 'd', 'e'];
+  var allDone = function () { return KEYS.every(function (k) { return tour.done[k]; }); };
   function complete(k) {
     if (tour.done[k]) return;
     tour.done[k] = true;
-    var n = {a: 1, b: 2, c: 3}[k];
-    var all = tour.done.a && tour.done.b && tour.done.c;
+    var n = KEYS.indexOf(k) + 1;
+    var all = allDone();
     $('tourLive').textContent = fmt(T.stepDone, {n: n}) + (all ? ' ' + T.allDone + ' ' + T.tourDone : '');
     if (all && !tour.sent) { tour.sent = true; demoEvent('tour_done'); }
     store.set(TOUR, tour);
     paintTour();
   }
   function paintTour() {
-    ['a', 'b', 'c'].forEach(function (k) {
+    KEYS.forEach(function (k, i) {
       var li = $('step-' + k), d = !!tour.done[k];
       li.classList.toggle('done', d);
-      li.querySelector('.mark').textContent = d ? '✓' : {a: '1', b: '2', c: '3'}[k];
+      li.querySelector('.mark').textContent = d ? '✓' : String(i + 1);
       li.querySelector('.st-s').textContent = ' – ' + (d ? T.doneMark : T.todoMark);
     });
     var sw = $('toTom'); if (sw) sw.hidden = hub.memberBus === 2 || !!tour.done.a;
-    $('tourDone').hidden = !(tour.done.a && tour.done.b && tour.done.c);
+    $('tourDone').hidden = !allDone();
   }
   hub.on('change', function (c) {
     if (c.origin === 'mobile:2') {
@@ -168,9 +172,14 @@
       if (/^\/ch\/0[456]\/mix\/02\/level$/.test(c.a) && c.v > base[c.a]) aUp = true;
       if (aDown && aUp) complete('a');
     }
-    if (c.a === '/config/mute/1' && c.v !== c.old && (c.origin === 'tablet' || c.origin === 'midi')) complete('b');
+    if (c.a === '/config/mute/1' && c.v === 1 && c.v !== c.old && (c.origin === 'hub' || c.origin === 'midi')) complete('b');
+    // Kanál › Jednoduše: Kick čistší = Čistota nahoru (EQ pásmo 2 ubere)
+    if (c.a === '/ch/01/eq/2/g' && c.origin === 'hub' && c.v < kickG2 - 1e-6) complete('d');
   });
-  hub.on('talk', function (t) { if (t.on) complete('c'); });
+  var kickG2 = hub.known('/ch/01/eq/2/g');
+  // další píseň načtená z iPadu (Scény nebo Koncert) – odposlechy se nemění
+  hub.on('song', function (e) { if (e.loaded) complete('c'); });
+  hub.on('talk', function (t) { if (t.on) complete('e'); });
   $('toTom').addEventListener('click', function () { setMember(2); });
   var tt = $('tourToggle'), tb = $('tourBody');
   function paintToggle() { tb.hidden = !!tour.hidden; tt.setAttribute('aria-expanded', String(!tour.hidden)); tt.textContent = tour.hidden ? tt.dataset.show : tt.dataset.hide; }
@@ -194,14 +203,14 @@
       return window.MixtetMIDI.connect(hub, list, {
         onDevice: function (name, profile, engine) {
           if (!profile) { status(fmt(T.midiUnknown, {name: name})); return; }
-          ctrlName = profile.name; paintChip(ctrlName, engine.bankInfo()); status('');
+          ctrlName = profile.name; paintChip(ctrlName, engine.bankInfo()); status(''); hub.noteController(ctrlName);
           if (!midiSent) { midiSent = true; demoEvent('midi_connected'); }
         },
         onEvent: function (ev, name) {
           if (ev.type === 'bank') paintChip(ctrlName, ev);
           else if (ev.type === 'offline') status(T.midiOffline);
           else if (ev.type === 'unsupported') status(T.midiUnsupportedSlot);
-          else if (ev.type === 'mcu') { ctrlName = fmt(T.midiMcuName, {name: ev.name}); paintChip(ctrlName, ev.info || {}); status(T.midiMcu); lastPickup = Date.now();   // hláška o režimu nepřebije hned pickup
+          else if (ev.type === 'mcu') { ctrlName = fmt(T.midiMcuName, {name: ev.name}); paintChip(ctrlName, ev.info || {}); status(T.midiMcu); lastPickup = Date.now(); hub.noteController(ctrlName);   // hláška o režimu nepřebije hned pickup
             if (!midiSent) { midiSent = true; demoEvent('midi_connected'); } }
           else if (ev.type === 'pickup' && Date.now() - lastPickup > 2500) { lastPickup = Date.now(); status(fmt(T.midiPickup, {name: ev.name})); }
         },
@@ -235,7 +244,7 @@
   $('fbClose').addEventListener('click', closeFb);
   dlg.addEventListener('click', function (e) { if (e.target === dlg) closeFb(); });
   function context() {
-    var step = !tour.done.a ? 1 : !tour.done.b ? 2 : !tour.done.c ? 3 : 'hotovo';
+    var step = 'hotovo'; for (var i = KEYS.length - 1; i >= 0; i--) if (!tour.done[KEYS[i]]) step = i + 1;
     return '\n\n— ukázka: úkol=' + step + ', okno=' + innerWidth + '×' + innerHeight + ', naposledy=' + (hub.lastUse() || 'stránka') +
       ', mobil=' + hub.memberName(hub.memberBus) + ', midi=' + (chip.hidden ? 'ne' : 'ano') + ', jazyk=' + lang;
   }

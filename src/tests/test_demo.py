@@ -30,7 +30,10 @@ def wait_for(fn, timeout=4.0, step=0.05):
         except Exception:
             pass
         time.sleep(step)
-    return fn()
+    try:
+        return fn()
+    except Exception:
+        return False
 
 
 def admin():
@@ -74,16 +77,193 @@ def pb(strip, v):
 
 
 def frames(pg):
-    tab = next(f for f in pg.frames if "fullmix.html" in f.url)
+    tab = next(f for f in pg.frames if "/demo/ipad/" in f.url)
     ph = next(f for f in pg.frames if "member.html" in f.url)
     return tab, ph
 
 
 def ready(pg):
-    wait_for(lambda: len([f for f in pg.frames if "member.html" in f.url or "fullmix.html" in f.url]) == 2)
+    wait_for(lambda: len([f for f in pg.frames if "member.html" in f.url or "/demo/ipad/" in f.url]) == 2)
     tab, ph = frames(pg)
-    wait_for(lambda: tab.locator(".strip").count() > 10 and ph.locator("#s-me").count() == 1, 6)
+    wait_for(lambda: tab.locator("#page .lane").count() > 10 and ph.locator("#s-me").count() == 1, 6)
     return frames(pg)
+
+
+def ipad_sizes(frame):
+    """[počet textů pod 11 px, počet viditelných ovládacích prvků nižších než 44 px] na iPadu."""
+    return frame.evaluate("""() => [[...document.querySelectorAll('body *')].filter(e => e.offsetParent && [...e.childNodes].some(n => n.nodeType === 3 && n.textContent.trim()))
+        .map(e => parseFloat(getComputedStyle(e).fontSize)).filter(x => x < 11).length,
+      [...document.querySelectorAll('button, [role=slider], select')].filter(e => e.offsetParent && !e.closest('.chips') && getComputedStyle(e).visibility !== 'hidden')
+        .map(e => e.getBoundingClientRect()).filter(r => r.height > 0 && r.height < 43.5).length]""")
+
+TXT = {
+    "cs": {"sounds": "Zní Kick dobře?", "clar": "3 / 10", "off": "VYPNUTO", "hears": "SLYŠÍ", "prot": "CHRÁNÍ", "noguard": "BEZ POJISTKY",
+           "whyMute": "MUTE v mixu", "monUnchanged": "odposlechy beze změny", "loadAgain": "Ještě jednou: načíst", "phoneTom": "Tom",
+           "talkTom": "MLUVÍŠ K TOMOVI", "nav": ["Mixer", "Kanál", "Odposlechy", "Scény", "Kapela", "Nastavení"]},
+    "en": {"sounds": "Does Kick sound right?", "clar": "3 / 10", "off": "OFF", "hears": "HEARS", "prot": "PROTECTING", "noguard": "NO GUARD",
+           "whyMute": "MUTE in the mix", "monUnchanged": "monitors unchanged", "loadAgain": "Tap again: load", "phoneTom": "Tom",
+           "talkTom": "TALKING TO TOM", "nav": ["Mixer", "Channel", "Monitors", "Scenes", "Band", "Settings"]},
+}
+CZ_CHARS = r"[ěščřžýáíéůúňťďĚŠČŘŽÝÁÍÉŮÚŇŤĎ]"
+CZ_WORDS = ["Banka", "Sál", "odposlech", "MLUVIT", "pult", "Zpev", "Kytara", "Nástroje", "Zpěvy", "Bicí", "Uložit", "Načíst", "Kanál", "Zkouška"]
+
+
+def ipad_screens(pg, tab, ph, L):
+    """Každá stránka iPad hubu se vykreslí a jde ovládat; změny jdou do simulovaného pultu (a zpátky na mobil)."""
+    T = TXT[L]
+    H = lambda js: pg.evaluate("MixtetHubSim." + js)
+    hubv = lambda a: pg.evaluate(f"MixtetHubSim.known('{a}')")
+    check(f"{L}: navigace iPadu", [tab.locator("#nav button").nth(i).inner_text() for i in range(6)] == T["nav"])
+    # ---- Kanál › Jednoduše: Čistota zapisuje skutečný EQ (pásmo 2 dolů, 3 nahoru), číslo čeká kurzívou
+    tab.locator("#nav-channel").click()
+    check(f"{L}: Kanál – Jednoduše", wait_for(lambda: tab.locator("#simpleCard").is_visible()) and T["sounds"] in tab.locator("#simpleCard h3").inner_text(),
+          tab.locator("#page").inner_text()[:200])
+    check(f"{L}: Kanál – nic pod 11 px, cíle ≥ 44 px", ipad_sizes(tab) == [0, 0], ipad_sizes(tab))
+    g2, g3 = hubv("/ch/01/eq/2/g"), hubv("/ch/01/eq/3/g")
+    pend_probe(tab)
+    tab.locator("#clarityRow .hs").focus()
+    for _ in range(3):
+        pg.keyboard.press("ArrowRight")
+    check(f"{L}: Čistota – číslo čeká na pult (kurzíva …)", wait_for(lambda: tab.evaluate("window.__pend") > 0, 1))
+    check(f"{L}: Čistota 3/10 → EQ pásmo 2 −1,8 dB, pásmo 3 +0,9 dB v pultu",
+          wait_for(lambda: tab.locator("#clarityRow .v").inner_text() == T["clar"] and hubv("/ch/01/eq/2/g") < g2 and hubv("/ch/01/eq/3/g") > g3
+                   and abs(pg.evaluate("MixtetHubSim.X.eqDb(MixtetHubSim.known('/ch/01/eq/2/g'))") + 1.75) < 0.2), [tab.locator("#clarityRow .v").inner_text(), hubv("/ch/01/eq/2/g")])
+    # ---- Celý řetězec: gate, EQ, kompresor
+    tab.locator("#view-full").click()
+    check(f"{L}: Celý řetězec – 4 moduly a graf EQ", wait_for(lambda: tab.locator(".chain .mod").count() == 4) and tab.locator(".chain svg.gfx").count() == 3)
+    gate = hubv("/ch/01/gate/on")
+    tab.locator(".chain .mod").nth(1).locator("h4 .btn").click()
+    check(f"{L}: Gate zap/vyp → pult", wait_for(lambda: hubv("/ch/01/gate/on") == 1 - gate))
+    tab.locator(".chain .mod").nth(1).locator("h4 .btn").click()
+    tab.locator(".ratios button", has_text="2:1").first.click()
+    check(f"{L}: Kompresor poměr 2:1 → pult (index 3)", wait_for(lambda: hubv("/ch/01/dyn/ratio") == 3))
+    tab.locator(".bandsel button").nth(2).click()
+    b3 = hubv("/ch/01/eq/3/g")
+    tab.locator(".chain .mod").nth(2).locator(".prow .hs").nth(1).focus()
+    pg.keyboard.press("ArrowRight")
+    check(f"{L}: EQ pásmo 3 zisk +0,25 dB → pult", wait_for(lambda: abs(hubv("/ch/01/eq/3/g") - b3 - 1 / 120) < 1e-6), [b3, hubv("/ch/01/eq/3/g")])
+    check(f"{L}: Celý řetězec – nic pod 11 px, cíle ≥ 44 px", ipad_sizes(tab) == [0, 0], ipad_sizes(tab))
+    # Kdo ho slyší: VYPNUTO u Toma = send 0 (XR18 vypínač sendu nemá), znovu = zpátky
+    tom = tab.locator(".who .sendc").nth(2).locator(".btn.mute")
+    before = hubv("/ch/01/mix/02/level")
+    tom.click()
+    check(f"{L}: Kdo ho slyší – {T['off']} = send 0", wait_for(lambda: hubv("/ch/01/mix/02/level") == 0 and tom.inner_text() == T["off"]))
+    tom.click()
+    check(f"{L}: Kdo ho slyší – {T['hears']} vrátí send", wait_for(lambda: abs(hubv("/ch/01/mix/02/level") - before) < 1e-6 and tom.inner_text() == T["hears"]))
+    # ---- Odposlechy
+    tab.locator("#nav-monitors").click()
+    check(f"{L}: Odposlechy – 4 členové, 17 pásů", wait_for(lambda: tab.locator(".mtab").count() == 4 and tab.locator("#strips .lane").count() == 17))
+    check(f"{L}: Odposlechy – nic pod 11 px, cíle ≥ 44 px", ipad_sizes(tab) == [0, 0], ipad_sizes(tab))
+    tab.locator("#mon-1").click()
+    wait_for(lambda: tab.locator("#mon-1").get_attribute("aria-pressed") == "true")
+    # mobil (Adam) → iPad: Hlasitost odposlechu
+    side = tab.locator(".side .prow .v").first
+    was = side.inner_text()
+    ph.locator("#s-me").focus(); pg.keyboard.press("ArrowUp")
+    check(f"{L}: mobil → iPad Odposlechy: Adam celkem se změnil", wait_for(lambda: side.inner_text() != was and "…" not in side.inner_text(), 3), [was, side.inner_text()])
+    # iPad → mobil: send Kick do odposlechu Adama
+    k = tab.locator('#strips .lane[data-id="/ch/01"]')
+    s0 = hubv("/ch/01/mix/01/level")
+    k.locator(".fader").focus(); pg.keyboard.press("ArrowUp")
+    check(f"{L}: iPad Odposlechy → pult (send Kick → Adam +1 dB)", wait_for(lambda: hubv("/ch/01/mix/01/level") > s0))
+    # Pojistka uší: vypnutí dvojím stiskem
+    gst = tab.locator("#guardSt")
+    check(f"{L}: Pojistka uší {T['prot']}", gst.inner_text() == T["prot"], gst.inner_text())
+    gb = tab.locator(".guard .btn")
+    gb.click(); gb.click()
+    check(f"{L}: Pojistka uší – dvojí stisk vypne ({T['noguard']})", wait_for(lambda: hubv("/bus/1/dyn/on") == 0 and gst.inner_text() == T["noguard"]))
+    gb.click()
+    check(f"{L}: Pojistka uší – zapnout jedním stiskem", wait_for(lambda: hubv("/bus/1/dyn/on") == 1 and gst.inner_text() == T["prot"]))
+    # proč neslyší: MUTE Kick → důvod a oprava jedním ťuknutím
+    pg.evaluate("MixtetHubSim.write('/ch/01/mix/on', 0, 'hub')")
+    why = k.locator(".why")
+    check(f"{L}: proč neslyší – {T['whyMute']}", wait_for(lambda: why.inner_text() == T["whyMute"]), why.inner_text())
+    why.click()
+    check(f"{L}: proč neslyší – vysvětlení", wait_for(lambda: tab.locator(".pop").is_visible()))
+    tab.locator(".pop .btn.prim").click()
+    check(f"{L}: proč neslyší – oprava zapne Kick", wait_for(lambda: hubv("/ch/01/mix/on") == 1 and not tab.locator(".pop").count()))
+    # MLUVIT K TOMOVI – jen do odposlechu Toma
+    tab.locator("#mon-2").click()
+    wait_for(lambda: tab.locator("#talkMember").count() == 1)
+    tb = tab.locator("#talkMember").bounding_box()
+    pg.mouse.move(tb["x"] + tb["width"] / 2, tb["y"] + tb["height"] / 2); pg.mouse.down()
+    check(f"{L}: {T['talkTom']} – jen odposlech 2", wait_for(lambda: tab.locator("#talkMember").inner_text() == T["talkTom"]
+                                                       and pg.evaluate("MixtetHubSim.talkInfo() && MixtetHubSim.talkInfo().targets.join()") == "2"))
+    pg.mouse.up()
+    check(f"{L}: puštění = konec", wait_for(lambda: not pg.evaluate("MixtetHubSim.talking()")))
+    tab.locator("#mon-1").click()
+    # ---- Scény: náhled, NAČÍST dvakrát, odposlechy se nezmění, Zpět vrátí
+    tab.locator("#nav-scenes").click()
+    check(f"{L}: Scény – setlist, náhled, scény v pultu", wait_for(lambda: tab.locator("#setlist .song").count() == 4 and tab.locator("#diff tbody tr").count() > 1
+                                                             and tab.locator(".scrow").count() == 6))
+    check(f"{L}: Scény – nic pod 11 px, cíle ≥ 44 px", ipad_sizes(tab) == [0, 0], ipad_sizes(tab))
+    mon = pg.evaluate("""() => { const h = MixtetHubSim, o = {}; h.strips().forEach(s => [1,2,3,4,5,6].forEach(b => { o[s.send(b)] = h.known(s.send(b)); }));
+      [1,2,3,4,5,6].forEach(b => { o['/bus/'+b+'/mix/fader'] = h.known('/bus/'+b+'/mix/fader'); o['/bus/'+b+'/mix/on'] = h.known('/bus/'+b+'/mix/on'); }); return o; }""")
+    kf, pl = hubv("/ch/01/mix/fader"), H("playing()")
+    ld = tab.locator("#loadSong")
+    ld.click()
+    check(f"{L}: NAČÍST – první stisk jen připraví ({T['loadAgain']} + odpočet)", T["loadAgain"] in ld.inner_text() and H("playing()") == pl, ld.inner_text())
+    ld.click()
+    check(f"{L}: NAČÍST – druhý stisk načte další píseň", wait_for(lambda: H("playing()") == pl + 1))
+    check(f"{L}: hláška – {T['monUnchanged']}", wait_for(lambda: T["monUnchanged"] in tab.locator("#toastT").inner_text()), tab.locator("#toastT").inner_text())
+    pg.wait_for_timeout(250)
+    mon2 = pg.evaluate("""() => { const h = MixtetHubSim, o = {}; h.strips().forEach(s => [1,2,3,4,5,6].forEach(b => { o[s.send(b)] = h.known(s.send(b)); }));
+      [1,2,3,4,5,6].forEach(b => { o['/bus/'+b+'/mix/fader'] = h.known('/bus/'+b+'/mix/fader'); o['/bus/'+b+'/mix/on'] = h.known('/bus/'+b+'/mix/on'); }); return o; }""")
+    check(f"{L}: píseň nepřepsala odposlechy (sendy a hlasitosti všech 6 odposlechů)", mon == mon2, [k2 for k2 in mon if mon[k2] != mon2.get(k2)][:5])
+    check(f"{L}: píseň změnila sál (Kick na +1,5 dB jako v písni)", abs(pg.evaluate("MixtetHub.lin(MixtetHubSim.known('/ch/01/mix/fader'))") - 1.5) < 0.1,
+          pg.evaluate("MixtetHub.lin(MixtetHubSim.known('/ch/01/mix/fader'))"))
+    song = pg.evaluate("MixtetHubSim.setlist()[MixtetHubSim.playing()].name")
+    check(f"{L}: mobil vidí novou píseň", wait_for(lambda: song in ph.locator("body").inner_text(), 4), song)
+    tab.locator("#undoB").click()
+    check(f"{L}: Zpět vrátí celé načtení", wait_for(lambda: abs(hubv("/ch/01/mix/fader") - kf) < 1e-6))
+    # ---- Koncert: HRAJE / DALŠÍ nahoře, načtení dvojím stiskem; Kanál a Scény zamčené
+    tab.locator("#mode-con").click()
+    check(f"{L}: Koncert – HRAJE / DALŠÍ, bez DCA a sóla, zamčené stránky",
+          wait_for(lambda: tab.locator(".nowbar").is_visible()) and not tab.locator(".dca").first.is_visible()
+          and tab.locator("#nav-channel").get_attribute("aria-disabled") == "true" and tab.locator("#strips .btn.solo").first.is_hidden())
+    check(f"{L}: Koncert – nic pod 11 px, cíle ≥ 44 px", ipad_sizes(tab) == [0, 0], ipad_sizes(tab))
+    pl = H("playing()")
+    tab.locator("#loadNext").click(); tab.locator("#loadNext").click()
+    check(f"{L}: Koncert – načíst další píseň", wait_for(lambda: H("playing()") == pl + 1))
+    tab.locator("#undoB").click()
+    tab.locator("#mode-reh").click()
+    # ---- Kapela: QR (ilustrace), dát mobil členovi
+    tab.locator("#nav-band").click()
+    check(f"{L}: Kapela – 4 členové s QR a Před koncertem", wait_for(lambda: tab.locator(".mcard").count() == 4 and tab.locator(".qr svg").count() == 4))
+    check(f"{L}: Kapela – nic pod 11 px, cíle ≥ 44 px", ipad_sizes(tab) == [0, 0], ipad_sizes(tab))
+    tab.locator("#member-2 .btn").click()
+    check(f"{L}: Kapela → mobil vpravo patří Tomovi", wait_for(lambda: "Tom" in frames(pg)[1].locator("#who").inner_text(), 5))
+    pg.evaluate("MixtetDemo.setMember(1)")
+    wait_for(lambda: "Adam" in frames(pg)[1].locator("#who").inner_text(), 5)
+    ph = frames(pg)[1]
+    wait_for(lambda: ph.locator("#s-me").count() == 1, 5)
+    # ---- Nastavení
+    tab.locator("#nav-settings").click()
+    check(f"{L}: Nastavení – pult, appka, ovladač, mobily", wait_for(lambda: tab.locator(".setgrid .card").count() == 4 and tab.locator(".chk input").count() == 2))
+    check(f"{L}: Nastavení – nic pod 11 px, cíle ≥ 44 px", ipad_sizes(tab) == [0, 0], ipad_sizes(tab))
+    # ---- jazyk: v EN žádná čeština (kromě vlastních jmen a volby „Čeština“)
+    if L == "en":
+        import re
+        leaks = []
+        for p in ["mixer", "channel", "monitors", "scenes", "band", "settings"]:
+            tab.evaluate(f"MixtetIpad.go('{p}')")
+            if p == "channel":
+                for v in ["simple", "full"]:
+                    tab.locator("#view-" + v).click()
+                    txt = tab.evaluate("document.body.innerText + ' ' + [...document.querySelectorAll('[aria-label]')].map(e => e.getAttribute('aria-label')).join(' ')")
+                    leaks += [w for w in re.findall(r"\S*" + CZ_CHARS + r"\S*", txt) if w != "Čeština"] + [w for w in CZ_WORDS if re.search(r"\b" + w + r"\b", txt)]
+                continue
+            txt = tab.evaluate("document.body.innerText + ' ' + [...document.querySelectorAll('[aria-label]')].map(e => e.getAttribute('aria-label')).join(' ')")
+            leaks += [w for w in re.findall(r"\S*" + CZ_CHARS + r"\S*", txt) if w != "Čeština"] + [w for w in CZ_WORDS if re.search(r"\b" + w + r"\b", txt)]
+        tab.evaluate("MixtetIpad.setConcert(true)")
+        txt = tab.evaluate("document.body.innerText")
+        tab.evaluate("MixtetIpad.setConcert(false)")
+        leaks += [w for w in re.findall(r"\S*" + CZ_CHARS + r"\S*", txt)]
+        check("EN: na iPadu žádná čeština (všechny stránky, i aria-label)", not leaks, sorted(set(leaks))[:20])
+        ptxt = ph.locator("body").inner_text()
+        check("EN: na mobilu žádná čeština", not re.findall(r"\S*" + CZ_CHARS + r"\S*", ptxt), re.findall(r"\S*" + CZ_CHARS + r"\S*", ptxt)[:10])
+    tab.locator("#nav-mixer").click()
+    wait_for(lambda: tab.locator("#strips .lane").count() == 17)
 
 
 def pend_probe(frame):
@@ -103,33 +283,36 @@ with sync_playwright() as p:
     pg.on("pageerror", lambda e: errors.append(str(e)))
     pg.goto(BASE + "/demo/cs/")
     tab, ph = ready(pg)
-    check("iframy načtené (iPad pásy, mobil Hlasitost)", tab.locator(".strip").count() == 17, tab.locator(".strip").count())
+    check("iframy načtené (iPad hub: 17 pásů Mixeru, mobil Hlasitost)", tab.locator("#strips .lane").count() == 17, tab.locator("#strips .lane").count())
     check("mobil = Adam (odposlech 1)", "Adam" in ph.locator("#who").inner_text())
-    check("iPad: připojeno", wait_for(lambda: tab.locator("#stt").inner_text() == "připojeno"))
+    check("iPad: připojeno", wait_for(lambda: tab.locator("#connT").inner_text() == "XR18 · připojeno"))
     pg.wait_for_timeout(1500)
     pg.screenshot(path=f"{SHOTS}/desktop-1440-cs.png")
-    # iPad Celý mix v2 (Figma 47): pásy, pravý sloupec (MLUVIT, mute skupiny 2×2, DCA vodorovně), Sál, banky
-    v2 = tab.evaluate("""() => ({strips: document.querySelectorAll('#strips .strip').length, sk: document.querySelectorAll('#groups .sk').length,
-      dca: [...document.querySelectorAll('#dcas .dca')].filter(r => r.querySelector('.hf[role=slider]') && r.querySelector('button.lit')).length,
+    # iPad jako samostatný hub: stránky jako Mac, Mixer s pravým sloupcem (Živé akce, MLUVIT, DCA), Sál, banky
+    v2 = tab.evaluate("""() => ({strips: document.querySelectorAll('#strips .lane').length, sk: document.querySelectorAll('.groups .sk').length,
+      nav: [...document.querySelectorAll('#nav button')].map(b => b.textContent), modes: [...document.querySelectorAll('#modeSeg button')].map(b => b.textContent),
+      dca: [...document.querySelectorAll('.dca')].filter(r => r.querySelector('.hs[role=slider]') && r.querySelector('.btn.mute')).length,
       banks: [...document.querySelectorAll('#banks .bank')].map(b => b.textContent), banksShown: !document.getElementById('banks').hidden,
-      main: !!document.querySelector('#mainBox .fader[role=slider]') && !!document.querySelector('#mainBox button.lit'),
-      scale: document.querySelectorAll('#strips .strip .scale span').length, owner: document.querySelectorAll('#strips .tile .own').length,
-      talk: document.getElementById('talk').textContent, hint: document.getElementById('talkHint').textContent,
-      w: innerWidth, h: innerHeight, small: [...document.querySelectorAll('body *')].filter(e => e.offsetParent && [...e.childNodes].some(n => n.nodeType === 3 && n.textContent.trim()))
-        .map(e => parseFloat(getComputedStyle(e).fontSize)).filter(x => x < 11).length,
-      tiny: [...document.querySelectorAll('button, [role=slider]')].filter(e => e.offsetParent).map(e => e.getBoundingClientRect()).filter(r => r.height < 44).length })""")
-    check("v2: iPad 1180 × 820 (zmenšený obalem)", v2["w"] == 1180 and v2["h"] == 820, v2)
-    check("v2: 17 pásů se stupnicí a iniciálou vlastníka", v2["strips"] == 17 and v2["scale"] == 17 * 9 and v2["owner"] == 9, v2)
-    check("v2: pravý sloupec – MLUVIT, 4 dlaždice mute skupin, 4 DCA s vodorovným faderem a MUTE",
-          v2["talk"] == "MLUVIT KE KAPELE (drž)" and v2["hint"] == "sál neslyší" and v2["sk"] == 4 and v2["dca"] == 4, v2)
-    check("v2: pás Sál s faderem a MUTE", v2["main"], v2)
-    check("v2: banky po 8 (Banka 1–3), vidět, když se pásy nevejdou", v2["banks"] == ["Banka 1", "Banka 2", "Banka 3"] and v2["banksShown"], v2)
-    check("v2: nic pod 11 px, cíle ≥ 44 px", v2["small"] == 0 and v2["tiny"] == 0, v2)
+      main: !!document.querySelector('.mainl .fader[role=slider]') && !!document.querySelector('.mainl .btn.mute'),
+      scale: document.querySelectorAll('#strips .lane .scale span').length, owner: document.querySelectorAll('#strips .tile .own').length,
+      talk: document.getElementById('talk').textContent, hint: document.getElementById('talk').nextElementSibling.textContent,
+      allMon: document.getElementById('allMon').textContent, quiet: !!document.getElementById('quietAll'),
+      w: innerWidth, h: innerHeight })""")
+    check("iPad: 1180 × 820 (zmenšený obalem)", v2["w"] == 1180 and v2["h"] == 820, v2)
+    check("iPad: stránky jako Mac + Zkouška / Koncert", v2["nav"] == ["Mixer", "Kanál", "Odposlechy", "Scény", "Kapela", "Nastavení"]
+          and v2["modes"] == ["Zkouška", "Koncert"], v2)
+    check("iPad: 17 pásů se stupnicí a iniciálou vlastníka", v2["strips"] == 17 and v2["scale"] == 17 * 9 and v2["owner"] == 9, v2)
+    check("iPad: Živé akce – 4 mute skupiny, Ztlumit všechny odposlechy, −6 dB, MLUVIT, 4 DCA",
+          v2["talk"] == "MLUVIT KE KAPELE (drž)" and "sál neslyší" in v2["hint"] and v2["sk"] == 4 and v2["dca"] == 4
+          and v2["allMon"] == "Ztlumit všechny odposlechy" and v2["quiet"], v2)
+    check("iPad: pás Sál s faderem a MUTE", v2["main"], v2)
+    check("iPad: banky po 8 (Banka 1–3)", v2["banks"] == ["Banka 1", "Banka 2", "Banka 3"] and v2["banksShown"], v2)
+    check("iPad: nic pod 11 px, cíle ≥ 44 px (Mixer)", ipad_sizes(tab) == [0, 0], ipad_sizes(tab))
     tab.locator("#banks .bank").nth(1).click()
-    check("v2: Banka 2 posune pásy (9. pás vlevo)", wait_for(lambda: tab.evaluate("""() => { const s = document.getElementById('strips');
-      return s.scrollLeft > 0 && Math.abs(s.children[8].offsetLeft - s.scrollLeft) < 4; }""") and tab.locator("#banks .bank").nth(1).get_attribute("aria-pressed") == "true", 3))
+    check("iPad: Banka 2 posune pásy (9. pás vlevo)", wait_for(lambda: tab.evaluate("""() => { const s = document.getElementById('strips');
+      return s.scrollLeft > 0 && Math.abs(s.children[8].offsetLeft - s.children[0].offsetLeft - s.scrollLeft) < 4; }""") and tab.locator("#banks .bank").nth(1).get_attribute("aria-pressed") == "true", 3))
     tab.locator("#banks .bank").nth(0).click()
-    check("v2: Banka 1 zpět", wait_for(lambda: tab.evaluate("document.getElementById('strips').scrollLeft") == 0, 3))
+    check("iPad: Banka 1 zpět", wait_for(lambda: tab.evaluate("document.getElementById('strips').scrollLeft") == 0, 3))
     check("1440: bez vodorovného posunu stránky", pg.evaluate("document.documentElement.scrollWidth <= innerWidth"),
           pg.evaluate("[document.documentElement.scrollWidth, innerWidth]"))
     # přepínač zařízení: iPad výchozí, Mac = snímky v okně macOS, mobil zůstává
@@ -142,7 +325,7 @@ with sync_playwright() as p:
     check("Mac: galerie vidět, iPad skrytý, mobil zůstává", pg.locator("#macGallery").is_visible() and not pg.locator("#pane-tablet").is_visible()
           and pg.locator("#pane-phone").is_visible())
     check("Mac: 1. snímek Mixer + poznámka", wait_for(lambda: "Mixer" in pg.locator("#macTitle").inner_text() and pg.locator("#macCount").inner_text() == "1 z 6")
-          and "interaktivně si vyzkoušej iPad a mobil" in pg.locator("#pane-mac").inner_text(), pg.locator("#macTitle").inner_text())
+          and "interaktivně vyzkoušej" in pg.locator("#pane-mac").inner_text(), pg.locator("#macTitle").inner_text())
     check("Mac: obrázek načtený", wait_for(lambda: pg.evaluate("[...document.querySelectorAll('.mslide')].filter(f => !f.hidden).map(f => f.querySelector('img').naturalWidth)[0] > 0"), 3))
     pg.locator("#macNext").click()
     check("Mac: šipka › = Odposlechy (2 z 6)", pg.locator("#macCount").inner_text() == "2 z 6" and "Odposlechy" in pg.locator("#macTitle").inner_text())
@@ -163,7 +346,7 @@ with sync_playwright() as p:
 
     # iPad fader: ↑ = +1 dB, číslo čeká kurzívou, pak potvrzení echem
     pend_probe(tab)
-    kick = tab.locator('.strip[data-id="/ch/01"]')
+    kick = tab.locator('#strips .lane[data-id="/ch/01"]')
     kick.locator(".fader").focus()
     pg.keyboard.press("ArrowUp")
     check("iPad: čekající hodnota kurzívou …", wait_for(lambda: tab.evaluate("window.__pend") > 0, 1))
@@ -188,19 +371,19 @@ with sync_playwright() as p:
 
     # iPad MUTE Kick → mobil „ztlumeno v mixu“ (Kanály zvlášť)
     ph.locator("#bDetail").click()
-    kick.locator("button.lit").click()
+    kick.locator(".btn.mute").click()
     check("iPad → mobil: MUTE Kick = „ztlumeno v mixu“", wait_for(lambda: ph.locator('[data-sil="/ch/01"]').inner_text() == "ztlumeno v mixu", 3),
           ph.locator('[data-sil="/ch/01"]').inner_text())
-    kick.locator("button.lit").click()
+    kick.locator(".btn.mute").click()
     check("iPad → mobil: zase hraje", wait_for(lambda: ph.locator('[data-sil="/ch/01"]').inner_text() == "", 3))
 
     # mute skupina 1 z iPadu
-    sk1 = tab.locator("#groups button").first
+    sk1 = tab.locator("#mg1")
     sk1.click()
     check("SK1 Nástroje svítí (aria-pressed)", wait_for(lambda: sk1.get_attribute("aria-pressed") == "true"))
-    col = tab.evaluate("""() => { const b = document.querySelector('#groups .sk'), cs = getComputedStyle(document.documentElement);
+    col = tab.evaluate("""() => { const b = document.querySelector('#mg1'), cs = getComputedStyle(document.documentElement);
       const probe = c => { const d = document.createElement('div'); d.style.color = cs.getPropertyValue(c); document.body.append(d); const v = getComputedStyle(d).color; d.remove(); return v; };
-      return {bg: getComputedStyle(b).backgroundColor, mute: probe('--krai-mute'), ind: probe('--krai-mute-indirect'), txt: b.textContent}; }""")
+      return {bg: getComputedStyle(b).backgroundColor, mute: probe('--krai-mute'), ind: probe('--krai-mute-indirect'), txt: b.getAttribute('aria-label')}; }""")
     check("SK1 svítí oranžově (nepřímé ztlumení), ne červeně jako MUTE", col["bg"] != col["mute"] and col["bg"] == col["ind"] and "ztlumuje" in col["txt"], col)
     check("hub: /config/mute/1 = 1", wait_for(lambda: pg.evaluate("MixtetHubSim.known('/config/mute/1')") == 1))
     check("mobil: Kick „ztlumeno v mixu – skupina“", wait_for(lambda: "skupina" in ph.locator('[data-sil="/ch/01"]').inner_text(), 3))
@@ -220,22 +403,31 @@ with sync_playwright() as p:
     check("MLUVIT drží déle než 1 s (obnova z iPadu)", pg.evaluate("MixtetHubSim.talking()"))
     pg.mouse.up()
     check("po puštění zpět na původní send", wait_for(lambda: abs(pg.evaluate("MixtetHubSim.known('/ch/04/mix/01/level')") - talk_before) < 0.01))
-    check("prohlídka: úkol 3 ✓", "done" in pg.locator("#step-c").get_attribute("class"))
+    check("prohlídka: úkol 5 (MLUVIT) ✓", "done" in pg.locator("#step-e").get_attribute("class"))
+
+    # obrazovky iPad hubu (Kanál, Odposlechy, Scény, Koncert, Kapela, Nastavení) – a prohlídka 3 a 4
+    ipad_screens(pg, tab, ph, "cs")
+    check("prohlídka: úkol 3 (další píseň) ✓", "done" in pg.locator("#step-c").get_attribute("class"))
+    check("prohlídka: úkol 4 (Kick čistší) ✓", "done" in pg.locator("#step-d").get_attribute("class"))
+    tab, ph = frames(pg)
+    kick = tab.locator('#strips .lane[data-id="/ch/01"]')
 
     # výpadek pultu: stránky ukážou své stavy, pak obnova bez zápisů (zákon 3)
     pg.wait_for_timeout(250)  # echa vrácení MLUVIT (odposlechy 1–4, 40–80 ms) ať nespadnou do počítadla výpadku
     pg.evaluate("window.__writes = 0; window.__wl = []; MixtetHubSim.on('change', c => { window.__writes++; window.__wl.push(c); })")
     pg.locator("#outage").click()
-    check("výpadek: iPad „pult neodpovídá“", wait_for(lambda: tab.locator("#stt").inner_text() == "pult neodpovídá", 2))
+    check("výpadek: iPad „pult neodpovídá“", wait_for(lambda: tab.locator("#connT").inner_text() == "pult neodpovídá", 2))
     check("výpadek: mobil banner", wait_for(lambda: "pult neodpovídá" in ph.locator("#banner").inner_text() and ph.locator("#banner").is_visible(), 2))
     pg.wait_for_timeout(1700)
     check("výpadek: měřáky mobilu šrafované (stale)", ph.locator(".mt.stale").count() > 0)
     kick.locator(".fader").focus()
     pg.keyboard.press("ArrowUp")
-    check("výpadek: zápis odmítnut toastem", wait_for(lambda: "Bez spojení" in tab.locator("#toast").inner_text(), 1))
+    check("výpadek: iPad červený pruh „Bez spojení s pultem“ a šrafované měřáky", tab.locator("#banner").is_visible()
+          and "Bez spojení s pultem" in tab.locator("#banner").inner_text() and tab.locator(".meter.stale").count() > 10)
+    check("výpadek: zápis odmítnut toastem", wait_for(lambda: "Bez spojení" in tab.locator("#toastT").inner_text(), 1))
     pg.evaluate("document.getElementById('stage').scrollIntoView()")
     pg.screenshot(path=f"{SHOTS}/outage-1440-cs.png")
-    check("po obnově: iPad připojeno", wait_for(lambda: tab.locator("#stt").inner_text() == "připojeno", 6))
+    check("po obnově: iPad připojeno", wait_for(lambda: tab.locator("#connT").inner_text() == "XR18 · připojeno", 6))
     check("po obnově: mobil bez banneru", wait_for(lambda: not ph.locator("#banner").is_visible(), 3))
     pg.wait_for_timeout(500)
     check("po obnově: nic se znovu neposlalo", pg.evaluate("window.__writes") == 0, pg.evaluate("window.__wl"))
@@ -296,12 +488,19 @@ with sync_playwright() as p:
     pg.evaluate("window.__midiOut.length = 0; __midiIn([0xBF, 48, 127]); __midiIn([0xBF, 48, 0])")
     check("MIDI: Mute 1 ztlumí Kick", wait_for(lambda: pg.evaluate("MixtetHubSim.known('/ch/01/mix/on')") == 0))
     check("MIDI: LED Mute 1 svítí", wait_for(lambda: [0xBF, 48, 127] in pg.evaluate("window.__midiOut")))
-    check("MIDI → iPad: MUTE Kick svítí", wait_for(lambda: kick.locator("button.lit").get_attribute("aria-pressed") == "true"))
+    check("MIDI → iPad: MUTE Kick svítí", wait_for(lambda: kick.locator(".btn.mute").get_attribute("aria-pressed") == "true"))
     pg.evaluate("__midiIn([0xBF, 48, 127]); __midiIn([0xBF, 48, 0]); __midiIn([0xBF, 41, 127]); __midiIn([0xBF, 41, 0])")
     check("MIDI: Play = mute skupina 1", wait_for(lambda: pg.evaluate("MixtetHubSim.known('/config/mute/1')") == 1))
     check("MIDI: LED Play svítí", wait_for(lambda: [0xBF, 41, 127] in pg.evaluate("window.__midiOut")))
     pg.evaluate("__midiIn([0xBF, 41, 127]); __midiIn([0xBF, 41, 0]); __midiIn([0xBF, 59, 127]); __midiIn([0xBF, 59, 0])")
     check("MIDI: Track ▶ = Banka 2", wait_for(lambda: "Banka 2" in pg.locator("#midiChip").inner_text()), pg.locator("#midiChip").inner_text())
+    check("MIDI → iPad: banka jde za ovladačem (Banka 2, F1 na 9. pásu)", wait_for(lambda: tab.locator("#banks .bank").nth(1).get_attribute("aria-pressed") == "true"
+          and tab.locator("#strips .lane").nth(8).locator(".fbadge").inner_text() == "F1"))
+    tab.locator("#banks .bank").nth(2).click()
+    check("iPad → MIDI: Banka 3 na iPadu přepne ovladač", wait_for(lambda: "Banka 3" in pg.locator("#midiChip").inner_text()), pg.locator("#midiChip").inner_text())
+    check("iPad: čip ovladače v liště", wait_for(lambda: "Banka 3" in tab.locator("#ctrlChip").inner_text()), tab.locator("#ctrlChip").inner_text())
+    tab.locator("#banks .bank").nth(1).click()
+    wait_for(lambda: "Banka 2" in pg.locator("#midiChip").inner_text())
     pg.evaluate("__midiIn([0xBF, 45, 127])")
     check("MIDI: Rec (drž) = MLUVIT KE KAPELE", wait_for(lambda: pg.evaluate("MixtetHubSim.talking()")))
     pg.evaluate("__midiIn([0xBF, 45, 0])")
@@ -395,7 +594,7 @@ with sync_playwright() as p:
     pend = pg.evaluate("[MixtetHubSim.get('/ch/01/mix/fader'), MixtetHubSim.known('/ch/01/mix/fader')]")
     check("MCU: Pitch Bend → fader čeká na pult (pending ≠ known)", abs(pend[0] - 921 / 1023) < 1e-6 and abs(pend[1] - 921 / 1023) > 0.01, pend)
     check("MCU: pult potvrdil fader 0.9", wait_for(lambda: abs(pg.evaluate("MixtetHubSim.known('/ch/01/mix/fader')") - 921 / 1023) < 1e-6))
-    kick = tab.locator('.strip[data-id="/ch/01"]')
+    kick = tab.locator('#strips .lane[data-id="/ch/01"]')
     check("MCU → iPad: Kick +6.0 potvrzeno", wait_for(lambda: kick.locator(".val").inner_text() == "+6.0" and "pend" not in kick.locator(".val").get_attribute("class")),
           kick.locator(".val").inner_text())
 
@@ -431,7 +630,7 @@ with sync_playwright() as p:
     send(NK, "[0x90, 94, 127]"); send(NK, "[0x90, 94, 0]")
     check("MCU: Play = mute skupina 1", wait_for(lambda: pg.evaluate("MixtetHubSim.known('/config/mute/1')") == 1))
     check("MCU: LED Play = Note On 94 / 127", wait_for(lambda: [0x90, 94, 127] in out(NK)))
-    check("MCU → iPad: SK1 svítí", wait_for(lambda: tab.locator("#groups button").first.get_attribute("aria-pressed") == "true"))
+    check("MCU → iPad: SK1 svítí", wait_for(lambda: tab.locator("#mg1").get_attribute("aria-pressed") == "true"))
     send(NK, "[0x90, 94, 127]"); send(NK, "[0x90, 94, 0]")
     wait_for(lambda: pg.evaluate("MixtetHubSim.known('/config/mute/1')") == 0)
     send(NK, "[0x90, 95, 127]")
@@ -491,6 +690,9 @@ with sync_playwright() as p:
     pg.goto(BASE + "/demo/")
     tab, ph = ready(pg)
     check("EN: mobil anglicky", wait_for(lambda: "Mute my mix" in ph.locator("#bMute").inner_text()))
+    ipad_screens(pg, tab, ph, "en")
+    check("EN: iPad anglicky (TALK TO BAND, Live actions)", tab.locator("#talk").inner_text() == "TALK TO BAND (hold)" and "live actions" in tab.locator(".side").inner_text().lower())
+    check("EN: Mac snímky s anglickým popiskem", "Every channel" in pg.locator("#pane-mac").text_content())
     check("EN: kanály ukázkové kapely anglicky", "Vox Adam" in ph.locator("body").inner_text() or "Vox Adam" in tab.locator("body").inner_text())
     pg.wait_for_timeout(1500)
     pg.screenshot(path=f"{SHOTS}/desktop-1440-en.png")
@@ -528,7 +730,7 @@ with sync_playwright() as p:
     check("375: záložka iPad ukáže iPad", pg.locator("#pane-tablet").is_visible() and not pg.locator("#pane-phone").is_visible())
     pg.wait_for_timeout(400)
     pg.screenshot(path=f"{SHOTS}/phone-375-tab-ipad.png")
-    check("375: iPad 1:1 (1024 px) s posunem do strany, stránka se neposouvá", tab.evaluate("innerWidth") == 1024
+    check("375: iPad 1:1 (1180 px) s posunem do strany, stránka se neposouvá", tab.evaluate("innerWidth") == 1180
           and pg.evaluate("document.documentElement.scrollWidth <= innerWidth"), [tab.evaluate("innerWidth"), pg.evaluate("document.documentElement.scrollWidth")])
     pg.locator("#tab-mac").click()
     check("375: záložka Mac ukáže snímky", pg.locator("#macGallery").is_visible() and not pg.locator("#pane-phone").is_visible())
