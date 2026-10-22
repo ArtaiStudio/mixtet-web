@@ -375,8 +375,8 @@ footer{flex:none;display:flex;align-items:center;gap:var(--krai-space-2);padding
 <section id="pair" hidden>
   <div class="box">
     <h2>Celý mix na iPadu</h2>
-    <div class="hintline">Na Macu: Kapela › iPad – Celý mix. Opiš PIN, který je vedle QR kódu.</div>
-    <input id="pin" inputmode="numeric" autocomplete="one-time-code" maxlength="6" aria-label="PIN z Macu" placeholder="000000">
+    <div class="hintline">V Mixtetu: Kapela › iPad – Celý mix. Opiš PIN, který je vedle QR kódu.</div>
+    <input id="pin" inputmode="numeric" autocomplete="one-time-code" maxlength="6" aria-label="PIN z Mixtetu" placeholder="000000">
     <div id="pairErr" class="err" role="alert"></div>
     <button id="pairGo" class="cta">Připojit</button>
   </div>
@@ -404,7 +404,7 @@ footer{flex:none;display:flex;align-items:center;gap:var(--krai-space-2);padding
   </main>
   <footer>
     <div class="banks" id="banks" role="group" aria-label="Banky pásů"></div>
-    <span class="foot">Mac vidí „Sál ovládá: Mac + iPad“ a může tě odpojit.</span>
+    <span class="foot" id="foot">Mixtet ukazuje, kdo ovládá sál, a může tě odpojit.</span>
   </footer>
 </div>
 <script>
@@ -533,8 +533,15 @@ function lane(s, cls, color, label){
   return [e, fw];
 }
 
+// hub = Mac nebo iPad s Mixtetem (ADR-022, 17.6); slovo v pádech podle `hubKind` z init (starší server = Mac)
+const HUB_WORDS = {mac: {nom: 'Mac', ins: 'Macem'}, ipad: {nom: 'iPad', ins: 'iPadem'}};
+let HW = HUB_WORDS.mac;
+
 function build(){
   W.length = 0;
+  HW = HUB_WORDS[cfg.hubKind] || HUB_WORDS.mac;
+  $('follow').textContent = 'Sledovat ' + HW.nom;
+  $('foot').textContent = HW.nom + ' vidí „Sál ovládá: ' + HW.nom + ' + tablet“ a může tě odpojit.';
   $('hub').textContent = cfg.hub ? '· ' + cfg.hub : '';
   $('talkHint').textContent = (cfg.talkMic ? 'mikrofon ' + cfg.talkMic + ' · ' : '') + 'sál neslyší';
   const strips = $('strips'); strips.innerHTML = '';
@@ -648,7 +655,7 @@ function talk(on){
   t.textContent = on ? 'MLUVÍŠ KE KAPELE' : 'MLUVIT KE KAPELE (drž)';
   clearInterval(talkTimer);
   post('talk', {on}).then(r => { if (on && (!r || !r.ok)) { talk(false); toast('Teď mluví někdo jiný – zkus to za chvíli', true); } });
-  if (on) talkTimer = setInterval(() => post('talk', {on: true}), 500);   // obnova pro hlídání na Macu (2 s)
+  if (on) talkTimer = setInterval(() => post('talk', {on: true}), 500);   // obnova pro hlídání na hubu (2 s)
 }
 $('talk').addEventListener('pointerdown', e => { e.preventDefault(); talk(true); });
 ['pointerup', 'pointercancel', 'pointerleave'].forEach(t => $('talk').addEventListener(t, () => talk(false)));
@@ -662,10 +669,10 @@ document.addEventListener('visibilitychange', () => { if (document.hidden) talk(
 function status(){
   const age = Date.now() - last, lost = age > 7000, st = $('st');
   st.className = 'chip st ' + (lost ? '' : mixerOK ? 'ok' : 'warn');
-  $('stt').textContent = lost ? 'Spojení s Macem ztraceno' : mixerOK ? 'připojeno' : 'pult neodpovídá';
+  $('stt').textContent = lost ? 'Spojení s ' + HW.ins + ' ztraceno' : mixerOK ? 'připojeno' : 'pult neodpovídá';
   document.body.classList.toggle('dis', !online());
   const b = $('banner'); b.style.display = online() ? 'none' : 'block';
-  b.textContent = lost ? 'Spojení s Macem ztraceno – odposlechy hrají dál, sál se nedá měnit.' : 'Pult neodpovídá – nic se neodesílá.';
+  b.textContent = lost ? 'Spojení s ' + HW.ins + ' ztraceno – odposlechy hrají dál, sál se nedá měnit.' : 'Pult neodpovídá – nic se neodesílá.';
   paintMeters();
   if (age > 9000 && !document.hidden && session) connect();
 }
@@ -681,7 +688,7 @@ function connect(){
   es.addEventListener('m', ev => { M = JSON.parse(ev.data); last = lastM = Date.now(); paintMeters(); });
   es.addEventListener('ping', ev => { last = Date.now(); mixerOK = JSON.parse(ev.data).connected; status(); });
   es.addEventListener('reload', () => connect());
-  es.addEventListener('bye', () => { lost('Mac tě odpojil – sál z iPadu ovládat nejde.'); });
+  es.addEventListener('bye', () => { lost(HW.nom + ' tě odpojil – sál z tabletu ovládat nejde.'); });
 }
 setInterval(status, 1000);
 
@@ -689,7 +696,7 @@ setInterval(status, 1000);
 function lost(msg){
   talk(false); if (es) { es.close(); es = null; }
   session = null; try { localStorage.removeItem(STORE); } catch (e) {}
-  showPair(msg || 'Odkaz nebo připojení už neplatí – opiš PIN z Macu znovu.');
+  showPair(msg || 'Odkaz nebo připojení už neplatí – opiš PIN z Mixtetu znovu.');
 }
 function showPair(msg){ $('app').hidden = true; $('pair').hidden = false; $('pairErr').textContent = msg || ''; $('pin').value = ''; $('pin').focus(); }
 let lockTimer = 0;
@@ -708,9 +715,9 @@ async function claim(){
   else if (s === 429) { let n = r.retry; clearInterval(lockTimer); $('pairGo').disabled = true;
     const tick = () => { err.textContent = 'Moc pokusů – zkus to znovu za ' + n + ' s.'; if (--n < 0) { clearInterval(lockTimer); $('pairGo').disabled = false; err.textContent = ''; } };
     tick(); lockTimer = setInterval(tick, 1000); }
-  else if (s === 409) err.textContent = 'Sál už ovládá jiný tablet – na Macu ho nejdřív odpoj.';
-  else if (s === 404) err.textContent = 'Odkaz už neplatí – naskenuj nový QR kód na Macu.';
-  else err.textContent = 'Mac neodpovídá – jsi ve stejné Wi‑Fi?';
+  else if (s === 409) err.textContent = 'Sál už ovládá jiný tablet – v Mixtetu ho nejdřív odpoj.';
+  else if (s === 404) err.textContent = 'Odkaz už neplatí – naskenuj nový QR kód v Mixtetu.';
+  else err.textContent = 'Mixtet neodpovídá – jsi ve stejné Wi‑Fi?';
 }
 $('pairGo').onclick = claim;
 $('pin').addEventListener('keydown', e => { if (e.key === 'Enter') claim(); });

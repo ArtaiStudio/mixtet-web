@@ -12,12 +12,12 @@
 .tour .wrap>*{max-width:none}
 .tour-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px}
 .tour h2{font-size:20px;margin:0}
-.steps3{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.steps3{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
 .step{display:grid;grid-template-columns:32px minmax(0,1fr);gap:12px;align-items:start;background:var(--s1);border:1px solid var(--line);border-radius:12px;padding:14px}
 .step .mark{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:var(--s2);border:1px solid var(--line);font-weight:800;color:var(--sand)}
 .step.done{border-color:var(--ok)}
 .step.done .mark{background:var(--ok);border-color:var(--ok);color:#0C1014}
-.step .st-t{font-weight:700;font-size:16px;line-height:1.35}
+.step .st-t{font-weight:700;font-size:15px;line-height:1.35}
 .step .st-h{color:var(--fg3);font-size:14px;margin-top:4px}
 .step .btn{margin-top:10px}
 .tour-done{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:12px;background:rgba(102,199,115,.1);border:1px solid var(--ok);border-radius:12px;padding:14px 16px}
@@ -46,6 +46,7 @@
 .dev .cap h2{font-size:18px;margin:0}
 .dev .cap p{font-size:14px;color:var(--fg3)}
 .dev .cap .tnote{color:var(--fg2);margin-top:4px}
+.dev .cap .soon{display:inline-block;margin-top:6px;font-size:13px;font-weight:700;color:var(--sand);border:1px solid var(--line);border-radius:999px;padding:3px 10px}
 .bezel{background:#05070A;border:2px solid #2E363F;box-shadow:0 30px 70px rgba(0,0,0,.55)}
 .bezel iframe{display:block;border:0;width:100%;background:#0C1014}
 .ipad{border-radius:28px;padding:16px}
@@ -114,6 +115,7 @@ dialog#fb .form{gap:16px}
   .iphone{width:340px}.iphone iframe{height:720px}
   .miss{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
+@media (max-width:1240px){.steps3{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (max-width:860px){.steps3{grid-template-columns:1fr}.tour-done{flex-direction:column;align-items:flex-start}}
 /* Úzké displeje: záložky Mobil člena / Kapelník (iPad) místo vedle sebe */
 @media (max-width:700px){
@@ -128,8 +130,8 @@ dialog#fb .form{gap:16px}
   .iphone iframe{height:min(760px,calc(100svh - 120px));border-radius:28px}
   .ipad{padding:6px;border-radius:16px}
   .ipad .scroller{overflow-x:auto;-webkit-overflow-scrolling:touch}
-  .ipad .sizer{width:1024px;aspect-ratio:auto;height:min(700px,calc(100svh - 120px))}
-  .ipad iframe{width:1024px;height:100%;transform:none!important}
+  .ipad .sizer{width:1180px;aspect-ratio:auto;height:820px}
+  .ipad iframe{width:1180px;height:820px;transform:none!important}
   .mnav{gap:10px}
   .miss,.mshots{grid-template-columns:1fr}
   .picker{margin-right:0;width:100%}
