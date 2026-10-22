@@ -1,13 +1,19 @@
 #!/usr/bin/env python3
 """Postaví statický web mixtet.live: / (EN) a /cs/ (CZ) z jedné šablony + texts.py.
 Spuštění: python3 src/build.py  (z kořene webu). Obrázky snímků čeká v img/screens/<jméno>.webp."""
-import html, json, os, sys
+import hashlib, html, json, os, sys
 sys.path.insert(0, os.path.dirname(__file__))
 from texts import T
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SITE = "https://mixtet.live"
 e = html.escape
+
+
+def ver(name):
+    """Krátký otisk souboru do ?v= – nová verze CSS/JS se načte hned, ne až po vypršení cache."""
+    with open(os.path.join(ROOT, name), "rb") as f:
+        return hashlib.sha1(f.read()).hexdigest()[:8]
 
 
 def has_img(name):
@@ -63,7 +69,8 @@ def page(lang):
                        for v, lbl in opts)
 
     mixers = chips("mixer", [("xr18", "XR18"), ("xr16", "XR16"), ("xr12", "XR12"), ("mr18", "MR18"), ("x32", "X32 / M32"), ("other", t["oOther"])])
-    langs = "".join(f'<option value="{v}"{" selected" if v == lang else ""}>{e(n)}</option>' for v, n in [("cs", "Čeština"), ("en", "English"), ("de", "Deutsch"), ("es", "Español"), ("pl", "Polski"), ("fr", "Français"), ("it", "Italiano"), ("other", t["oLangOther"])])
+    langs = "".join(f'<label class="chip"><input type="radio" name="app_lang" value="{v}"{" checked" if v == lang else ""}><span>{e(n)}</span></label>'
+                    for v, n in [("cs", "Čeština"), ("en", "English"), ("de", "Deutsch"), ("es", "Español"), ("pl", "Polski"), ("fr", "Français"), ("it", "Italiano"), ("other", t["oLangOther"])])
     hubs = chips("hub", [("mac", "Mac"), ("ipad", "iPad"), ("windows", "Windows"), ("android", t["oAndroid"]), ("unsure", t["oUnsure"])], "checkbox")
     members = chips("members", [(v, v) for v in ["2", "3", "4", "5", "6", "7+"]])
     iem = chips("iem", [("yes", t["oYes"]), ("planning", t["oPlanning"]), ("no", t["oNo"])])
@@ -94,7 +101,7 @@ def page(lang):
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#0C1014">
 <link rel="icon" type="image/png" href="{pre}img/znacka.png">
-<link rel="stylesheet" href="{pre}site.css">
+<link rel="stylesheet" href="{pre}site.css?v={ver('site.css')}">
 </head>
 <body>
 <a class="skip" href="#main">{e(t["skip"])}</a>
@@ -198,7 +205,7 @@ def page(lang):
         <fieldset class="f"><legend>{e(t["fMembers"])}</legend><div class="chips">{members}</div></fieldset>
         <fieldset class="f"><legend>{e(t["fIem"])}</legend><div class="chips">{iem}</div></fieldset>
       </div>
-      <div class="f"><label for="app_lang">{e(t["fAppLang"])}</label><select id="app_lang" name="app_lang">{langs}</select></div>
+      <fieldset class="f"><legend>{e(t["fAppLang"])}</legend><div class="chips">{langs}</div></fieldset>
       <details class="more"><summary>{e(t["fMore"])}</summary>
         <div class="f2">
           <div class="f"><label for="band">{e(t["fBand"])}</label><input id="band" name="band" autocomplete="organization" maxlength="80"></div>
@@ -232,7 +239,7 @@ def page(lang):
 <div class="sticky" id="sticky" hidden><a class="btn full" href="#join">{e(t["stickyCta"])}</a></div>
 <dialog id="zoom"><form method="dialog"><button class="x" aria-label="Zavřít / Close">×</button></form><img alt=""></dialog>
 <script>window.MIXTET={json.dumps({"lang": lang, "msg": msgs}, ensure_ascii=False)};</script>
-<script src="{pre}site.js" defer></script>
+<script src="{pre}site.js?v={ver('site.js')}" defer></script>
 </body>
 </html>
 """
