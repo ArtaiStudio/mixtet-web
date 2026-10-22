@@ -1,0 +1,6 @@
+dist/
+*.zip
+__pycache__/
+node_modules/
+.DS_Store
+src/tests/out/

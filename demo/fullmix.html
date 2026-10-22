@@ -1,0 +1,724 @@
+<!-- Vygenerováno src/demo_build.py z repa Mixtetu (web/fullmix.html) – needitovat ručně. -->
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<script src="/demo/shim.js"></script>
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="referrer" content="no-referrer"><!-- odkaz a session iPadu jsou v adrese – nikdy je neposílat dál -->
+<title>Celý mix</title>
+<style>
+/* @tokens:start */
+:root {
+  --krai-bg: #0C1014; 
+  --krai-navy: #0D1B2A; 
+  --krai-brown: #3B2B2A; 
+  --krai-blue: #6D9FB1; 
+  --krai-terracotta: #C4804F; 
+  --krai-ivory: #F1EFE7; 
+  --krai-sand: #CDA977; 
+  --krai-muted: #AD9B82; 
+  --krai-canvas: var(--krai-bg); 
+  --krai-surface-1: #141A20; 
+  --krai-surface-2: #1D252E; 
+  --krai-surface-3: #262E38; 
+  --krai-well: #080B0E; 
+  --krai-border-subtle: #FFFFFF1A; 
+  --krai-border-control: #6B7684; 
+  --krai-text: var(--krai-ivory); 
+  --krai-text-2: #BDB09C; 
+  --krai-text-3: var(--krai-muted); 
+  --krai-text-disabled: #7A7468; 
+  --krai-on-fill: #000000; 
+  --krai-text-on-accent: var(--krai-tile-text); 
+  --krai-text-danger: #F28C85; 
+  --krai-text-accent: #E0A275; 
+  --krai-accent: var(--krai-terracotta); 
+  --krai-selected: var(--krai-sand); 
+  --krai-selected-fill: #CDA9772E; 
+  --krai-mute: #EB4C47; 
+  --krai-mute-indirect: #F59433; 
+  --krai-solo: #F0CF4C; 
+  --krai-talk: #9AA4AE; 
+  --krai-ok: #66C773; 
+  --krai-warn: #EDB24C; 
+  --krai-danger: #E6544C; 
+  --krai-state-talk-lit: var(--krai-ivory); 
+  --krai-meter-safe: var(--krai-ok); 
+  --krai-meter-hot: var(--krai-warn); 
+  --krai-meter-over: var(--krai-danger); 
+  --krai-meter-peak: #F1EFE7D9; 
+  --krai-meter-track: var(--krai-well); 
+  --krai-tick: #A39985; 
+  --krai-meter-gr: var(--krai-text-2); 
+  --krai-rta: #F1EFE738; 
+  --krai-meter-segment-off: #FFFFFF0D; 
+  --krai-ch-0: #8C9096; 
+  --krai-ch-1: #DB8580; 
+  --krai-ch-2: #8FCC94; 
+  --krai-ch-3: #E6D185; 
+  --krai-ch-4: #8CADEB; 
+  --krai-ch-5: #D199DB; 
+  --krai-ch-6: #85CCD6; 
+  --krai-ch-7: #E0E0E0; 
+  --krai-channel-unowned: var(--krai-ch-0); 
+  --krai-fader-cap-light: #F4F4F2; 
+  --krai-fader-cap-mid: #C7C7C3; 
+  --krai-fader-cap-dark: #7E7E7A; 
+  --krai-fader-groove: #00000059; 
+  --krai-fader-slot: #000000; 
+  --krai-member-1: #7FCAD4; 
+  --krai-member-2: #C08692; 
+  --krai-member-3: #7699C0; 
+  --krai-member-4: #AEC59C; 
+  --krai-member-5: #BAABFE; 
+  --krai-member-6: #E4E8EE; 
+  --krai-strip-top: #1F2730; 
+  --krai-strip-bottom: #1A2129; 
+  --krai-strip-edge-light: #FFFFFF12; 
+  --krai-strip-edge-dark: #00000066; 
+  --krai-button-top: #2A333D; 
+  --krai-button-bottom: #222A33; 
+  --krai-tile-text: #0C1014; 
+  --krai-line-subtle: var(--krai-border-subtle); 
+  --krai-line-control: var(--krai-border-control); 
+  --krai-line-focus: var(--krai-selected); 
+  --krai-font-ui: "SF Pro", -apple-system, system-ui, sans-serif; 
+  --krai-font-mono: "SF Mono", ui-monospace, Menlo, monospace; 
+  --krai-numeric: "tnum"; 
+  --krai-fs-label: 12px; 
+  --krai-fs-value: 15px; 
+  --krai-fs-body: 16px; 
+  --krai-fs-stage: 20px; 
+  --krai-fs-title: 26px; 
+  --krai-fs-hero: 34px; 
+  --krai-font-size-tile: 20px; 
+  --krai-font-size-tileStage: 24px; 
+  --krai-font-size-tileNarrow: 16px; 
+  --krai-font-size-tileStageNarrow: 19px; 
+  --krai-fw-regular: 400;
+  --krai-fw-medium: 500;
+  --krai-fw-semibold: 600;
+  --krai-fw-bold: 700;
+  --krai-fw-heavy: 800;
+  --krai-tracking-caps: 0.06em; 
+  --krai-lh-tight: 1.15; 
+  --krai-lh-text: 1.35; 
+  --krai-space-0: 0px;
+  --krai-space-half: 2px; 
+  --krai-space-1: 4px; 
+  --krai-space-2: 8px; 
+  --krai-space-3: 12px; 
+  --krai-space-4: 16px; 
+  --krai-space-5: 24px; 
+  --krai-space-6: 32px; 
+  --krai-space-7: 48px; 
+  --krai-radius-xs: 3px; 
+  --krai-radius-sm: 6px; 
+  --krai-radius-md: 10px; 
+  --krai-radius-lg: 14px; 
+  --krai-radius-pill: 999px; 
+  --krai-stroke-hairline: 1px; 
+  --krai-stroke-emphasis: 2px; 
+  --krai-dash-ghost: 3px 2px; 
+  --krai-hit-pointer: 24px; 
+  --krai-hit-touch: 44px; 
+  --krai-hit-touchComfort: 48px; 
+  --krai-hit-stage: 56px; 
+  --krai-size-strip-width-regular: 92px;
+  --krai-size-strip-width-stage: 120px;
+  --krai-size-strip-width-stageMax: 190px;
+  --krai-size-fader-cap-width-regular: 40px; 
+  --krai-size-fader-cap-width-stage: 54px;
+  --krai-size-fader-cap-height-regular: 30px;
+  --krai-size-fader-cap-height-stage: 40px;
+  --krai-size-fader-track-width: 6px; 
+  --krai-size-meter-width-regular: 5px;
+  --krai-size-meter-width-stage: 7px;
+  --krai-size-meter-width-stereo: 4px; 
+  --krai-size-stateButton-height-regular: 26px;
+  --krai-size-stateButton-height-stage: 40px;
+  --krai-size-muteGroup-tile-regular: 42px;
+  --krai-size-muteGroup-tile-stage: 52px;
+  --krai-size-bar-top: 52px; 
+  --krai-size-bar-status: 32px; 
+  --krai-size-phone-slider-height: 56px;
+  --krai-size-phone-slider-heightMe: 68px;
+  --krai-size-phone-cap-width: 30px;
+  --krai-size-phone-cap-height: 40px;
+  --krai-size-phone-cap-widthMe: 36px;
+  --krai-size-phone-cap-heightMe: 48px;
+  --krai-size-phone-toggle-minWidth: 96px;
+  --krai-size-phone-nudge: 56px;
+  --krai-size-phone-nudgeMe: 64px;
+  --krai-size-phone-meter-height: 6px;
+  --krai-size-mixStripMono: 86px; 
+  --krai-size-mixStripStereo: 108px; 
+  --krai-size-mixStripMonoNarrow: 62px; 
+  --krai-size-mixStripStereoNarrow: 76px; 
+  --krai-size-mixStripMonoStage: 104px; 
+  --krai-size-mixStripStereoStage: 128px; 
+  --krai-size-mixStripMonoStageNarrow: 74px; 
+  --krai-size-mixStripStereoStageNarrow: 90px; 
+  --krai-size-capWidth: 32px; 
+  --krai-size-capHeight: 44px;
+  --krai-size-capWidthNarrow: 28px;
+  --krai-size-capHeightNarrow: 40px;
+  --krai-size-capWidthStage: 38px;
+  --krai-size-capHeightStage: 54px;
+  --krai-size-capBand: 7px; 
+  --krai-size-tileHeight: 40px; 
+  --krai-size-tileHeightStage: 52px; 
+  --krai-size-litButtonHeight: 28px; 
+  --krai-size-litButtonHeightStage: 36px; 
+  --krai-size-glow: 10px; 
+  --krai-size-segMeterWidth: 8px; 
+  --krai-size-segMeterWidthNarrow: 6px;
+  --krai-size-meterSegment: 5px; 
+  --krai-size-clipLed: 9px; 
+  --krai-size-mixSideColumn: 250px; 
+  --krai-size-bridgeMeterWidth: 10px; 
+  --krai-size-bridgeMeterHeight: 26px;
+  --krai-size-infoBar: 40px; 
+  --krai-shadow-cap: 0px 1px 2px 0px #00000080; 
+  --krai-shadow-overlay: 0px 8px 24px 0px #00000080; 
+  --krai-shadow-popover: 0px 12px 30px 0px #000000CC; 
+  --krai-shadow-dialog: 0px 20px 50px 0px #000000AA; 
+  --krai-dur-instant: 0ms; 
+  --krai-dur-ramp30: 30ms; 
+  --krai-dur-fast: 80ms; 
+  --krai-dur-base: 160ms; 
+  --krai-dur-slow: 240ms; 
+  --krai-ease: cubic-bezier(0.2, 0, 0, 1); 
+  --krai-dwell-toast: 3000ms; 
+  --krai-dwell-toastError: 5000ms; 
+  --krai-dwell-armedLoad: 2000ms; 
+  --krai-dwell-longPress: 500ms; 
+  --krai-dwell-clipHold: 0ms; 
+  --krai-opacity-disabled: 0.4; 
+  --krai-opacity-silenced: 0.45; 
+  --krai-opacity-offline: 0.45; 
+  --krai-opacity-glow: 0.4; 
+  --krai-opacity-unlit-text: 0.7; 
+  --krai-z-base: 0;
+  --krai-z-sticky: 10; 
+  --krai-z-banner: 20; 
+  --krai-z-callout: 30; 
+  --krai-z-toast: 40; 
+  --krai-z-modal: 50; 
+  --krai-meter-db-floor: -60; 
+  --krai-meter-db-hot: -18; 
+  --krai-meter-db-over: -6; 
+  --krai-meter-db-clip: -0.5; 
+  --krai-meter-db-fallDbPerSec: 12; 
+  --krai-meter-db-peakHoldMs: 1500;
+  --krai-meter-db-refreshHz: 30; 
+  --krai-conn-staleAfterSec: 1.5; 
+  --krai-conn-offlineAfterSec: 3; 
+  --krai-conn-xremoteRefreshSec: 5; 
+  --krai-conn-phoneStaleAfterSec: 3; 
+  --krai-conn-phoneLostAfterSec: 7; 
+  --krai-conn-phoneReconnectAfterSec: 9; 
+}
+
+.krai-t-label { font-family: var(--krai-font-ui); font-size: var(--krai-fs-label); font-weight: var(--krai-fw-heavy); line-height: var(--krai-lh-tight); font-variant-numeric: tabular-nums; }
+.krai-t-value { font-family: var(--krai-font-ui); font-size: var(--krai-fs-value); font-weight: var(--krai-fw-semibold); line-height: var(--krai-lh-tight); font-variant-numeric: tabular-nums; }
+.krai-t-body { font-family: var(--krai-font-ui); font-size: var(--krai-fs-body); font-weight: var(--krai-fw-regular); line-height: var(--krai-lh-tight); font-variant-numeric: tabular-nums; }
+.krai-t-button { font-family: var(--krai-font-ui); font-size: var(--krai-fs-body); font-weight: var(--krai-fw-bold); line-height: var(--krai-lh-tight); font-variant-numeric: tabular-nums; }
+.krai-t-stripName { font-family: var(--krai-font-ui); font-size: var(--krai-fs-value); font-weight: var(--krai-fw-bold); line-height: var(--krai-lh-tight); font-variant-numeric: tabular-nums; }
+.krai-t-stripNameStage { font-family: var(--krai-font-ui); font-size: var(--krai-fs-stage); font-weight: var(--krai-fw-heavy); line-height: var(--krai-lh-tight); font-variant-numeric: tabular-nums; }
+.krai-t-valueStage { font-family: var(--krai-font-ui); font-size: var(--krai-fs-stage); font-weight: var(--krai-fw-semibold); line-height: var(--krai-lh-tight); font-variant-numeric: tabular-nums; }
+.krai-t-title { font-family: var(--krai-font-ui); font-size: var(--krai-fs-title); font-weight: var(--krai-fw-bold); line-height: var(--krai-lh-tight); font-variant-numeric: tabular-nums; }
+.krai-t-hero { font-family: var(--krai-font-ui); font-size: var(--krai-fs-hero); font-weight: var(--krai-fw-heavy); line-height: var(--krai-lh-tight); font-variant-numeric: tabular-nums; }
+/* @tokens:end */
+/* iPad v roli Celý mix (PLAN 13.5, 13.7, pravidlo 11) podle Figmy „47 iPad – Celý mix (v2)“: pásy jako Mac v Koncertu
+   (tokeny Stage), vpravo MLUVIT KE KAPELE, mute skupiny 2×2, DCA vodorovně, pás Sál. Jen tokeny --krai-*, nic pod 11 px. */
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none}
+html,body{margin:0;height:100%;background:var(--krai-canvas);color:var(--krai-text);font-family:var(--krai-font-ui);font-size:var(--krai-fs-value);overscroll-behavior:none}
+body{display:flex;flex-direction:column;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
+button{font:inherit;color:inherit;border:0;cursor:pointer;touch-action:manipulation}
+input{font:inherit}
+.num{font-variant-numeric:tabular-nums}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+:focus-visible{outline:var(--krai-stroke-emphasis) solid var(--krai-line-focus);outline-offset:var(--krai-space-half)}
+[hidden]{display:none!important}
+#app{flex:1;min-height:0;display:flex;flex-direction:column}
+
+/* MARK: horní lišta – Mixtet · Celý mix · iPad, spojení, Sledovat Mac */
+header{flex:none;display:flex;align-items:center;gap:var(--krai-space-3);min-height:var(--krai-size-bar-top);padding:var(--krai-space-2) var(--krai-space-4);background:var(--krai-surface-1);box-shadow:inset 0 calc(-1 * var(--krai-stroke-hairline)) 0 var(--krai-border-subtle)}
+header h1{margin:0;font-size:var(--krai-fs-stage);font-weight:var(--krai-fw-heavy);white-space:nowrap}
+.chip{display:inline-flex;align-items:center;gap:var(--krai-space-2);min-height:calc(var(--krai-space-6) - var(--krai-space-1));padding:0 var(--krai-space-3);border-radius:var(--krai-radius-pill);background:var(--krai-surface-2);box-shadow:inset 0 0 0 var(--krai-stroke-hairline) var(--krai-border-subtle);font-size:var(--krai-fs-label);font-weight:var(--krai-fw-semibold);color:var(--krai-text-2);white-space:nowrap}
+.st i{flex:none;width:var(--krai-space-2);height:var(--krai-space-2);border-radius:var(--krai-radius-pill);background:var(--krai-danger)}
+.st.ok i{background:var(--krai-ok)} .st.warn i{background:var(--krai-warn)}
+.st #stt{color:var(--krai-text)}
+.st .hubn{overflow:hidden;text-overflow:ellipsis;max-width:calc(var(--krai-size-mixSideColumn) * 0.8)}
+.grow{flex:1}
+.tbtn{min-height:var(--krai-hit-touch);padding:0 var(--krai-space-4);border-radius:var(--krai-radius-md);background:linear-gradient(var(--krai-button-top),var(--krai-button-bottom));box-shadow:inset 0 0 0 var(--krai-stroke-hairline) var(--krai-border-control);font-size:var(--krai-fs-label);font-weight:var(--krai-fw-bold);color:var(--krai-text-2);white-space:nowrap}
+.tbtn.on{background:var(--krai-selected-fill);color:var(--krai-text);box-shadow:inset 0 0 0 var(--krai-stroke-emphasis) var(--krai-selected)}
+.banner{display:none;flex:none;margin:var(--krai-space-2) var(--krai-space-4) 0;padding:var(--krai-space-3);border-radius:var(--krai-radius-md);background:var(--krai-danger);color:var(--krai-on-fill);font-weight:var(--krai-fw-bold)}
+
+/* MARK: plocha – pásy | pravý sloupec | Sál */
+main{flex:1;min-height:0;display:flex;gap:var(--krai-space-3);padding:var(--krai-space-3) var(--krai-space-4) var(--krai-space-2)}
+.strips{position:relative;flex:1;min-width:calc(var(--krai-size-mixStripMonoStageNarrow) * 2);display:flex;gap:var(--krai-space-2);overflow-x:auto;overflow-y:hidden;touch-action:pan-x;-webkit-overflow-scrolling:touch;scroll-snap-type:x proximity;scrollbar-width:thin;container-type:inline-size;padding-bottom:var(--krai-space-1)}
+.side{flex:none;width:calc(var(--krai-size-mixStripMonoStage) * 2);display:flex;flex-direction:column;gap:var(--krai-space-2);overflow-y:auto;padding:var(--krai-space-2);border-radius:var(--krai-radius-md);background:var(--krai-surface-1)}
+.side h2{margin:var(--krai-space-1) 0 0;font-size:var(--krai-fs-label);font-weight:var(--krai-fw-heavy);letter-spacing:var(--krai-tracking-caps);text-transform:uppercase;color:var(--krai-text-2)}
+.hintline{font-size:var(--krai-fs-label);color:var(--krai-text-3);line-height:var(--krai-lh-text);text-align:center}
+body.dis main{opacity:var(--krai-opacity-offline)}
+
+/* MARK: pás (Koncert: 104 pt, úzký 74 pt; 8 pásů na banku, když se víc nevejde) */
+.lane{flex:none;display:flex;flex-direction:column;align-items:stretch;gap:var(--krai-space-2);padding:var(--krai-space-2) var(--krai-space-1);border-radius:var(--krai-radius-md);background:linear-gradient(var(--krai-strip-top),var(--krai-strip-bottom));box-shadow:inset 0 var(--krai-stroke-hairline) 0 var(--krai-strip-edge-light),inset 0 calc(-1 * var(--krai-stroke-hairline)) 0 var(--krai-strip-edge-dark)}
+.strip{width:clamp(var(--krai-size-mixStripMonoStageNarrow),calc((100cqw - 7 * var(--krai-space-2)) / 8),var(--krai-size-mixStripMonoStage));scroll-snap-align:start}
+.lane.mainl{width:var(--krai-size-mixStripMonoStage)}
+.lane.sel{box-shadow:inset 0 0 0 var(--krai-stroke-emphasis) var(--krai-selected)}
+.tile{position:relative;flex:none;height:calc(var(--krai-size-tileHeightStage) + var(--krai-space-2));display:flex;flex-direction:column;justify-content:flex-end;padding:var(--krai-space-1) var(--krai-space-2);border-radius:var(--krai-radius-sm);background:var(--cc,var(--krai-channel-unowned));color:var(--krai-tile-text);line-height:var(--krai-lh-tight);overflow:hidden}
+.tile small{font-size:var(--krai-fs-label);font-weight:var(--krai-fw-bold);opacity:var(--krai-opacity-unlit-text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tile.has-own small{padding-right:calc(var(--krai-fs-label) + var(--krai-space-3))}
+.tile b{font-size:var(--krai-font-size-tileNarrow);font-weight:var(--krai-fw-heavy);font-stretch:condensed;line-height:var(--krai-lh-tight);overflow:hidden;overflow-wrap:anywhere;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2}
+@container (min-width: 820px){ .strip .tile b{font-size:var(--krai-font-size-tileStageNarrow)} }
+.tile .own{position:absolute;top:var(--krai-space-1);right:var(--krai-space-1);min-width:calc(var(--krai-fs-label) + var(--krai-space-2));height:calc(var(--krai-fs-label) + var(--krai-space-2));padding:0 var(--krai-space-1);border-radius:var(--krai-radius-pill);background:var(--krai-tile-text);color:var(--cc,var(--krai-text));font-size:var(--krai-fs-label);font-weight:var(--krai-fw-heavy);display:grid;place-items:center}
+.tile.plain{background:var(--krai-surface-2);color:var(--krai-text)}
+.tile.plain small{color:var(--krai-text-3);opacity:1}
+
+/* fader: stupnice vlevo, štěrbina, rysky vpravo, segmentový měřák */
+.fw{flex:1;min-height:calc(var(--krai-size-capHeightStage) * 2);display:flex;gap:var(--krai-space-half);justify-content:center;position:relative}
+.scale{position:relative;flex:none;width:calc(var(--krai-fs-label) * 2);font-size:var(--krai-fs-label);font-weight:var(--krai-fw-semibold);color:var(--krai-tick);font-variant-numeric:tabular-nums;pointer-events:none}
+.scale span{position:absolute;right:0;transform:translateY(-50%);line-height:1;white-space:nowrap}
+.scale span.z{color:var(--krai-text);font-weight:var(--krai-fw-bold)}
+.fader{position:relative;flex:1;min-width:var(--krai-size-capWidthNarrow);max-width:calc(var(--krai-size-capWidthStage) + var(--krai-space-3));touch-action:none;cursor:grab}
+.fader .track{position:absolute;left:50%;top:calc(var(--krai-size-capHeightStage) / 2);bottom:calc(var(--krai-size-capHeightStage) / 2);width:var(--krai-size-fader-track-width);transform:translateX(-50%);border-radius:var(--krai-radius-pill);background:var(--krai-fader-slot)}
+.fader .tk{position:absolute;left:0;right:0;height:var(--krai-stroke-hairline);background:linear-gradient(90deg,var(--krai-tick) 0 18%,transparent 18% 82%,var(--krai-tick) 82%);opacity:var(--krai-opacity-unlit-text)}
+.fader .cap{position:absolute;left:50%;width:min(100%,var(--krai-size-capWidthStage));height:var(--krai-size-capHeightStage);transform:translate(-50%,-50%);border-radius:var(--krai-radius-xs);box-shadow:var(--krai-shadow-cap);
+  background:linear-gradient(var(--krai-fader-cap-light),var(--krai-fader-cap-mid) 45%,var(--krai-fader-cap-dark) 55%,var(--krai-fader-cap-mid))}
+.fader .cap::before{content:"";position:absolute;inset:var(--krai-space-1) 0;background:repeating-linear-gradient(transparent 0 var(--krai-space-1),var(--krai-fader-groove) var(--krai-space-1) calc(var(--krai-space-1) + var(--krai-stroke-hairline)))}
+.fader .cap::after{content:"";position:absolute;left:0;right:0;top:50%;height:var(--krai-size-capBand);transform:translateY(-50%);background:var(--cc,var(--krai-text-2));box-shadow:0 0 0 var(--krai-stroke-hairline) var(--krai-fader-groove)}
+.fader.unknown .cap{display:none}
+.fader.unknown{cursor:default}
+.meter{position:relative;flex:none;width:var(--krai-size-segMeterWidthNarrow);margin:calc(var(--krai-size-capHeightStage) / 2) 0;border-radius:var(--krai-radius-xs);overflow:hidden;
+  --hot:calc((var(--krai-meter-db-hot) - var(--krai-meter-db-floor)) / (0 - var(--krai-meter-db-floor)) * 100%);--over:calc((var(--krai-meter-db-over) - var(--krai-meter-db-floor)) / (0 - var(--krai-meter-db-floor)) * 100%);
+  background:linear-gradient(to top,var(--krai-meter-safe) 0 var(--hot),var(--krai-meter-hot) var(--hot) var(--over),var(--krai-meter-over) var(--over))}
+.meter i{position:absolute;left:0;right:0;top:0;height:100%;background:var(--krai-meter-track)}
+.meter::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(to top,transparent 0 calc(var(--krai-size-meterSegment) - var(--krai-stroke-hairline)),var(--krai-well) calc(var(--krai-size-meterSegment) - var(--krai-stroke-hairline)) var(--krai-size-meterSegment))}
+.meter.stale i{background:repeating-linear-gradient(45deg,var(--krai-meter-track) 0 var(--krai-space-1),var(--krai-meter-segment-off) var(--krai-space-1) var(--krai-space-2))}
+.val{flex:none;display:grid;place-items:center;height:calc(var(--krai-hit-touch) - var(--krai-space-1));border-radius:var(--krai-radius-sm);background:var(--krai-well);font-size:var(--krai-fs-stage);font-weight:var(--krai-fw-semibold);font-variant-numeric:tabular-nums;white-space:nowrap}
+.val.pend{font-style:italic;color:var(--krai-text-3)}
+.btns{flex:none;display:flex;gap:var(--krai-space-1)}
+.btns > *{flex:1}
+
+/* tlačítko pultu: nesvítí = gradient s obrysem, svítí = barva významu + záře */
+.lit{min-height:var(--krai-hit-touch);padding:0 var(--krai-space-1);border-radius:var(--krai-radius-sm);background:linear-gradient(var(--krai-button-top),var(--krai-button-bottom));box-shadow:inset 0 0 0 var(--krai-stroke-hairline) var(--krai-border-control);font-size:var(--krai-fs-label);font-weight:var(--krai-fw-heavy);letter-spacing:var(--krai-tracking-caps);color:var(--krai-text-2)}
+.lit.on{background:var(--krai-mute);color:var(--krai-on-fill);box-shadow:0 0 var(--krai-size-glow) color-mix(in srgb,var(--krai-mute) calc(var(--krai-opacity-glow) * 100%),transparent)}
+.lit:disabled{opacity:var(--krai-opacity-disabled);cursor:default}
+
+/* MARK: pravý sloupec */
+#talk{min-height:calc(var(--krai-hit-stage) + var(--krai-space-5));padding:var(--krai-space-2);border-radius:var(--krai-radius-md);background:linear-gradient(var(--krai-button-top),var(--krai-button-bottom));box-shadow:inset 0 0 0 var(--krai-stroke-emphasis) var(--krai-accent);font-size:var(--krai-fs-body);font-weight:var(--krai-fw-heavy);line-height:var(--krai-lh-tight);color:var(--krai-text)}
+#talk.on{background:var(--krai-state-talk-lit);color:var(--krai-tile-text);box-shadow:0 0 var(--krai-size-glow) color-mix(in srgb,var(--krai-state-talk-lit) calc(var(--krai-opacity-glow) * 100%),transparent)}
+.groups{display:grid;grid-template-columns:1fr 1fr;gap:var(--krai-space-2)}
+.sk{min-height:calc(var(--krai-size-muteGroup-tile-stage) + var(--krai-space-4));display:flex;flex-direction:column;align-items:center;justify-content:center;gap:var(--krai-space-half);padding:var(--krai-space-1);border-radius:var(--krai-radius-md);background:linear-gradient(var(--krai-button-top),var(--krai-button-bottom));box-shadow:inset 0 0 0 var(--krai-stroke-hairline) var(--krai-border-control);color:var(--krai-text);line-height:var(--krai-lh-tight)}
+.sk b{font-size:var(--krai-fs-title);font-weight:var(--krai-fw-heavy);font-variant-numeric:tabular-nums}
+.sk span{max-width:100%;font-size:var(--krai-fs-label);font-weight:var(--krai-fw-semibold);color:var(--krai-text-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sk em{font-style:normal;font-size:var(--krai-fs-label);font-weight:var(--krai-fw-heavy);letter-spacing:var(--krai-tracking-caps);visibility:hidden}
+/* mute skupina = nepřímé ztlumení → oranžová (zákon 6), nikdy červená */
+.sk.on{background:var(--krai-mute-indirect);color:var(--krai-on-fill);box-shadow:0 0 var(--krai-size-glow) color-mix(in srgb,var(--krai-mute-indirect) calc(var(--krai-opacity-glow) * 100%),transparent)}
+.sk.on span{color:var(--krai-on-fill)}
+.sk.on em{visibility:visible}
+.sk:disabled{opacity:var(--krai-opacity-disabled);cursor:default}
+.dcas{display:flex;flex-direction:column;gap:var(--krai-space-2)}
+.dca{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-rows:auto auto;column-gap:var(--krai-space-2);align-items:center}
+.dca .nm{font-size:var(--krai-fs-label);font-weight:var(--krai-fw-bold);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dca .dv{font-size:var(--krai-fs-label);font-weight:var(--krai-fw-semibold);color:var(--krai-text-2);font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
+.dca .dv.pend{font-style:italic;color:var(--krai-text-3)}
+.dca .lit{width:calc(var(--krai-hit-touch) + var(--krai-space-4))}
+.hf{--kw:calc(var(--krai-space-2) + var(--krai-space-half));position:relative;height:var(--krai-hit-touch);touch-action:none;cursor:grab}
+.hf .rail{position:absolute;left:0;right:0;top:50%;height:calc(var(--krai-space-2) + var(--krai-space-half));transform:translateY(-50%);border-radius:var(--krai-radius-xs);background:var(--krai-well);box-shadow:inset 0 0 0 var(--krai-stroke-hairline) var(--krai-border-control)}
+.hf .fill{position:absolute;left:0;top:50%;height:calc(var(--krai-space-2) + var(--krai-space-half));transform:translateY(-50%);border-radius:var(--krai-radius-xs);background:linear-gradient(90deg,var(--krai-tick),var(--krai-sand))}
+.hf .knob{position:absolute;top:50%;width:var(--kw);height:calc(var(--krai-hit-touch) - var(--krai-space-4));transform:translate(-50%,-50%);border-radius:var(--krai-radius-xs);background:linear-gradient(90deg,var(--krai-fader-cap-light),var(--krai-fader-cap-dark));box-shadow:var(--krai-shadow-cap)}
+.hf.unknown .fill,.hf.unknown .knob{display:none}
+.hf.unknown{cursor:default}
+
+/* MARK: spodní lišta – banky a poznámka */
+footer{flex:none;display:flex;align-items:center;gap:var(--krai-space-2);padding:var(--krai-space-1) var(--krai-space-4) var(--krai-space-2);min-height:calc(var(--krai-hit-touch) + var(--krai-space-3))}
+.banks{display:flex;gap:var(--krai-space-2)}
+.bank{min-height:var(--krai-hit-touch);min-width:calc(var(--krai-hit-touch) * 2);padding:0 var(--krai-space-3);border-radius:var(--krai-radius-md);background:var(--krai-surface-3);color:var(--krai-text-2);font-size:var(--krai-fs-label);font-weight:var(--krai-fw-bold);white-space:nowrap}
+.bank[aria-pressed="true"]{background:var(--krai-selected);color:var(--krai-tile-text)}
+.foot{margin-left:auto;font-size:var(--krai-fs-label);color:var(--krai-text-3);text-align:right}
+
+/* MARK: párování */
+#pair{flex:1;display:grid;place-items:center;padding:var(--krai-space-5)}
+#pair .box{max-width:calc(var(--krai-size-strip-width-stage) * 6);width:100%;display:grid;gap:var(--krai-space-3);background:linear-gradient(var(--krai-strip-top),var(--krai-strip-bottom));border-radius:var(--krai-radius-lg);padding:var(--krai-space-5)}
+#pair h2{margin:0;font-size:var(--krai-fs-title)}
+#pair .hintline{text-align:left}
+#pin{min-height:var(--krai-hit-stage);padding:0 var(--krai-space-3);border-radius:var(--krai-radius-sm);border:var(--krai-stroke-hairline) solid var(--krai-border-control);background:var(--krai-surface-1);color:var(--krai-text);font-family:var(--krai-font-mono);font-size:var(--krai-fs-hero);letter-spacing:var(--krai-space-2);text-align:center;-webkit-user-select:text;user-select:text}
+.cta{min-height:var(--krai-hit-stage);border-radius:var(--krai-radius-sm);background:var(--krai-accent);color:var(--krai-text-on-accent);font-weight:var(--krai-fw-bold)}
+.err{color:var(--krai-text-danger);font-weight:var(--krai-fw-semibold);min-height:var(--krai-space-5)}
+
+.toast{position:fixed;left:50%;top:calc(env(safe-area-inset-top) + var(--krai-size-bar-top) + var(--krai-space-2));transform:translateX(-50%);z-index:var(--krai-z-toast);display:none;max-width:90vw;padding:var(--krai-space-2) var(--krai-space-4);border-radius:var(--krai-radius-pill);background:var(--krai-surface-3);box-shadow:var(--krai-shadow-overlay);font-size:var(--krai-fs-label);font-weight:var(--krai-fw-semibold)}
+.toast.on{display:block} .toast.err{background:var(--krai-danger);color:var(--krai-on-fill)}
+
+/* menší iPad (1024 × 768): užší pravý sloupec a Sál; úzké displeje: pásy se posouvají do strany */
+@media (max-width:1100px){
+  .side{width:calc(var(--krai-size-mixStripMonoStage) * 1.75)}
+  .lane.mainl{width:var(--krai-size-mixStripMonoStageNarrow)}
+  header{gap:var(--krai-space-2)}
+}
+@media (max-width:820px){
+  .st .hubn,.foot{display:none}
+  .side{width:calc(var(--krai-size-mixStripMonoStage) * 1.5)}
+}
+@media (max-height:700px){ .tile{height:var(--krai-size-tileHeight)} .tile b{-webkit-line-clamp:1} #talk{min-height:var(--krai-hit-stage)} .sk{min-height:var(--krai-size-muteGroup-tile-stage)} }
+</style>
+</head>
+<body>
+<div id="live" class="sr" role="status" aria-live="polite"></div>
+<div id="toast" class="toast" role="status"></div>
+<section id="pair" hidden>
+  <div class="box">
+    <h2>Celý mix na iPadu</h2>
+    <div class="hintline">Na Macu: Kapela › iPad – Celý mix. Opiš PIN, který je vedle QR kódu.</div>
+    <input id="pin" inputmode="numeric" autocomplete="one-time-code" maxlength="6" aria-label="PIN z Macu" placeholder="000000">
+    <div id="pairErr" class="err" role="alert"></div>
+    <button id="pairGo" class="cta">Připojit</button>
+  </div>
+</section>
+<div id="app" hidden>
+  <header>
+    <h1>Mixtet</h1>
+    <span class="chip">Celý mix · iPad</span>
+    <span class="chip st" id="st"><i></i><span id="stt">připojuji…</span><span class="hubn" id="hub"></span></span>
+    <span class="grow"></span>
+    <button class="tbtn" id="follow" aria-pressed="false">Sledovat Mac</button>
+  </header>
+  <div class="banner" id="banner" role="alert"></div>
+  <main>
+    <div class="strips" id="strips" role="group" aria-label="Kanály"></div>
+    <aside class="side" aria-label="Živé akce a skupiny">
+      <button id="talk" aria-pressed="false">MLUVIT KE KAPELE (drž)</button>
+      <div class="hintline" id="talkHint">sál neslyší</div>
+      <h2 id="grpH">Mute skupiny</h2>
+      <div class="groups" id="groups" role="group" aria-labelledby="grpH"></div>
+      <h2 id="dcaH">DCA</h2>
+      <div class="dcas" id="dcas" role="group" aria-labelledby="dcaH"></div>
+    </aside>
+    <div class="lane mainl" id="mainBox" role="group" aria-label="Sál"></div>
+  </main>
+  <footer>
+    <div class="banks" id="banks" role="group" aria-label="Banky pásů"></div>
+    <span class="foot">Mac vidí „Sál ovládá: Mac + iPad“ a může tě odpojit.</span>
+  </footer>
+</div>
+<script>
+'use strict';
+const $ = id => document.getElementById(id);
+const linkKey = (/^\/c\/([^/]+)/.exec(location.pathname) || [])[1] || '';
+const STORE = 'krai.fullmix.' + linkKey;
+let session = null, cfg = null, es = null, mixerOK = false, last = 0, lastM = 0;
+let V = {}, K = {}, M = [];
+const P = {};               // čeká na pult: adresa → {v, t}
+const dragging = new Set();
+const W = [];               // prvky k překreslení
+const BANK = 8;             // pásů na banku (jako ovladač F1–F8)
+
+// MARK: - zákon faderu (stejně jako XAirCodec)
+const lin = f => { if (f <= 0) return -Infinity; if (f >= .5) return f*40-30; if (f >= .25) return f*80-50; if (f >= .0625) return f*160-70; return f*480-90; };
+const q = f => Math.floor(Math.min(1, Math.max(0, f)) * 1023.5) / 1023;
+const dbt = d => { if (!isFinite(d) || d < -89.5) return '−∞'; const r = Math.round(d * 10) / 10 || 0; return (r > 0 ? '+' : r < 0 ? '−' : '') + Math.abs(r).toFixed(1); };
+const TOL = 0.007;
+// stupnice: +10…−∞ padá na osminy dráhy (0 dB = 0.75)
+const TICKS = [['+10', 1], ['+5', .875], ['0', .75], ['−5', .625], ['−10', .5], ['−20', .375], ['−30', .25], ['−50', .125], ['−∞', 0]];
+
+// MARK: - hlášky
+let tt = 0;
+function say(t){ const l = $('live'); l.textContent = ''; setTimeout(() => { l.textContent = t; }, 30); }
+function toast(msg, err){
+  const e = $('toast'); e.textContent = msg; e.classList.toggle('err', !!err); e.classList.add('on'); say(msg);
+  clearTimeout(tt); tt = setTimeout(() => e.classList.remove('on'), Math.max(err ? 5000 : 2800, msg.length * 65));
+}
+const online = () => mixerOK && Date.now() - last < 7000;
+const offline = () => toast('Bez spojení – nic se neodeslalo', true);
+
+// MARK: - API
+function api(op){ return '/api/cs/' + session + '/' + op; }
+function post(op, body){
+  return fetch(api(op), {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(body)})
+    .then(r => { if (r.status === 404) { lost(); return null; } return r.json(); }).catch(() => null);
+}
+let pend = {}, pt = 0;
+function setVal(a, v){
+  if (!online()) { offline(); return; }
+  V[a] = v; P[a] = {v, t: Date.now()};
+  pend[a] = v; if (!pt) pt = setTimeout(flush, 40);
+  paint();
+}
+function flush(){ pt = 0; const p = pend; pend = {}; for (const a in p) post('set', {a, v: p[a]}).then(r => { if (!r || !r.ok) { revert(a); toast('Pult zápis nepřijal – vráceno', true); } }); }
+function revert(a){ if (K[a] !== undefined) V[a] = K[a]; else delete V[a]; delete P[a]; paint(); }
+setInterval(() => { const now = Date.now(); let n = 0;
+  for (const a in P) { if (dragging.has(a)) continue; if (now - P[a].t > 1000) { revert(a); n++; } }
+  if (n) toast('Pult nepotvrdil – vráceno na poslední hodnotu', true); }, 250);
+
+// MARK: - prvky
+const kn = a => V[a] !== undefined;
+function dbToF(d){ if (d >= -10) return (d+30)/40; if (d >= -30) return (d+50)/80; if (d >= -60) return (d+70)/160; return (d+90)/480; }
+function el(tag, cls, text){ const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
+/** Fader: svislý (pás) nebo vodorovný (DCA). Tah je relativní (nic neskočí pod prstem), šipky = ±1 dB. */
+function fader(addr, color, label, horizontal){
+  const f = el('div', horizontal ? 'hf' : 'fader'); f.style.setProperty('--cc', color || '');
+  f.setAttribute('role', 'slider'); f.setAttribute('aria-label', label); f.tabIndex = 0;
+  f.setAttribute('aria-orientation', horizontal ? 'horizontal' : 'vertical');
+  let cap, fill = null;
+  if (horizontal) { f.innerHTML = '<div class="rail"></div><div class="fill"></div><div class="knob"></div>'; fill = f.children[1]; cap = f.children[2]; }
+  else {
+    f.innerHTML = '<div class="track"></div>' + TICKS.map(() => '<div class="tk"></div>').join('') + '<div class="cap"></div>';
+    cap = f.lastChild;
+    f.querySelectorAll('.tk').forEach((t, i) => { t.style.top = pos(TICKS[i][1]); });
+  }
+  let start = 0, startV = 0, len = 1;
+  f.addEventListener('pointerdown', e => {
+    if (!kn(addr)) return;
+    if (!online()) return offline();
+    f.setPointerCapture(e.pointerId); dragging.add(addr);
+    len = horizontal ? f.clientWidth - cap.offsetWidth : f.clientHeight - cap.offsetHeight;
+    start = horizontal ? e.clientX : e.clientY; startV = V[addr];
+  });
+  f.addEventListener('pointermove', e => {
+    if (!dragging.has(addr) || !f.hasPointerCapture(e.pointerId)) return;
+    const d = horizontal ? e.clientX - start : start - e.clientY;
+    setVal(addr, q(startV + d / Math.max(1, len)));
+  });
+  const end = () => { if (dragging.delete(addr) && P[addr]) P[addr].t = Date.now(); };
+  f.addEventListener('pointerup', end); f.addEventListener('pointercancel', end);
+  f.addEventListener('keydown', e => {   // šipky = ±1 dB (VoiceOver / klávesnice)
+    const up = e.key === 'ArrowUp' || e.key === 'ArrowRight', down = e.key === 'ArrowDown' || e.key === 'ArrowLeft';
+    if (!kn(addr) || (!up && !down)) return;
+    e.preventDefault(); const d = lin(V[addr]) + (up ? 1 : -1);
+    setVal(addr, d <= -90 ? 0 : q(dbToF(d)));
+  });
+  W.push(() => {
+    f.classList.toggle('unknown', !kn(addr));
+    if (kn(addr)) {
+      if (horizontal) { const x = `calc(var(--kw) / 2 + (100% - var(--kw)) * ${V[addr].toFixed(4)})`; cap.style.left = x; fill.style.width = x; }
+      else cap.style.top = pos(V[addr]);
+    }
+    f.setAttribute('aria-valuetext', kn(addr) ? dbt(lin(V[addr])) + ' dB' : 'neznámá');
+  });
+  return f;
+}
+/** Svislá poloha hodnoty 0–1 na dráze (střed jezdce). */
+function pos(v){ return `calc(var(--krai-size-capHeightStage) / 2 + (100% - var(--krai-size-capHeightStage)) * ${(1 - v).toFixed(4)})`; }
+function scale(){
+  const s = el('div', 'scale'); s.setAttribute('aria-hidden', 'true');
+  for (const [t, v] of TICKS) { const x = el('span', t === '0' ? 'z' : '', t); x.style.top = pos(v); s.append(x); }
+  return s;
+}
+function valText(addr, cls){
+  const e = el('div', cls || 'val'); e.setAttribute('aria-hidden', 'true');
+  W.push(() => { e.classList.toggle('pend', !!P[addr]); e.textContent = kn(addr) ? dbt(lin(V[addr])) + (P[addr] ? '…' : '') : '—'; });
+  return e;
+}
+function meter(i){ const m = el('div', 'meter'); m.innerHTML = '<i></i>'; m.dataset.m = i; m.setAttribute('aria-hidden', 'true'); return m; }
+function muteBtn(addr, label){
+  const b = el('button', 'lit');
+  b.onclick = () => { if (!kn(addr)) return; if (!online()) return offline(); setVal(addr, V[addr] === 1 ? 0 : 1); };
+  // text = stav: on 1 = zní → „MUTE“ nesvítí; on 0 = ztlumeno → svítí červeně (přímý mute)
+  W.push(() => { const m = kn(addr) && V[addr] === 0; b.disabled = !kn(addr); b.classList.toggle('on', m);
+    b.textContent = kn(addr) ? 'MUTE' : '—'; b.setAttribute('aria-pressed', m); b.setAttribute('aria-label', label + ' MUTE'); });
+  return b;
+}
+/** Barva pásu = barva vlastníka (zákony v10 č. 1); bez vlastníka neutrální. */
+function chColor(s){ return s.owner ? 'var(--krai-member-' + s.owner + ')' : ''; }
+function lane(s, cls, color, label){
+  const e = el('section', 'lane ' + cls); e.setAttribute('aria-label', label); e.dataset.id = s.id;
+  if (color) e.style.setProperty('--cc', color);
+  const fw = el('div', 'fw'); fw.append(scale(), fader(s.fader, color, label), meter(s.meter));
+  return [e, fw];
+}
+
+function build(){
+  W.length = 0;
+  $('hub').textContent = cfg.hub ? '· ' + cfg.hub : '';
+  $('talkHint').textContent = (cfg.talkMic ? 'mikrofon ' + cfg.talkMic + ' · ' : '') + 'sál neslyší';
+  const strips = $('strips'); strips.innerHTML = '';
+  for (const s of cfg.strips) {
+    const c = chColor(s);
+    const [e, fw] = lane(s, 'strip', c, s.name);
+    const tile = el('div', 'tile');
+    tile.append(el('small', '', s.pair && /^\d+$/.test(s.short) ? s.short + '–' + (+s.short + 1) : s.short), el('b', '', s.name));
+    if (s.pair) tile.title = 'stereo';
+    if (s.owner) {
+      tile.classList.add('has-own');   // iniciála vlastníka (jméno, když ho hub pošle; jinak číslo odposlechu)
+      const o = el('span', 'own', s.ownerName ? s.ownerName.charAt(0) : String(s.owner));
+      o.setAttribute('aria-label', s.ownerName ? 'patří: ' + s.ownerName : 'patří odposlechu ' + s.owner); tile.append(o);
+    }
+    const btns = el('div', 'btns'); btns.append(muteBtn(s.on, s.name));
+    e.append(tile, fw, valText(s.fader), btns);
+    strips.append(e);
+  }
+  // Sál – pás vpravo s MUTE
+  const mb = $('mainBox'); mb.innerHTML = ''; mb.dataset.id = cfg.main.id;
+  const fwm = el('div', 'fw'); fwm.append(scale(), fader(cfg.main.fader, '', 'Sál'), meter(cfg.main.meter));
+  const tm = el('div', 'tile plain'); tm.append(el('small', '', 'LR'), el('b', '', 'Sál'));
+  const bm = el('div', 'btns'); bm.append(muteBtn(cfg.main.on, 'Sál'));
+  mb.append(tm, fwm, valText(cfg.main.fader), bm);
+  // mute skupiny pultu 2×2: číslo, jméno kapely, svítí oranžově = skupina ztlumuje
+  const g = $('groups'); g.innerHTML = '';
+  for (const gr of cfg.groups) {
+    const b = el('button', 'sk');
+    b.innerHTML = '<b></b><span></span><em>ztlumuje</em>';
+    b.children[0].textContent = gr.g; b.children[1].textContent = gr.name;
+    b.setAttribute('aria-label', 'SK' + gr.g + ' ' + gr.name + ' – mute skupina');
+    b.onclick = () => { if (!kn(gr.addr)) return; if (!online()) return offline(); setVal(gr.addr, V[gr.addr] === 1 ? 0 : 1); };
+    W.push(() => { const on = V[gr.addr] === 1; b.disabled = !kn(gr.addr); b.classList.toggle('on', on); b.setAttribute('aria-pressed', on); });
+    g.append(b);
+  }
+  // DCA: jméno + dB, vodorovný fader, MUTE
+  const d = $('dcas'); d.innerHTML = '';
+  for (const x of cfg.dcas) {
+    const nm = x.name || 'DCA';
+    const row = el('div', 'dca'); row.setAttribute('role', 'group'); row.setAttribute('aria-label', nm);
+    row.append(el('div', 'nm', nm), valText(x.fader, 'dv'), fader(x.fader, '', nm + ' hlasitost', true), muteBtn(x.on, nm));
+    d.append(row);
+  }
+  buildBanks();
+  paint();
+}
+function paint(){ for (const w of W) w(); }
+
+// MARK: - banky: po 8 pásech; když se všechny vejdou, tlačítka zmizí. Pásy jdou posouvat i prstem.
+let bankBtns = [];
+function buildBanks(){
+  const box = $('banks'); box.innerHTML = ''; bankBtns = [];
+  const n = Math.ceil(cfg.strips.length / BANK);
+  for (let k = 0; k < n; k++) {
+    const first = cfg.strips[k * BANK], lastS = cfg.strips[Math.min(cfg.strips.length, (k + 1) * BANK) - 1];
+    const b = el('button', 'bank', 'Banka ' + (k + 1));
+    b.setAttribute('aria-label', 'Banka ' + (k + 1) + ': ' + first.name + ' – ' + lastS.name);
+    b.onclick = () => gotoBank(k);
+    box.append(b); bankBtns.push(b);
+  }
+  paintBanks();
+}
+function gotoBank(k){
+  const sc = $('strips'), first = sc.children[k * BANK]; if (!first) return;
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  sc.scrollTo({left: first.offsetLeft, behavior: reduce ? 'auto' : 'smooth'});
+}
+function paintBanks(){
+  const sc = $('strips'), box = $('banks');
+  if (!sc.children.length) return;
+  const fits = sc.scrollWidth <= sc.clientWidth + 1;
+  box.hidden = fits;
+  let k = 0;
+  if (sc.scrollLeft + sc.clientWidth >= sc.scrollWidth - 2) k = bankBtns.length - 1;
+  else { const kids = [...sc.children]; const i = kids.findIndex(c => c.offsetLeft + c.offsetWidth / 2 >= sc.scrollLeft); k = Math.floor(Math.max(0, i) / BANK); }
+  if (sc.scrollLeft < 2) k = 0;
+  bankBtns.forEach((b, i) => b.setAttribute('aria-pressed', !fits && i === k));
+}
+$('strips').addEventListener('scroll', paintBanks, {passive: true});
+if (window.ResizeObserver) new ResizeObserver(() => { paintBanks(); paint(); }).observe($('strips'));
+else window.addEventListener('resize', () => { paintBanks(); paint(); });
+
+// MARK: - Sledovat Mac (13.6): výběr pásu na Macu posune iPad na ten pás a zvýrazní ho; jednosměrně
+let follow = false; try { follow = localStorage.getItem(STORE + '.follow') === '1'; } catch (e) {}
+function paintFollow(){ const b = $('follow'); b.classList.toggle('on', follow); b.setAttribute('aria-pressed', follow); }
+$('follow').onclick = () => { follow = !follow; try { localStorage.setItem(STORE + '.follow', follow ? '1' : '0'); } catch (e) {}
+  paintFollow(); if (follow && cfg) select(cfg.selected); };
+function select(id){
+  if (cfg) cfg.selected = id;
+  document.querySelectorAll('.lane[data-id]').forEach(e => e.classList.toggle('sel', follow && e.dataset.id === id));
+  if (!follow) return;
+  const e = document.querySelector('.strip[data-id="' + CSS.escape(id) + '"]');
+  if (e) e.scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', inline: 'center', block: 'nearest'});
+}
+paintFollow();
+function paintMeters(){
+  const stale = !online() || Date.now() - lastM > 1500;   // zákon 7: při výpadku nulovat a šrafovat
+  document.querySelectorAll('.meter').forEach(m => {
+    const db = stale ? -90 : (M[+m.dataset.m] ?? -90);
+    m.firstChild.style.height = (100 - Math.max(0, Math.min(100, (db + 60) / 60 * 100))) + '%';
+    m.classList.toggle('stale', stale);
+  });
+}
+
+// MARK: - MLUVIT KE KAPELE (drž) – pustit při zvednutí prstu, ztrátě fokusu i skrytí stránky (zákon v10 č. 7)
+let talking = false, talkTimer = 0;
+function talk(on){
+  if (on && !online()) return offline();
+  if (on === talking) return;
+  talking = on; const t = $('talk'); t.classList.toggle('on', on); t.setAttribute('aria-pressed', on);
+  t.textContent = on ? 'MLUVÍŠ KE KAPELE' : 'MLUVIT KE KAPELE (drž)';
+  clearInterval(talkTimer);
+  post('talk', {on}).then(r => { if (on && (!r || !r.ok)) { talk(false); toast('Teď mluví někdo jiný – zkus to za chvíli', true); } });
+  if (on) talkTimer = setInterval(() => post('talk', {on: true}), 500);   // obnova pro hlídání na Macu (2 s)
+}
+$('talk').addEventListener('pointerdown', e => { e.preventDefault(); talk(true); });
+['pointerup', 'pointercancel', 'pointerleave'].forEach(t => $('talk').addEventListener(t, () => talk(false)));
+// VoiceOver / klávesnice: aktivace přepíná (zákon v10 č. 7); ukazatel jde přes pointerdown/up výše
+$('talk').addEventListener('click', e => { if (e.detail === 0) talk(!talking); });
+$('talk').addEventListener('blur', () => talk(false));
+window.addEventListener('blur', () => talk(false));
+document.addEventListener('visibilitychange', () => { if (document.hidden) talk(false); });
+
+// MARK: - spojení
+function status(){
+  const age = Date.now() - last, lost = age > 7000, st = $('st');
+  st.className = 'chip st ' + (lost ? '' : mixerOK ? 'ok' : 'warn');
+  $('stt').textContent = lost ? 'Spojení s Macem ztraceno' : mixerOK ? 'připojeno' : 'pult neodpovídá';
+  document.body.classList.toggle('dis', !online());
+  const b = $('banner'); b.style.display = online() ? 'none' : 'block';
+  b.textContent = lost ? 'Spojení s Macem ztraceno – odposlechy hrají dál, sál se nedá měnit.' : 'Pult neodpovídá – nic se neodesílá.';
+  paintMeters();
+  if (age > 9000 && !document.hidden && session) connect();
+}
+function connect(){
+  if (es) es.close(); last = Date.now();
+  es = new EventSource(api('events'));
+  es.addEventListener('init', ev => { cfg = JSON.parse(ev.data); V = Object.assign({}, cfg.values); K = Object.assign({}, cfg.values);
+    for (const a in P) delete P[a]; mixerOK = cfg.connected; last = Date.now(); build(); status(); select(cfg.selected); });
+  es.addEventListener('sel', ev => { last = Date.now(); select(JSON.parse(ev.data).id); });
+  es.addEventListener('p', ev => { const d = JSON.parse(ev.data); last = Date.now(); K[d.a] = d.v;
+    const p = P[d.a]; if (p) { if (Math.abs(p.v - d.v) <= TOL) { delete P[d.a]; paint(); } return; }
+    if (dragging.has(d.a)) return; V[d.a] = d.v; paint(); });
+  es.addEventListener('m', ev => { M = JSON.parse(ev.data); last = lastM = Date.now(); paintMeters(); });
+  es.addEventListener('ping', ev => { last = Date.now(); mixerOK = JSON.parse(ev.data).connected; status(); });
+  es.addEventListener('reload', () => connect());
+  es.addEventListener('bye', () => { lost('Mac tě odpojil – sál z iPadu ovládat nejde.'); });
+}
+setInterval(status, 1000);
+
+// MARK: - párování (PIN z Macu)
+function lost(msg){
+  talk(false); if (es) { es.close(); es = null; }
+  session = null; try { localStorage.removeItem(STORE); } catch (e) {}
+  showPair(msg || 'Odkaz nebo připojení už neplatí – opiš PIN z Macu znovu.');
+}
+function showPair(msg){ $('app').hidden = true; $('pair').hidden = false; $('pairErr').textContent = msg || ''; $('pin').value = ''; $('pin').focus(); }
+let lockTimer = 0;
+async function claim(){
+  const pin = $('pin').value.replace(/\D/g, '');
+  if (pin.length !== 6) { $('pairErr').textContent = 'PIN má 6 číslic.'; return; }
+  let r = null, s = 0;
+  try { const res = await fetch('/api/c/' + encodeURIComponent(linkKey) + '/claim', {method: 'POST', headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({pin, device: /iPad/.test(navigator.userAgent) ? 'iPad' : 'Tablet'})}); s = res.status; r = await res.json(); } catch (e) {}
+  if (s === 200 && r && r.session) {
+    session = r.session; try { localStorage.setItem(STORE, session); } catch (e) {}
+    $('pair').hidden = true; $('app').hidden = false; connect(); return;
+  }
+  const err = $('pairErr');
+  if (s === 403) err.textContent = 'Špatný PIN – zbývá ' + r.left + (r.left === 1 ? ' pokus' : ' pokusy') + '.';
+  else if (s === 429) { let n = r.retry; clearInterval(lockTimer); $('pairGo').disabled = true;
+    const tick = () => { err.textContent = 'Moc pokusů – zkus to znovu za ' + n + ' s.'; if (--n < 0) { clearInterval(lockTimer); $('pairGo').disabled = false; err.textContent = ''; } };
+    tick(); lockTimer = setInterval(tick, 1000); }
+  else if (s === 409) err.textContent = 'Sál už ovládá jiný tablet – na Macu ho nejdřív odpoj.';
+  else if (s === 404) err.textContent = 'Odkaz už neplatí – naskenuj nový QR kód na Macu.';
+  else err.textContent = 'Mac neodpovídá – jsi ve stejné Wi‑Fi?';
+}
+$('pairGo').onclick = claim;
+$('pin').addEventListener('keydown', e => { if (e.key === 'Enter') claim(); });
+
+(function boot(){
+  try { session = localStorage.getItem(STORE); } catch (e) {}
+  if (session) { $('app').hidden = false; connect(); } else showPair('');
+})();
+</script>
+</body>
+</html>

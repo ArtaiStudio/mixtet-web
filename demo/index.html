@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Try Mixtet in your browser – demo with a simulated XR18</title>
+<meta name="description" content="Mixtet demo, nothing to install: the bandleader’s iPad and a band member’s phone on a simulated Behringer XR18. Mute the instruments with one mute group, tweak your monitor mix, hold TALK TO BAND.">
+<link rel="canonical" href="https://mixtet.live/demo/">
+<link rel="alternate" hreflang="en" href="https://mixtet.live/demo/">
+<link rel="alternate" hreflang="cs" href="https://mixtet.live/demo/cs/">
+<link rel="alternate" hreflang="x-default" href="https://mixtet.live/demo/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://mixtet.live/demo/">
+<meta property="og:title" content="Try Mixtet in your browser – demo with a simulated XR18">
+<meta property="og:description" content="Mixtet demo, nothing to install: the bandleader’s iPad and a band member’s phone on a simulated Behringer XR18. Mute the instruments with one mute group, tweak your monitor mix, hold TALK TO BAND.">
+<meta property="og:image" content="https://mixtet.live/img/og-en.png">
+<meta name="theme-color" content="#0C1014">
+<link rel="icon" type="image/png" href="/img/znacka.png">
+<link rel="stylesheet" href="/site.css">
+<link rel="stylesheet" href="/demo/demo.css">
+<script>window.MIXTET_DEMO={"lang": "en", "signup": "/#signup", "t": {"tourA": "You’re Tom (guitar). On the phone, turn the guitar down and the vocals up.", "tourAHint": "ME = your channels, BAND = everyone else. Single channels are under “Individual channels”.", "tourASwitch": "Give the phone to Tom", "tourB": "Between songs, mute the instruments with one button – tile 1 Instruments (mute group) on the iPad.", "tourBHint": "With a controller just press Play. The phone shows muted channels as “muted in the mix – group”.", "tourC": "Say something into the band’s monitors – hold MLUVIT KE KAPELE (talk to band).", "tourCHint": "On the iPad top right, or at the bottom of the phone. The house doesn’t hear it.", "tourDone": "Done! Want this for your band? Join the beta – it’s free.", "stepDone": "Task {n} done.", "allDone": "All three tasks done.", "doneMark": "done", "todoMark": "to do", "outageRun": "Mixer not responding… {s} s", "outageBack": "The mixer is back. Nothing was re-sent – Mixtet only read what the mixer has.", "outageLive": "Simulated mixer dropout for 5 seconds.", "phoneOf": "Member’s phone · {name}", "midiUnsupported": "Try the controller in Chrome or Edge on a computer.", "midiDenied": "The browser didn’t allow access to the controller.", "midiNone": "No controller found – connect it via USB or Bluetooth and try again.", "midiWait": "Looking for a controller…", "midiChip": "Controller: {name} · Bank {bank}: {first} – {last}", "midiUnknown": "Controller {name}: no map yet – in the app you teach it with one move.", "midiOffline": "No connection – nothing was sent", "midiUnsupportedSlot": "This button does nothing in the demo.", "midiMcu": "The controller is in DAW mode (Mackie Control) – faders, main, MUTE, SELECT, pan, Bank ◀▶, Play (SK1) and Rec (talk to band) all work.", "midiMcuName": "{name} (DAW / Mackie)", "midiPickup": "{name}: move the fader to the mixer’s value to pick it up", "fbSending": "Sending…", "fbOk": "Thanks! We’ll read it.", "fbErr": "Couldn’t send – please try again.", "fbShort": "Please write at least a few words.", "fbEmailErr": "That email doesn’t look right."}};</script>
+<script src="/demo/hub-sim.js"></script>
+<script src="/demo/midi.js"></script>
+<script src="/demo/demo.js" defer></script>
+</head>
+<body class="demo">
+<a class="skip" href="#stage">Skip to content</a>
+<header class="top"><div class="wrap wide bar">
+  <a class="brand" href="/"><img src="/img/znacka.png" width="28" height="28" alt="">Mixtet</a>
+  <span class="dtag">Demo</span>
+  <div class="right">
+    <div class="lang" role="group" aria-label="Jazyk / Language">
+      <a href="/demo/cs/" data-lang="cs" hreflang="cs">CZ</a><a href="/demo/" data-lang="en" hreflang="en" aria-current="true">EN</a>
+    </div>
+    <a class="btn sm" href="/#signup" data-signup>Join the beta</a>
+  </div>
+</div></header>
+
+<main id="main">
+<section class="dhero"><div class="wrap wide">
+  <p class="eyebrow">Demo · simulated mixer</p>
+  <h1>Try Mixtet in your browser</h1>
+  <p class="lead">A simulated mixer, nothing to install. On the left the bandleader’s iPad controls the whole mix; on the right a band member’s phone controls only their own monitor mix. Change something on one and watch the other follow.</p>
+  <p class="badge"><span aria-hidden="true">◌</span> Sound and meters are simulated – nothing plays</p>
+</div></section>
+
+<section class="tour" id="tour" aria-labelledby="tourH"><div class="wrap wide">
+  <div class="tour-head"><h2 id="tourH">Try three things</h2>
+    <button type="button" class="btn ghost sm" id="tourToggle" aria-expanded="true" aria-controls="tourBody" data-hide="Hide tasks" data-show="Show tasks">Hide tasks</button></div>
+  <div id="tourBody">
+    <ol class="steps3"><li class="step" id="step-a"><span class="mark" aria-hidden="true">1</span><div><p class="st-t">You’re Tom (guitar). On the phone, turn the guitar down and the vocals up. <span class="sr st-s"></span></p><p class="st-h">ME = your channels, BAND = everyone else. Single channels are under “Individual channels”.</p><button type="button" class="btn ghost sm" id="toTom">Give the phone to Tom</button></div></li><li class="step" id="step-b"><span class="mark" aria-hidden="true">2</span><div><p class="st-t">Between songs, mute the instruments with one button – tile 1 Instruments (mute group) on the iPad. <span class="sr st-s"></span></p><p class="st-h">With a controller just press Play. The phone shows muted channels as “muted in the mix – group”.</p></div></li><li class="step" id="step-c"><span class="mark" aria-hidden="true">3</span><div><p class="st-t">Say something into the band’s monitors – hold MLUVIT KE KAPELE (talk to band). <span class="sr st-s"></span></p><p class="st-h">On the iPad top right, or at the bottom of the phone. The house doesn’t hear it.</p></div></li></ol>
+    <div class="tour-done" id="tourDone" hidden><p>Done! Want this for your band? Join the beta – it’s free.</p><a class="btn" href="/#signup" data-signup>Sign up your band for the beta</a></div>
+  </div>
+  <p class="sr" id="tourLive" role="status" aria-live="polite"></p>
+</div></section>
+
+<div class="wrap wide">
+  <div class="toolbar" role="toolbar" aria-label="Ukázka / Demo">
+    <div class="picker" role="group" aria-labelledby="pickL"><span id="pickL">Phone belongs to:</span><button type="button" class="pick" data-bus="1" aria-pressed="true">Adam</button><button type="button" class="pick" data-bus="2" aria-pressed="false">Tom</button><button type="button" class="pick" data-bus="3" aria-pressed="false">Dan</button><button type="button" class="pick" data-bus="4" aria-pressed="false">Filip</button></div>
+    <button type="button" class="btn ghost sm" id="outage">Simulate mixer dropout (5 s)</button>
+    <button type="button" class="btn ghost sm" id="midi">Connect a controller (Chrome / Edge)</button>
+    <button type="button" class="btn ghost sm" id="reset">Start over</button>
+  </div>
+  <p class="status" id="status" role="status" aria-live="polite"></p>
+  <p class="midichip" id="midiChip" hidden></p>
+
+  <div class="tabs" role="tablist" aria-label="Device">
+    <button type="button" role="tab" id="tab-tablet" aria-controls="pane-tablet" aria-selected="true">iPad</button>
+    <button type="button" role="tab" id="tab-mac" aria-controls="pane-mac" aria-selected="false" tabindex="-1">Mac</button>
+    <button type="button" role="tab" id="tab-phone" aria-controls="pane-phone" aria-selected="false" tabindex="-1">Member’s phone</button>
+  </div>
+  <div class="stage" id="stage" tabindex="-1">
+    <div class="left">
+    <section class="dev dev-tablet" id="pane-tablet" role="tabpanel" aria-labelledby="tab-tablet">
+      <div class="cap"><h2>Bandleader · iPad – Full mix</h2><p>channels, house, groups, mute groups, TALK TO BAND</p><p class="tnote">The iPad page is Czech-only for now (Mute skupiny tile 1 = mute group 1, Sál = house, MLUVIT KE KAPELE = talk to band); English is coming.</p></div>
+      <div class="bezel ipad"><div class="scroller" id="ipadFit"><div class="sizer" id="ipadSizer"><iframe id="fTablet" title="Bandleader’s iPad – Full mix page (the real Mixtet page on a simulated mixer)" loading="eager"></iframe></div></div></div>
+      <p class="hint-scroll">iPad in landscape (1180 × 820) – swipe the strips sideways or use the Banka (bank) buttons.</p>
+    </section>
+    <section class="dev dev-mac inactive" id="pane-mac" role="tabpanel" aria-labelledby="tab-mac">
+      <div class="cap"><h2>Bandleader · Mac app</h2><p class="tnote">Mac app – screenshots; try the iPad and the phone interactively.</p></div>
+      <div class="macwin" id="macGallery" role="region" aria-roledescription="carousel" aria-label="Mac app screenshots" tabindex="0" data-of="{n} of {all}"><div class="mbar" aria-hidden="true"><span class="lights"><i></i><i></i><i></i></span><span class="mtitle" id="macTitle">Mixtet</span></div><figure class="mslide" data-title="Mixer"><div class="mview"><img src="/img/screens/web-mixer.webp" width="1600" height="1000" alt="Mixer – Every channel like on a real desk – house, mute groups and DCAs on the right." loading="eager" decoding="async"></div><figcaption><b>Mixer</b> Every channel like on a real desk – house, mute groups and DCAs on the right.</figcaption></figure><figure class="mslide" data-title="Monitors" hidden><div class="mview"><img src="/img/screens/web-odposlechy.webp" width="1600" height="1000" alt="Monitors – What everyone hears in their ears – and if they can’t hear something, why." loading="lazy" decoding="async"></div><figcaption><b>Monitors</b> What everyone hears in their ears – and if they can’t hear something, why.</figcaption></figure><figure class="mslide" data-title="Concert" hidden><div class="mview"><img src="/img/screens/web-koncert.webp" width="1600" height="1000" alt="Concert – Big type, NOW / NEXT song and a mute group on the space bar." loading="lazy" decoding="async"></div><figcaption><b>Concert</b> Big type, NOW / NEXT song and a mute group on the space bar.</figcaption></figure><figure class="mslide" data-title="Channel" hidden><div class="mview"><img src="/img/screens/web-kanal.webp" width="1600" height="1000" alt="Channel – “Does Vox Adam sound right?” – volume, clarity, balance and who hears it." loading="lazy" decoding="async"></div><figcaption><b>Channel</b> “Does Vox Adam sound right?” – volume, clarity, balance and who hears it.</figcaption></figure><figure class="mslide" data-title="Inspector" hidden><div class="mview"><img src="/img/screens/web-inspektor.webp" width="1600" height="1000" alt="Inspector – EQ, dynamics and monitor sends of the selected channel right next to the mix." loading="lazy" decoding="async"></div><figcaption><b>Inspector</b> EQ, dynamics and monitor sends of the selected channel right next to the mix.</figcaption></figure><figure class="mslide" data-title="Scenes" hidden><div class="mview"><img src="/img/screens/web-sceny.webp" width="1514" height="605" alt="Scenes – Every song has its own mix – scenes change the house, never the monitors." loading="lazy" decoding="async"></div><figcaption><b>Scenes</b> Every song has its own mix – scenes change the house, never the monitors.</figcaption></figure></div><div class="mnav"><button type="button" class="mbtn" id="macPrev" aria-label="Previous screenshot">‹</button><span class="mcount" id="macCount" aria-live="polite">1 / 6</span><button type="button" class="mbtn" id="macNext" aria-label="Next screenshot">›</button></div><div class="mdots" role="group" aria-label="Mac app screenshots"><button type="button" class="mdot" data-i="0" aria-pressed="true">Mixer</button><button type="button" class="mdot" data-i="1" aria-pressed="false">Monitors</button><button type="button" class="mdot" data-i="2" aria-pressed="false">Concert</button><button type="button" class="mdot" data-i="3" aria-pressed="false">Channel</button><button type="button" class="mdot" data-i="4" aria-pressed="false">Inspector</button><button type="button" class="mdot" data-i="5" aria-pressed="false">Scenes</button></div>
+    </section>
+    </div>
+    <section class="dev dev-phone" id="pane-phone" role="tabpanel" aria-labelledby="tab-phone">
+      <div class="cap"><h2 id="phoneH">Member’s phone</h2><p>only their own monitor mix – not the house, not the others</p></div>
+      <div class="bezel iphone"><iframe id="fPhone" title="Band member’s phone – My monitor mix page (the real Mixtet page on a simulated mixer)" loading="eager"></iframe></div>
+    </section>
+  </div>
+  <noscript><p class="status">The demo needs JavaScript.</p></noscript>
+  <p class="simnote">The mixer, sound and meters run only in this browser and start over when you reload. The pages in the frames are the real Mixtet pages – the same ones the phones and the iPad get in your rehearsal room.</p>
+  <details class="mididbg" id="midiDbg" hidden><summary>Controller – last message (for debugging)</summary><pre id="midiLog"></pre></details>
+</div>
+
+<section class="sec" id="missing"><div class="wrap wide">
+  <h2>What’s not in the demo</h2>
+  <p class="sub">The demo is just a slice of Mixtet. In the Mac app you also get:</p>
+  <ul class="miss"><li><h3>Channel</h3><p>EQ, compressor, gate and “Does the kick sound right?” – Volume, Clarity, Balance.</p></li><li><h3>Songs, scenes and setlist</h3><p>Every song has its mix, Concert mode with big type and NOW / NEXT.</p></li><li><h3>Setup guide and pairing</h3><p>Set up in an evening, QR and PIN for phones, pre-gig check.</p></li><li><h3>A real mixer and real sound</h3><p>Here the mixer is only simulated – in the app everything goes to the XR18 and back.</p></li></ul>
+  <div class="mshots"><figure><img src="/img/screens/web-kanal.webp" width="1600" height="1000" alt="Channel made simple" loading="lazy" decoding="async"><figcaption>Channel made simple</figcaption></figure><figure><img src="/img/screens/web-sceny.webp" width="1514" height="605" alt="Songs and scenes" loading="lazy" decoding="async"><figcaption>Songs and scenes</figcaption></figure></div>
+  <div class="mid"><div><p class="mid-h">Want this for your band?</p><p>The beta is free for 50 bands with an XR18 – no card, no commitment.</p></div><a class="btn" href="/#signup" data-signup>Sign up your band for the beta</a></div>
+</div></section>
+</main>
+
+<footer><div class="wrap wide"><p>Mixtet · KRAI, Litoměřice, Czech Republic · Behringer, X AIR, XR12/16/18, Midas and MR18 are trademarks of their respective owners; Mixtet is not affiliated with them.</p><p><a href="/">Back to Mixtet</a> · <a href="/privacy.html">Privacy</a></p></div></footer>
+
+<button type="button" class="fbbtn" id="fbOpen" aria-haspopup="dialog" aria-label="Something off?"><span class="fbt">Something off?</span><span class="fbq" aria-hidden="true">?</span></button>
+<dialog id="fb" aria-labelledby="fbH">
+  <form id="fbForm" class="card form" novalidate>
+    <h2 id="fbH" class="form-h">Something off?</h2>
+    <p class="hint">Tell us what didn’t work or what you miss. It goes straight to the developer.</p>
+    <div class="f"><label for="fbMsg">What happened?</label><textarea id="fbMsg" name="message" rows="4" maxlength="3000" required></textarea></div>
+    <div class="f"><label for="fbEmail">Email (optional – if you’d like a reply)</label><input id="fbEmail" name="email" type="email" autocomplete="email" inputmode="email"></div>
+    <div class="hp" aria-hidden="true"><label>Web <input name="web" tabindex="-1" autocomplete="off"></label></div>
+    <p class="err" id="fbErr" role="alert" hidden></p>
+    <p class="okmsg" id="fbOk" role="status" hidden></p>
+    <div class="fbacts"><button class="btn" type="submit" id="fbSend">Send</button><button class="btn ghost" type="button" id="fbClose">Close</button></div>
+  </form>
+</dialog>
+</body>
+</html>

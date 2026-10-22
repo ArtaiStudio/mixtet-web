@@ -1,0 +1,454 @@
+{
+  "banks": 8,
+  "channel": 8,
+  "controls": [
+    {
+      "index": 0,
+      "kind": "fader",
+      "msg": "cc",
+      "number": 77,
+      "slot": "fader"
+    },
+    {
+      "index": 1,
+      "kind": "fader",
+      "msg": "cc",
+      "number": 78,
+      "slot": "fader"
+    },
+    {
+      "index": 2,
+      "kind": "fader",
+      "msg": "cc",
+      "number": 79,
+      "slot": "fader"
+    },
+    {
+      "index": 3,
+      "kind": "fader",
+      "msg": "cc",
+      "number": 80,
+      "slot": "fader"
+    },
+    {
+      "index": 4,
+      "kind": "fader",
+      "msg": "cc",
+      "number": 81,
+      "slot": "fader"
+    },
+    {
+      "index": 5,
+      "kind": "fader",
+      "msg": "cc",
+      "number": 82,
+      "slot": "fader"
+    },
+    {
+      "index": 6,
+      "kind": "fader",
+      "msg": "cc",
+      "number": 83,
+      "slot": "fader"
+    },
+    {
+      "index": 7,
+      "kind": "fader",
+      "msg": "cc",
+      "number": 84,
+      "slot": "fader"
+    },
+    {
+      "index": 0,
+      "kind": "knob",
+      "msg": "cc",
+      "number": 13,
+      "slot": "knob"
+    },
+    {
+      "index": 1,
+      "kind": "knob",
+      "msg": "cc",
+      "number": 14,
+      "slot": "knob"
+    },
+    {
+      "index": 2,
+      "kind": "knob",
+      "msg": "cc",
+      "number": 15,
+      "slot": "knob"
+    },
+    {
+      "index": 3,
+      "kind": "knob",
+      "msg": "cc",
+      "number": 16,
+      "slot": "knob"
+    },
+    {
+      "index": 4,
+      "kind": "knob",
+      "msg": "cc",
+      "number": 17,
+      "slot": "knob"
+    },
+    {
+      "index": 5,
+      "kind": "knob",
+      "msg": "cc",
+      "number": 18,
+      "slot": "knob"
+    },
+    {
+      "index": 6,
+      "kind": "knob",
+      "msg": "cc",
+      "number": 19,
+      "slot": "knob"
+    },
+    {
+      "index": 7,
+      "kind": "knob",
+      "msg": "cc",
+      "number": 20,
+      "slot": "knob"
+    },
+    {
+      "index": 0,
+      "kind": "knob",
+      "msg": "cc",
+      "number": 29,
+      "slot": "knob2"
+    },
+    {
+      "index": 1,
+      "kind": "knob",
+      "msg": "cc",
+      "number": 30,
+      "slot": "knob2"
+    },
+    {
+      "index": 2,
+      "kind": "knob",
+      "msg": "cc",
+      "number": 31,
+      "slot": "knob2"
+    },
+    {
+      "index": 3,
+      "kind": "knob",
+      "msg": "cc",
+      "number": 32,
+      "slot": "knob2"
+    },
+    {
+      "index": 4,
+      "kind": "knob",
+      "msg": "cc",
+      "number": 33,
+      "slot": "knob2"
+    },
+    {
+      "index": 5,
+      "kind": "knob",
+      "msg": "cc",
+      "number": 34,
+      "slot": "knob2"
+    },
+    {
+      "index": 6,
+      "kind": "knob",
+      "msg": "cc",
+      "number": 35,
+      "slot": "knob2"
+    },
+    {
+      "index": 7,
+      "kind": "knob",
+      "msg": "cc",
+      "number": 36,
+      "slot": "knob2"
+    },
+    {
+      "index": 0,
+      "kind": "knob",
+      "msg": "cc",
+      "number": 49,
+      "slot": "knob3"
+    },
+    {
+      "index": 1,
+      "kind": "knob",
+      "msg": "cc",
+      "number": 50,
+      "slot": "knob3"
+    },
+    {
+      "index": 2,
+      "kind": "knob",
+      "msg": "cc",
+      "number": 51,
+      "slot": "knob3"
+    },
+    {
+      "index": 3,
+      "kind": "knob",
+      "msg": "cc",
+      "number": 52,
+      "slot": "knob3"
+    },
+    {
+      "index": 4,
+      "kind": "knob",
+      "msg": "cc",
+      "number": 53,
+      "slot": "knob3"
+    },
+    {
+      "index": 5,
+      "kind": "knob",
+      "msg": "cc",
+      "number": 54,
+      "slot": "knob3"
+    },
+    {
+      "index": 6,
+      "kind": "knob",
+      "msg": "cc",
+      "number": 55,
+      "slot": "knob3"
+    },
+    {
+      "index": 7,
+      "kind": "knob",
+      "msg": "cc",
+      "number": 56,
+      "slot": "knob3"
+    },
+    {
+      "index": 0,
+      "kind": "button",
+      "led": {
+        "msg": "note",
+        "off": 12,
+        "on": 60
+      },
+      "msg": "note",
+      "number": 41,
+      "slot": "button"
+    },
+    {
+      "index": 1,
+      "kind": "button",
+      "led": {
+        "msg": "note",
+        "off": 12,
+        "on": 60
+      },
+      "msg": "note",
+      "number": 42,
+      "slot": "button"
+    },
+    {
+      "index": 2,
+      "kind": "button",
+      "led": {
+        "msg": "note",
+        "off": 12,
+        "on": 60
+      },
+      "msg": "note",
+      "number": 43,
+      "slot": "button"
+    },
+    {
+      "index": 3,
+      "kind": "button",
+      "led": {
+        "msg": "note",
+        "off": 12,
+        "on": 60
+      },
+      "msg": "note",
+      "number": 44,
+      "slot": "button"
+    },
+    {
+      "index": 4,
+      "kind": "button",
+      "led": {
+        "msg": "note",
+        "off": 12,
+        "on": 60
+      },
+      "msg": "note",
+      "number": 57,
+      "slot": "button"
+    },
+    {
+      "index": 5,
+      "kind": "button",
+      "led": {
+        "msg": "note",
+        "off": 12,
+        "on": 60
+      },
+      "msg": "note",
+      "number": 58,
+      "slot": "button"
+    },
+    {
+      "index": 6,
+      "kind": "button",
+      "led": {
+        "msg": "note",
+        "off": 12,
+        "on": 60
+      },
+      "msg": "note",
+      "number": 59,
+      "slot": "button"
+    },
+    {
+      "index": 7,
+      "kind": "button",
+      "led": {
+        "msg": "note",
+        "off": 12,
+        "on": 60
+      },
+      "msg": "note",
+      "number": 60,
+      "slot": "button"
+    },
+    {
+      "index": 8,
+      "kind": "button",
+      "led": {
+        "msg": "note",
+        "off": 12,
+        "on": 15
+      },
+      "msg": "note",
+      "number": 73,
+      "slot": "button"
+    },
+    {
+      "index": 9,
+      "kind": "button",
+      "led": {
+        "msg": "note",
+        "off": 12,
+        "on": 15
+      },
+      "msg": "note",
+      "number": 74,
+      "slot": "button"
+    },
+    {
+      "index": 10,
+      "kind": "button",
+      "led": {
+        "msg": "note",
+        "off": 12,
+        "on": 15
+      },
+      "msg": "note",
+      "number": 75,
+      "slot": "button"
+    },
+    {
+      "index": 11,
+      "kind": "button",
+      "led": {
+        "msg": "note",
+        "off": 12,
+        "on": 15
+      },
+      "msg": "note",
+      "number": 76,
+      "slot": "button"
+    },
+    {
+      "index": 12,
+      "kind": "button",
+      "led": {
+        "msg": "note",
+        "off": 12,
+        "on": 15
+      },
+      "msg": "note",
+      "number": 89,
+      "slot": "button"
+    },
+    {
+      "index": 13,
+      "kind": "button",
+      "led": {
+        "msg": "note",
+        "off": 12,
+        "on": 15
+      },
+      "msg": "note",
+      "number": 90,
+      "slot": "button"
+    },
+    {
+      "index": 14,
+      "kind": "button",
+      "led": {
+        "msg": "note",
+        "off": 12,
+        "on": 15
+      },
+      "msg": "note",
+      "number": 91,
+      "slot": "button"
+    },
+    {
+      "index": 15,
+      "kind": "button",
+      "led": {
+        "msg": "note",
+        "off": 12,
+        "on": 15
+      },
+      "msg": "note",
+      "number": 92,
+      "slot": "button"
+    },
+    {
+      "kind": "button",
+      "msg": "cc",
+      "number": 106,
+      "slot": "bankLeft"
+    },
+    {
+      "kind": "button",
+      "msg": "cc",
+      "number": 107,
+      "slot": "bankRight"
+    }
+  ],
+  "id": "novation-launch-control-xl",
+  "match": {
+    "deviceInquiry": [
+      0,
+      32,
+      41
+    ],
+    "exclude": [
+      "Launch Control XL 3",
+      "LCXL3"
+    ],
+    "manufacturer": "Focusrite",
+    "names": [
+      "Launch Control XL"
+    ]
+  },
+  "motorized": false,
+  "name": "Novation Launch Control XL mk2",
+  "notes": "Factory template 1 = kanál 9 (vynutit SysEx F0 00 20 29 02 11 77 08 F7). Řady knobů shora: Send A, Send B, Pan. Track Focus a Track Control bez role (slot button: Focus 0–7, Control 8–15) – co dělají, určí učení. LED velocity podle Programmer's Reference: 12 nesvítí, 15 červená, 60 zelená. Blikání (zelená 56, červená 11) funguje až po zapnutí auto-flash B8 00 28 – dokud to driver neposílá, profil blikání nemá. Mapa vstupů jen ze sekundárních zdrojů. Launch Control XL 3 má jiný protokol (exclude).",
+  "verified": false
+}

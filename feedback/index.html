@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Zpětná vazba – Mixtet</title>
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/png" href="/img/znacka.png">
+<link rel="stylesheet" href="/site.css">
+<style>main{max-width:640px;margin:0 auto;padding:32px 16px 64px}.form{margin-top:20px}.meta{font-size:13px;color:var(--fg3)}</style>
+</head>
+<body>
+<header class="top"><div class="wrap bar"><a class="brand" href="/"><img src="/img/znacka.png" width="28" height="28" alt="">Mixtet</a>
+<div class="right"><div class="lang" role="group" aria-label="Jazyk / Language"><a href="?lang=cs" data-l="cs">CZ</a><a href="?lang=en" data-l="en">EN</a></div></div></div></header>
+<main id="main">
+  <h1 data-t="h"></h1>
+  <p class="sub" data-t="sub" style="margin:12px 0 0"></p>
+  <form id="fb" class="card form" novalidate>
+    <fieldset class="f"><legend data-t="kind"></legend><div class="chips">
+      <label class="chip"><input type="radio" name="kind" value="bug" checked><span data-t="kBug"></span></label>
+      <label class="chip"><input type="radio" name="kind" value="idea"><span data-t="kIdea"></span></label>
+      <label class="chip"><input type="radio" name="kind" value="other"><span data-t="kOther"></span></label></div></fieldset>
+    <fieldset class="f" id="sevf"><legend data-t="sev"></legend><div class="chips">
+      <label class="chip"><input type="radio" name="severity" value="blocker"><span data-t="sBlock"></span></label>
+      <label class="chip"><input type="radio" name="severity" value="slows"><span data-t="sSlow"></span></label>
+      <label class="chip"><input type="radio" name="severity" value="minor"><span data-t="sMinor"></span></label></div></fieldset>
+    <div class="f"><label for="message" data-t="msg"></label><textarea id="message" name="message" rows="6" maxlength="4000" required aria-describedby="msg-hint msg-err"></textarea>
+      <p class="hint" id="msg-hint" data-t="msgHint"></p><p class="err" id="msg-err" hidden></p></div>
+    <div class="f"><label for="email" data-t="email"></label><input id="email" name="email" type="email" autocomplete="email" aria-describedby="email-err"><p class="err" id="email-err" hidden></p></div>
+    <div class="hp" aria-hidden="true"><label>Web <input name="web" tabindex="-1" autocomplete="off"></label></div>
+    <p class="meta" id="meta" hidden></p>
+    <button class="btn full" type="submit" id="submit" data-t="send"></button>
+    <p class="err" id="server-err" role="alert" hidden></p>
+  </form>
+  <div class="card done" id="done" hidden tabindex="-1"><h2 data-t="okH"></h2><p data-t="okP"></p><a class="btn ghost" href="/" data-t="back"></a></div>
+</main>
+<script>
+(function(){
+var T={cs:{h:"Zpětná vazba k Mixtetu",sub:"Co nefunguje, co chybí, co tě štve. Každá zpráva nám pomůže – i jedna věta.",kind:"Co posíláš?",kBug:"Chyba",kIdea:"Nápad",kOther:"Jiné",
+sev:"Jak moc to vadí?",sBlock:"Nejde hrát",sSlow:"Zdržuje",sMinor:"Maličkost",msg:"Co se stalo?",msgHint:"Co jsi dělal, co jsi čekal a co se stalo místo toho. U chyby pomůže soubor z Nastavení › Kapela › Diagnostika – pošli ho e-mailem na booking@krai.cz.",
+email:"E-mail (nepovinné – když chceš odpověď)",send:"Odeslat",sending:"Odesílám…",eMsg:"Napiš aspoň pár slov.",eEmail:"Zkontroluj e-mail.",eServer:"Nepodařilo se odeslat. Zkus to znovu, nebo napiš na booking@krai.cz.",
+okH:"Díky, máme to!",okP:"Přečteme to ještě dnes. Když jsi nechal e-mail, ozveme se.",back:"Zpět na Mixtet",meta:"Přiloží se: ",title:"Zpětná vazba – Mixtet"},
+en:{h:"Mixtet feedback",sub:"What's broken, what's missing, what bugs you. Every message helps – even one sentence.",kind:"What are you sending?",kBug:"Bug",kIdea:"Idea",kOther:"Other",
+sev:"How bad is it?",sBlock:"Can't play",sSlow:"Slows us down",sMinor:"Minor",msg:"What happened?",msgHint:"What you did, what you expected and what happened instead. For bugs, the file from Nastavení › Kapela › Diagnostika (Settings › Band › Diagnostics) helps – email it to booking@krai.cz.",
+email:"Email (optional – if you'd like a reply)",send:"Send",sending:"Sending…",eMsg:"Write at least a few words.",eEmail:"Check your email address.",eServer:"Couldn't send. Try again, or email booking@krai.cz.",
+okH:"Thanks, got it!",okP:"We'll read it today. If you left your email, we'll get back to you.",back:"Back to Mixtet",meta:"Attached: ",title:"Mixtet feedback"}};
+var q=new URLSearchParams(location.search),L=q.get("lang");
+if(L!=="cs"&&L!=="en"){var c=document.cookie.match(/mixtet-lang=(cs|en)/);L=c?c[1]:(/^(cs|sk)/i.test((navigator.languages||[navigator.language||"en"])[0])?"cs":"en");}
+var t=T[L];document.documentElement.lang=L;document.title=t.title;
+document.querySelectorAll("[data-t]").forEach(function(el){el.textContent=t[el.dataset.t];});
+document.querySelectorAll(".lang a").forEach(function(a){if(a.dataset.l===L)a.setAttribute("aria-current","true");
+ a.addEventListener("click",function(){document.cookie="mixtet-lang="+a.dataset.l+"; path=/; max-age=31536000; SameSite=Lax; Secure";var u=new URLSearchParams(location.search);u.set("lang",a.dataset.l);a.href="?"+u.toString();});});
+var ctx={v:q.get("v")||"",os:q.get("os")||"",mixer:q.get("mixer")||""};
+var parts=[ctx.v&&("Mixtet "+ctx.v),ctx.os,ctx.mixer].filter(Boolean);
+if(parts.length){var m=document.getElementById("meta");m.textContent=t.meta+parts.join(" · ");m.hidden=false;}
+var form=document.getElementById("fb"),sev=document.getElementById("sevf"),loaded=Date.now();
+form.addEventListener("change",function(){sev.hidden=(new FormData(form).get("kind")!=="bug");});
+var show=function(id,s){var e=document.getElementById(id);e.textContent=s||"";e.hidden=!s;};
+form.addEventListener("submit",function(ev){ev.preventDefault();var fd=new FormData(form),msg=String(fd.get("message")||"").trim(),em=String(fd.get("email")||"").trim();
+ show("msg-err",msg.length<3?t.eMsg:"");show("email-err",em&&!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(em)?t.eEmail:"");show("server-err","");
+ if(msg.length<3){document.getElementById("message").focus();return;} if(em&&!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(em)){document.getElementById("email").focus();return;}
+ var b=document.getElementById("submit");b.disabled=true;b.textContent=t.sending;
+ fetch("/api/feedback",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({kind:fd.get("kind"),severity:fd.get("kind")==="bug"?(fd.get("severity")||""):"",message:msg,email:em,web:fd.get("web")||"",v:ctx.v,os:ctx.os,mixer:ctx.mixer,lang:L,source:q.get("src")||(ctx.v?"app":"web"),t:loaded})})
+ .then(function(r){return r.json();}).then(function(j){if(j&&j.ok){form.hidden=true;var d=document.getElementById("done");d.hidden=false;d.focus();}else show("server-err",t.eServer);})
+ .catch(function(){show("server-err",t.eServer);}).finally(function(){b.disabled=false;b.textContent=t.send;});});
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,1129 @@
+{
+  "banks": 8,
+  "channel": 0,
+  "controls": [
+    {
+      "index": 0,
+      "kind": "fader",
+      "msg": "cc",
+      "number": 48,
+      "slot": "fader"
+    },
+    {
+      "index": 1,
+      "kind": "fader",
+      "msg": "cc",
+      "number": 49,
+      "slot": "fader"
+    },
+    {
+      "index": 2,
+      "kind": "fader",
+      "msg": "cc",
+      "number": 50,
+      "slot": "fader"
+    },
+    {
+      "index": 3,
+      "kind": "fader",
+      "msg": "cc",
+      "number": 51,
+      "slot": "fader"
+    },
+    {
+      "index": 4,
+      "kind": "fader",
+      "msg": "cc",
+      "number": 52,
+      "slot": "fader"
+    },
+    {
+      "index": 5,
+      "kind": "fader",
+      "msg": "cc",
+      "number": 53,
+      "slot": "fader"
+    },
+    {
+      "index": 6,
+      "kind": "fader",
+      "msg": "cc",
+      "number": 54,
+      "slot": "fader"
+    },
+    {
+      "index": 7,
+      "kind": "fader",
+      "msg": "cc",
+      "number": 55,
+      "slot": "fader"
+    },
+    {
+      "kind": "fader",
+      "msg": "cc",
+      "number": 56,
+      "slot": "master"
+    },
+    {
+      "index": 0,
+      "kind": "button",
+      "led": {
+        "channel": 6,
+        "msg": "note",
+        "off": 0,
+        "on": 5
+      },
+      "msg": "note",
+      "number": 0,
+      "slot": "pad"
+    },
+    {
+      "index": 1,
+      "kind": "button",
+      "led": {
+        "channel": 6,
+        "msg": "note",
+        "off": 0,
+        "on": 5
+      },
+      "msg": "note",
+      "number": 1,
+      "slot": "pad"
+    },
+    {
+      "index": 2,
+      "kind": "button",
+      "led": {
+        "channel": 6,
+        "msg": "note",
+        "off": 0,
+        "on": 5
+      },
+      "msg": "note",
+      "number": 2,
+      "slot": "pad"
+    },
+    {
+      "index": 3,
+      "kind": "button",
+      "led": {
+        "channel": 6,
+        "msg": "note",
+        "off": 0,
+        "on": 5
+      },
+      "msg": "note",
+      "number": 3,
+      "slot": "pad"
+    },
+    {
+      "index": 4,
+      "kind": "button",
+      "led": {
+        "channel": 6,
+        "msg": "note",
+        "off": 0,
+        "on": 5
+      },
+      "msg": "note",
+      "number": 4,
+      "slot": "pad"
+    },
+    {
+      "index": 5,
+      "kind": "button",
+      "led": {
+        "channel": 6,
+        "msg": "note",
+        "off": 0,
+        "on": 5
+      },
+      "msg": "note",
+      "number": 5,
+      "slot": "pad"
+    },
+    {
+      "index": 6,
+      "kind": "button",
+      "led": {
+        "channel": 6,
+        "msg": "note",
+        "off": 0,
+        "on": 5
+      },
+      "msg": "note",
+      "number": 6,
+      "slot": "pad"
+    },
+    {
+      "index": 7,
+      "kind": "button",
+      "led": {
+        "channel": 6,
+        "msg": "note",
+        "off": 0,
+        "on": 5
+      },
+      "msg": "note",
+      "number": 7,
+      "slot": "pad"
+    },
+    {
+      "index": 8,
+      "kind": "button",
+      "led": {
+        "channel": 6,
+        "msg": "note",
+        "off": 0,
+        "on": 5
+      },
+      "msg": "note",
+      "number": 8,
+      "slot": "pad"
+    },
+    {
+      "index": 9,
+      "kind": "button",
+      "led": {
+        "channel": 6,
+        "msg": "note",
+        "off": 0,
+        "on": 5
+      },
+      "msg": "note",
+      "number": 9,
+      "slot": "pad"
+    },
+    {
+      "index": 10,
+      "kind": "button",
+      "led": {
+        "channel": 6,
+        "msg": "note",
+        "off": 0,
+        "on": 5
+      },
+      "msg": "note",
+      "number": 10,
+      "slot": "pad"
+    },
+    {
+      "index": 11,
+      "kind": "button",
+      "led": {
+        "channel": 6,
+        "msg": "note",
+        "off": 0,
+        "on": 5
+      },
+      "msg": "note",
+      "number": 11,
+      "slot": "pad"
+    },
+    {
+      "index": 12,
+      "kind": "button",
+      "led": {
+        "channel": 6,
+        "msg": "note",
+        "off": 0,
+        "on": 5
+      },
+      "msg": "note",
+      "number": 12,
+      "slot": "pad"
+    },
+    {
+      "index": 13,
+      "kind": "button",
+      "led": {
+        "channel": 6,
+        "msg": "note",
+        "off": 0,
+        "on": 5
+      },
+      "msg": "note",
+      "number": 13,
+      "slot": "pad"
+    },
+    {
+      "index": 14,
+      "kind": "button",
+      "led": {
+        "channel": 6,
+        "msg": "note",
+        "off": 0,
+        "on": 5
+      },
+      "msg": "note",
+      "number": 14,
+      "slot": "pad"
+    },
+    {
+      "index": 15,
+      "kind": "button",
+      "led": {
+        "channel": 6,
+        "msg": "note",
+        "off": 0,
+        "on": 5
+      },
+      "msg": "note",
+      "number": 15,
+      "slot": "pad"
+    },
+    {
+      "index": 16,
+      "kind": "button",
+      "led": {
+        "channel": 6,
+        "msg": "note",
+        "off": 0,
+        "on": 5
+      },
+      "msg": "note",
+      "number": 16,
+      "slot": "pad"
+    },
+    {
+      "index": 17,
+      "kind": "button",
+      "led": {
+        "channel": 6,
+        "msg": "note",
+        "off": 0,
+        "on": 5
+      },
+      "msg": "note",
+      "number": 17,
+      "slot": "pad"
+    },
+    {
+      "index": 18,
+      "kind": "button",
+      "led": {
+        "channel": 6,
+        "msg": "note",
+        "off": 0,
+        "on": 5
+      },
+      "msg": "note",
+      "number": 18,
+      "slot": "pad"
+    },
+    {
+      "index": 19,
+      "kind": "button",
+      "led": {
+        "channel": 6,
+        "msg": "note",
+        "off": 0,
+        "on": 5
+      },
+      "msg": "note",
+      "number": 19,
+      "slot": "pad"
+    },
+    {
+      "index": 20,
+      "kind": "button",
+      "led": {
+        "channel": 6,
+        "msg": "note",
+        "off": 0,
+        "on": 5
+      },
+      "msg": "note",
+      "number": 20,
+      "slot": "pad"
+    },
+    {
+      "index": 21,
+      "kind": "button",
+      "led": {
+        "channel": 6,
+        "msg": "note",
+        "off": 0,
+        "on": 5
+      },
+      "msg": "note",
+      "number": 21,
+      "slot": "pad"
+    },
+    {
+      "index": 22,
+      "kind": "button",
+      "led": {
+        "channel": 6,
+        "msg": "note",
+        "off": 0,
+        "on": 5
+      },
+      "msg": "note",
+      "number": 22,
+      "slot": "pad"
+    },
+    {
+      "index": 23,
+      "kind": "button",
+      "led": {
+        "channel": 6,
+        "msg": "note",
+        "off": 0,
+        "on": 5
+      },
+      "msg": "note",
+      "number": 23,
+      "slot": "pad"
+    },
+    {
+      "index": 24,
+      "kind": "button",
+      "led": {
+        "channel": 6,
+        "msg": "note",
+        "off": 0,
+        "on": 5
+      },
+      "msg": "note",
+      "number": 24,
+      "slot": "pad"
+    },
+    {
+      "index": 25,
+      "kind": "button",
+      "led": {
+        "channel": 6,
+        "msg": "note",
+        "off": 0,
+        "on": 5
+      },
+      "msg": "note",
+      "number": 25,
+      "slot": "pad"
+    },
+    {
+      "index": 26,
+      "kind": "button",
+      "led": {
+        "channel": 6,
+        "msg": "note",
+        "off": 0,
+        "on": 5
+      },
+      "msg": "note",
+      "number": 26,
+      "slot": "pad"
+    },
+    {
+      "index": 27,
+      "kind": "button",
+      "led": {
+        "channel": 6,
+        "msg": "note",
+        "off": 0,
+        "on": 5
+      },
+      "msg": "note",
+      "number": 27,
+      "slot": "pad"
+    },
+    {
+      "index": 28,
+      "kind": "button",
+      "led": {
+        "channel": 6,
+        "msg": "note",
+        "off": 0,
+        "on": 5
+      },
+      "msg": "note",
+      "number": 28,
+      "slot": "pad"
+    },
+    {
+      "index": 29,
+      "kind": "button",
+      "led": {
+        "channel": 6,
+        "msg": "note",
+        "off": 0,
+        "on": 5
+      },
+      "msg": "note",
+      "number": 29,
+      "slot": "pad"
+    },
+    {
+      "index": 30,
+      "kind": "button",
+      "led": {
+        "channel": 6,
+        "msg": "note",
+        "off": 0,
+        "on": 5
+      },
+      "msg": "note",
+      "number": 30,
+      "slot": "pad"
+    },
+    {
+      "index": 31,
+      "kind": "button",
+      "led": {
+        "channel": 6,
+        "msg": "note",
+        "off": 0,
+        "on": 5
+      },
+      "msg": "note",
+      "number": 31,
+      "slot": "pad"
+    },
+    {
+      "index": 32,
+      "kind": "button",
+      "led": {
+        "channel": 6,
+        "msg": "note",
+        "off": 0,
+        "on": 5
+      },
+      "msg": "note",
+      "number": 32,
+      "slot": "pad"
+    },
+    {
+      "index": 33,
+      "kind": "button",
+      "led": {
+        "channel": 6,
+        "msg": "note",
+        "off": 0,
+        "on": 5
+      },
+      "msg": "note",
+      "number": 33,
+      "slot": "pad"
+    },
+    {
+      "index": 34,
+      "kind": "button",
+      "led": {
+        "channel": 6,
+        "msg": "note",
+        "off": 0,
+        "on": 5
+      },
+      "msg": "note",
+      "number": 34,
+      "slot": "pad"
+    },
+    {
+      "index": 35,
+      "kind": "button",
+      "led": {
+        "channel": 6,
+        "msg": "note",
+        "off": 0,
+        "on": 5
+      },
+      "msg": "note",
+      "number": 35,
+      "slot": "pad"
+    },
+    {
+      "index": 36,
+      "kind": "button",
+      "led": {
+        "channel": 6,
+        "msg": "note",
+        "off": 0,
+        "on": 5
+      },
+      "msg": "note",
+      "number": 36,
+      "slot": "pad"
+    },
+    {
+      "index": 37,
+      "kind": "button",
+      "led": {
+        "channel": 6,
+        "msg": "note",
+        "off": 0,
+        "on": 5
+      },
+      "msg": "note",
+      "number": 37,
+      "slot": "pad"
+    },
+    {
+      "index": 38,
+      "kind": "button",
+      "led": {
+        "channel": 6,
+        "msg": "note",
+        "off": 0,
+        "on": 5
+      },
+      "msg": "note",
+      "number": 38,
+      "slot": "pad"
+    },
+    {
+      "index": 39,
+      "kind": "button",
+      "led": {
+        "channel": 6,
+        "msg": "note",
+        "off": 0,
+        "on": 5
+      },
+      "msg": "note",
+      "number": 39,
+      "slot": "pad"
+    },
+    {
+      "index": 40,
+      "kind": "button",
+      "led": {
+        "channel": 6,
+        "msg": "note",
+        "off": 0,
+        "on": 5
+      },
+      "msg": "note",
+      "number": 40,
+      "slot": "pad"
+    },
+    {
+      "index": 41,
+      "kind": "button",
+      "led": {
+        "channel": 6,
+        "msg": "note",
+        "off": 0,
+        "on": 5
+      },
+      "msg": "note",
+      "number": 41,
+      "slot": "pad"
+    },
+    {
+      "index": 42,
+      "kind": "button",
+      "led": {
+        "channel": 6,
+        "msg": "note",
+        "off": 0,
+        "on": 5
+      },
+      "msg": "note",
+      "number": 42,
+      "slot": "pad"
+    },
+    {
+      "index": 43,
+      "kind": "button",
+      "led": {
+        "channel": 6,
+        "msg": "note",
+        "off": 0,
+        "on": 5
+      },
+      "msg": "note",
+      "number": 43,
+      "slot": "pad"
+    },
+    {
+      "index": 44,
+      "kind": "button",
+      "led": {
+        "channel": 6,
+        "msg": "note",
+        "off": 0,
+        "on": 5
+      },
+      "msg": "note",
+      "number": 44,
+      "slot": "pad"
+    },
+    {
+      "index": 45,
+      "kind": "button",
+      "led": {
+        "channel": 6,
+        "msg": "note",
+        "off": 0,
+        "on": 5
+      },
+      "msg": "note",
+      "number": 45,
+      "slot": "pad"
+    },
+    {
+      "index": 46,
+      "kind": "button",
+      "led": {
+        "channel": 6,
+        "msg": "note",
+        "off": 0,
+        "on": 5
+      },
+      "msg": "note",
+      "number": 46,
+      "slot": "pad"
+    },
+    {
+      "index": 47,
+      "kind": "button",
+      "led": {
+        "channel": 6,
+        "msg": "note",
+        "off": 0,
+        "on": 5
+      },
+      "msg": "note",
+      "number": 47,
+      "slot": "pad"
+    },
+    {
+      "index": 48,
+      "kind": "button",
+      "led": {
+        "channel": 6,
+        "msg": "note",
+        "off": 0,
+        "on": 5
+      },
+      "msg": "note",
+      "number": 48,
+      "slot": "pad"
+    },
+    {
+      "index": 49,
+      "kind": "button",
+      "led": {
+        "channel": 6,
+        "msg": "note",
+        "off": 0,
+        "on": 5
+      },
+      "msg": "note",
+      "number": 49,
+      "slot": "pad"
+    },
+    {
+      "index": 50,
+      "kind": "button",
+      "led": {
+        "channel": 6,
+        "msg": "note",
+        "off": 0,
+        "on": 5
+      },
+      "msg": "note",
+      "number": 50,
+      "slot": "pad"
+    },
+    {
+      "index": 51,
+      "kind": "button",
+      "led": {
+        "channel": 6,
+        "msg": "note",
+        "off": 0,
+        "on": 5
+      },
+      "msg": "note",
+      "number": 51,
+      "slot": "pad"
+    },
+    {
+      "index": 52,
+      "kind": "button",
+      "led": {
+        "channel": 6,
+        "msg": "note",
+        "off": 0,
+        "on": 5
+      },
+      "msg": "note",
+      "number": 52,
+      "slot": "pad"
+    },
+    {
+      "index": 53,
+      "kind": "button",
+      "led": {
+        "channel": 6,
+        "msg": "note",
+        "off": 0,
+        "on": 5
+      },
+      "msg": "note",
+      "number": 53,
+      "slot": "pad"
+    },
+    {
+      "index": 54,
+      "kind": "button",
+      "led": {
+        "channel": 6,
+        "msg": "note",
+        "off": 0,
+        "on": 5
+      },
+      "msg": "note",
+      "number": 54,
+      "slot": "pad"
+    },
+    {
+      "index": 55,
+      "kind": "button",
+      "led": {
+        "channel": 6,
+        "msg": "note",
+        "off": 0,
+        "on": 5
+      },
+      "msg": "note",
+      "number": 55,
+      "slot": "pad"
+    },
+    {
+      "index": 56,
+      "kind": "button",
+      "led": {
+        "channel": 6,
+        "msg": "note",
+        "off": 0,
+        "on": 5
+      },
+      "msg": "note",
+      "number": 56,
+      "slot": "pad"
+    },
+    {
+      "index": 57,
+      "kind": "button",
+      "led": {
+        "channel": 6,
+        "msg": "note",
+        "off": 0,
+        "on": 5
+      },
+      "msg": "note",
+      "number": 57,
+      "slot": "pad"
+    },
+    {
+      "index": 58,
+      "kind": "button",
+      "led": {
+        "channel": 6,
+        "msg": "note",
+        "off": 0,
+        "on": 5
+      },
+      "msg": "note",
+      "number": 58,
+      "slot": "pad"
+    },
+    {
+      "index": 59,
+      "kind": "button",
+      "led": {
+        "channel": 6,
+        "msg": "note",
+        "off": 0,
+        "on": 5
+      },
+      "msg": "note",
+      "number": 59,
+      "slot": "pad"
+    },
+    {
+      "index": 60,
+      "kind": "button",
+      "led": {
+        "channel": 6,
+        "msg": "note",
+        "off": 0,
+        "on": 5
+      },
+      "msg": "note",
+      "number": 60,
+      "slot": "pad"
+    },
+    {
+      "index": 61,
+      "kind": "button",
+      "led": {
+        "channel": 6,
+        "msg": "note",
+        "off": 0,
+        "on": 5
+      },
+      "msg": "note",
+      "number": 61,
+      "slot": "pad"
+    },
+    {
+      "index": 62,
+      "kind": "button",
+      "led": {
+        "channel": 6,
+        "msg": "note",
+        "off": 0,
+        "on": 5
+      },
+      "msg": "note",
+      "number": 62,
+      "slot": "pad"
+    },
+    {
+      "index": 63,
+      "kind": "button",
+      "led": {
+        "channel": 6,
+        "msg": "note",
+        "off": 0,
+        "on": 5
+      },
+      "msg": "note",
+      "number": 63,
+      "slot": "pad"
+    },
+    {
+      "index": 0,
+      "kind": "button",
+      "led": {
+        "blink": 2,
+        "msg": "note",
+        "off": 0,
+        "on": 1
+      },
+      "msg": "note",
+      "number": 100,
+      "slot": "button"
+    },
+    {
+      "index": 1,
+      "kind": "button",
+      "led": {
+        "blink": 2,
+        "msg": "note",
+        "off": 0,
+        "on": 1
+      },
+      "msg": "note",
+      "number": 101,
+      "slot": "button"
+    },
+    {
+      "index": 2,
+      "kind": "button",
+      "led": {
+        "blink": 2,
+        "msg": "note",
+        "off": 0,
+        "on": 1
+      },
+      "msg": "note",
+      "number": 102,
+      "slot": "button"
+    },
+    {
+      "index": 3,
+      "kind": "button",
+      "led": {
+        "blink": 2,
+        "msg": "note",
+        "off": 0,
+        "on": 1
+      },
+      "msg": "note",
+      "number": 103,
+      "slot": "button"
+    },
+    {
+      "index": 4,
+      "kind": "button",
+      "led": {
+        "blink": 2,
+        "msg": "note",
+        "off": 0,
+        "on": 1
+      },
+      "msg": "note",
+      "number": 104,
+      "slot": "button"
+    },
+    {
+      "index": 5,
+      "kind": "button",
+      "led": {
+        "blink": 2,
+        "msg": "note",
+        "off": 0,
+        "on": 1
+      },
+      "msg": "note",
+      "number": 105,
+      "slot": "button"
+    },
+    {
+      "index": 6,
+      "kind": "button",
+      "led": {
+        "blink": 2,
+        "msg": "note",
+        "off": 0,
+        "on": 1
+      },
+      "msg": "note",
+      "number": 106,
+      "slot": "button"
+    },
+    {
+      "index": 7,
+      "kind": "button",
+      "led": {
+        "blink": 2,
+        "msg": "note",
+        "off": 0,
+        "on": 1
+      },
+      "msg": "note",
+      "number": 107,
+      "slot": "button"
+    },
+    {
+      "index": 0,
+      "kind": "button",
+      "led": {
+        "blink": 2,
+        "msg": "note",
+        "off": 0,
+        "on": 1
+      },
+      "msg": "note",
+      "number": 112,
+      "slot": "scene"
+    },
+    {
+      "index": 1,
+      "kind": "button",
+      "led": {
+        "blink": 2,
+        "msg": "note",
+        "off": 0,
+        "on": 1
+      },
+      "msg": "note",
+      "number": 113,
+      "slot": "scene"
+    },
+    {
+      "index": 2,
+      "kind": "button",
+      "led": {
+        "blink": 2,
+        "msg": "note",
+        "off": 0,
+        "on": 1
+      },
+      "msg": "note",
+      "number": 114,
+      "slot": "scene"
+    },
+    {
+      "index": 3,
+      "kind": "button",
+      "led": {
+        "blink": 2,
+        "msg": "note",
+        "off": 0,
+        "on": 1
+      },
+      "msg": "note",
+      "number": 115,
+      "slot": "scene"
+    },
+    {
+      "index": 4,
+      "kind": "button",
+      "led": {
+        "blink": 2,
+        "msg": "note",
+        "off": 0,
+        "on": 1
+      },
+      "msg": "note",
+      "number": 116,
+      "slot": "scene"
+    },
+    {
+      "index": 5,
+      "kind": "button",
+      "led": {
+        "blink": 2,
+        "msg": "note",
+        "off": 0,
+        "on": 1
+      },
+      "msg": "note",
+      "number": 117,
+      "slot": "scene"
+    },
+    {
+      "index": 6,
+      "kind": "button",
+      "led": {
+        "blink": 2,
+        "msg": "note",
+        "off": 0,
+        "on": 1
+      },
+      "msg": "note",
+      "number": 118,
+      "slot": "scene"
+    },
+    {
+      "index": 7,
+      "kind": "button",
+      "led": {
+        "blink": 2,
+        "msg": "note",
+        "off": 0,
+        "on": 1
+      },
+      "msg": "note",
+      "number": 119,
+      "slot": "scene"
+    },
+    {
+      "kind": "button",
+      "msg": "note",
+      "number": 122,
+      "slot": "shift"
+    }
+  ],
+  "id": "akai-apc-mini-mk2",
+  "match": {
+    "deviceInquiry": [
+      71,
+      79
+    ],
+    "manufacturer": "AKAI",
+    "names": [
+      "APC mini mk2"
+    ]
+  },
+  "motorized": false,
+  "name": "Akai APC mini mk2",
+  "notes": "Podle Akai APC mini mk2 Communications Protocol v1.0. Pady 8×8 note 0–63 (0 = vlevo dole – ověřit), barva = velocity (paleta, 5 = červená), jas a blikání = kanál (6 = 100 %). Tlačítka pásů 100–107 (slot button 0–7, bez role – co dělají, určí učení) svítí červeně, scény 112–119 zeleně (0 nesvítí, 1 svítí, 2 bliká). Shift + Scene 6/7 přepne pady do Drum (kanál 9) / Note (port 2) módu – profil platí pro Session mód. Device Inquiry posílat s ID 00 (F0 7E 00 06 01 F7), odpověď 47 4F 00 19 … Úvodní SysEx F0 47 7F 4F 60 … vrátí polohy všech 9 faderů (pro pickup).",
+  "verified": false
+}

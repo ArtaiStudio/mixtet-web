@@ -1,0 +1,1653 @@
+<!-- Vygenerováno src/demo_build.py z repa Mixtetu (web/member.html) – needitovat ručně. -->
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<script src="/demo/shim.js"></script>
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="apple-touch-icon" href="/demo/logo.png"><link rel="icon" href="/demo/logo.png">
+<meta name="referrer" content="no-referrer"><!-- klíč mobilu je v adrese – nikdy ho neposílat dál -->
+<meta name="theme-color" content="#0c1014"><!-- ds-ok: meta tag nepodporuje CSS proměnné -->
+<title>Můj odposlech</title>
+<style>
+/* @tokens:start */
+:root {
+  --krai-bg: #0C1014; 
+  --krai-navy: #0D1B2A; 
+  --krai-brown: #3B2B2A; 
+  --krai-blue: #6D9FB1; 
+  --krai-terracotta: #C4804F; 
+  --krai-ivory: #F1EFE7; 
+  --krai-sand: #CDA977; 
+  --krai-muted: #AD9B82; 
+  --krai-canvas: var(--krai-bg); 
+  --krai-surface-1: #141A20; 
+  --krai-surface-2: #1D252E; 
+  --krai-surface-3: #262E38; 
+  --krai-well: #080B0E; 
+  --krai-border-subtle: #FFFFFF1A; 
+  --krai-border-control: #6B7684; 
+  --krai-text: var(--krai-ivory); 
+  --krai-text-2: #BDB09C; 
+  --krai-text-3: var(--krai-muted); 
+  --krai-text-disabled: #7A7468; 
+  --krai-on-fill: #000000; 
+  --krai-text-on-accent: var(--krai-tile-text); 
+  --krai-text-danger: #F28C85; 
+  --krai-text-accent: #E0A275; 
+  --krai-accent: var(--krai-terracotta); 
+  --krai-selected: var(--krai-sand); 
+  --krai-selected-fill: #CDA9772E; 
+  --krai-mute: #EB4C47; 
+  --krai-mute-indirect: #F59433; 
+  --krai-solo: #F0CF4C; 
+  --krai-talk: #9AA4AE; 
+  --krai-ok: #66C773; 
+  --krai-warn: #EDB24C; 
+  --krai-danger: #E6544C; 
+  --krai-state-talk-lit: var(--krai-ivory); 
+  --krai-meter-safe: var(--krai-ok); 
+  --krai-meter-hot: var(--krai-warn); 
+  --krai-meter-over: var(--krai-danger); 
+  --krai-meter-peak: #F1EFE7D9; 
+  --krai-meter-track: var(--krai-well); 
+  --krai-tick: #A39985; 
+  --krai-meter-gr: var(--krai-text-2); 
+  --krai-rta: #F1EFE738; 
+  --krai-meter-segment-off: #FFFFFF0D; 
+  --krai-ch-0: #8C9096; 
+  --krai-ch-1: #DB8580; 
+  --krai-ch-2: #8FCC94; 
+  --krai-ch-3: #E6D185; 
+  --krai-ch-4: #8CADEB; 
+  --krai-ch-5: #D199DB; 
+  --krai-ch-6: #85CCD6; 
+  --krai-ch-7: #E0E0E0; 
+  --krai-channel-unowned: var(--krai-ch-0); 
+  --krai-fader-cap-light: #F4F4F2; 
+  --krai-fader-cap-mid: #C7C7C3; 
+  --krai-fader-cap-dark: #7E7E7A; 
+  --krai-fader-groove: #00000059; 
+  --krai-fader-slot: #000000; 
+  --krai-member-1: #7FCAD4; 
+  --krai-member-2: #C08692; 
+  --krai-member-3: #7699C0; 
+  --krai-member-4: #AEC59C; 
+  --krai-member-5: #BAABFE; 
+  --krai-member-6: #E4E8EE; 
+  --krai-strip-top: #1F2730; 
+  --krai-strip-bottom: #1A2129; 
+  --krai-strip-edge-light: #FFFFFF12; 
+  --krai-strip-edge-dark: #00000066; 
+  --krai-button-top: #2A333D; 
+  --krai-button-bottom: #222A33; 
+  --krai-tile-text: #0C1014; 
+  --krai-line-subtle: var(--krai-border-subtle); 
+  --krai-line-control: var(--krai-border-control); 
+  --krai-line-focus: var(--krai-selected); 
+  --krai-font-ui: "SF Pro", -apple-system, system-ui, sans-serif; 
+  --krai-font-mono: "SF Mono", ui-monospace, Menlo, monospace; 
+  --krai-numeric: "tnum"; 
+  --krai-fs-label: 12px; 
+  --krai-fs-value: 15px; 
+  --krai-fs-body: 16px; 
+  --krai-fs-stage: 20px; 
+  --krai-fs-title: 26px; 
+  --krai-fs-hero: 34px; 
+  --krai-font-size-tile: 20px; 
+  --krai-font-size-tileStage: 24px; 
+  --krai-font-size-tileNarrow: 16px; 
+  --krai-font-size-tileStageNarrow: 19px; 
+  --krai-fw-regular: 400;
+  --krai-fw-medium: 500;
+  --krai-fw-semibold: 600;
+  --krai-fw-bold: 700;
+  --krai-fw-heavy: 800;
+  --krai-tracking-caps: 0.06em; 
+  --krai-lh-tight: 1.15; 
+  --krai-lh-text: 1.35; 
+  --krai-space-0: 0px;
+  --krai-space-half: 2px; 
+  --krai-space-1: 4px; 
+  --krai-space-2: 8px; 
+  --krai-space-3: 12px; 
+  --krai-space-4: 16px; 
+  --krai-space-5: 24px; 
+  --krai-space-6: 32px; 
+  --krai-space-7: 48px; 
+  --krai-radius-xs: 3px; 
+  --krai-radius-sm: 6px; 
+  --krai-radius-md: 10px; 
+  --krai-radius-lg: 14px; 
+  --krai-radius-pill: 999px; 
+  --krai-stroke-hairline: 1px; 
+  --krai-stroke-emphasis: 2px; 
+  --krai-dash-ghost: 3px 2px; 
+  --krai-hit-pointer: 24px; 
+  --krai-hit-touch: 44px; 
+  --krai-hit-touchComfort: 48px; 
+  --krai-hit-stage: 56px; 
+  --krai-size-strip-width-regular: 92px;
+  --krai-size-strip-width-stage: 120px;
+  --krai-size-strip-width-stageMax: 190px;
+  --krai-size-fader-cap-width-regular: 40px; 
+  --krai-size-fader-cap-width-stage: 54px;
+  --krai-size-fader-cap-height-regular: 30px;
+  --krai-size-fader-cap-height-stage: 40px;
+  --krai-size-fader-track-width: 6px; 
+  --krai-size-meter-width-regular: 5px;
+  --krai-size-meter-width-stage: 7px;
+  --krai-size-meter-width-stereo: 4px; 
+  --krai-size-stateButton-height-regular: 26px;
+  --krai-size-stateButton-height-stage: 40px;
+  --krai-size-muteGroup-tile-regular: 42px;
+  --krai-size-muteGroup-tile-stage: 52px;
+  --krai-size-bar-top: 52px; 
+  --krai-size-bar-status: 32px; 
+  --krai-size-phone-slider-height: 56px;
+  --krai-size-phone-slider-heightMe: 68px;
+  --krai-size-phone-cap-width: 30px;
+  --krai-size-phone-cap-height: 40px;
+  --krai-size-phone-cap-widthMe: 36px;
+  --krai-size-phone-cap-heightMe: 48px;
+  --krai-size-phone-toggle-minWidth: 96px;
+  --krai-size-phone-nudge: 56px;
+  --krai-size-phone-nudgeMe: 64px;
+  --krai-size-phone-meter-height: 6px;
+  --krai-size-mixStripMono: 86px; 
+  --krai-size-mixStripStereo: 108px; 
+  --krai-size-mixStripMonoNarrow: 62px; 
+  --krai-size-mixStripStereoNarrow: 76px; 
+  --krai-size-mixStripMonoStage: 104px; 
+  --krai-size-mixStripStereoStage: 128px; 
+  --krai-size-mixStripMonoStageNarrow: 74px; 
+  --krai-size-mixStripStereoStageNarrow: 90px; 
+  --krai-size-capWidth: 32px; 
+  --krai-size-capHeight: 44px;
+  --krai-size-capWidthNarrow: 28px;
+  --krai-size-capHeightNarrow: 40px;
+  --krai-size-capWidthStage: 38px;
+  --krai-size-capHeightStage: 54px;
+  --krai-size-capBand: 7px; 
+  --krai-size-tileHeight: 40px; 
+  --krai-size-tileHeightStage: 52px; 
+  --krai-size-litButtonHeight: 28px; 
+  --krai-size-litButtonHeightStage: 36px; 
+  --krai-size-glow: 10px; 
+  --krai-size-segMeterWidth: 8px; 
+  --krai-size-segMeterWidthNarrow: 6px;
+  --krai-size-meterSegment: 5px; 
+  --krai-size-clipLed: 9px; 
+  --krai-size-mixSideColumn: 250px; 
+  --krai-size-bridgeMeterWidth: 10px; 
+  --krai-size-bridgeMeterHeight: 26px;
+  --krai-size-infoBar: 40px; 
+  --krai-shadow-cap: 0px 1px 2px 0px #00000080; 
+  --krai-shadow-overlay: 0px 8px 24px 0px #00000080; 
+  --krai-shadow-popover: 0px 12px 30px 0px #000000CC; 
+  --krai-shadow-dialog: 0px 20px 50px 0px #000000AA; 
+  --krai-dur-instant: 0ms; 
+  --krai-dur-ramp30: 30ms; 
+  --krai-dur-fast: 80ms; 
+  --krai-dur-base: 160ms; 
+  --krai-dur-slow: 240ms; 
+  --krai-ease: cubic-bezier(0.2, 0, 0, 1); 
+  --krai-dwell-toast: 3000ms; 
+  --krai-dwell-toastError: 5000ms; 
+  --krai-dwell-armedLoad: 2000ms; 
+  --krai-dwell-longPress: 500ms; 
+  --krai-dwell-clipHold: 0ms; 
+  --krai-opacity-disabled: 0.4; 
+  --krai-opacity-silenced: 0.45; 
+  --krai-opacity-offline: 0.45; 
+  --krai-opacity-glow: 0.4; 
+  --krai-opacity-unlit-text: 0.7; 
+  --krai-z-base: 0;
+  --krai-z-sticky: 10; 
+  --krai-z-banner: 20; 
+  --krai-z-callout: 30; 
+  --krai-z-toast: 40; 
+  --krai-z-modal: 50; 
+  --krai-meter-db-floor: -60; 
+  --krai-meter-db-hot: -18; 
+  --krai-meter-db-over: -6; 
+  --krai-meter-db-clip: -0.5; 
+  --krai-meter-db-fallDbPerSec: 12; 
+  --krai-meter-db-peakHoldMs: 1500;
+  --krai-meter-db-refreshHz: 30; 
+  --krai-conn-staleAfterSec: 1.5; 
+  --krai-conn-offlineAfterSec: 3; 
+  --krai-conn-xremoteRefreshSec: 5; 
+  --krai-conn-phoneStaleAfterSec: 3; 
+  --krai-conn-phoneLostAfterSec: 7; 
+  --krai-conn-phoneReconnectAfterSec: 9; 
+}
+
+.krai-t-label { font-family: var(--krai-font-ui); font-size: var(--krai-fs-label); font-weight: var(--krai-fw-heavy); line-height: var(--krai-lh-tight); font-variant-numeric: tabular-nums; }
+.krai-t-value { font-family: var(--krai-font-ui); font-size: var(--krai-fs-value); font-weight: var(--krai-fw-semibold); line-height: var(--krai-lh-tight); font-variant-numeric: tabular-nums; }
+.krai-t-body { font-family: var(--krai-font-ui); font-size: var(--krai-fs-body); font-weight: var(--krai-fw-regular); line-height: var(--krai-lh-tight); font-variant-numeric: tabular-nums; }
+.krai-t-button { font-family: var(--krai-font-ui); font-size: var(--krai-fs-body); font-weight: var(--krai-fw-bold); line-height: var(--krai-lh-tight); font-variant-numeric: tabular-nums; }
+.krai-t-stripName { font-family: var(--krai-font-ui); font-size: var(--krai-fs-value); font-weight: var(--krai-fw-bold); line-height: var(--krai-lh-tight); font-variant-numeric: tabular-nums; }
+.krai-t-stripNameStage { font-family: var(--krai-font-ui); font-size: var(--krai-fs-stage); font-weight: var(--krai-fw-heavy); line-height: var(--krai-lh-tight); font-variant-numeric: tabular-nums; }
+.krai-t-valueStage { font-family: var(--krai-font-ui); font-size: var(--krai-fs-stage); font-weight: var(--krai-fw-semibold); line-height: var(--krai-lh-tight); font-variant-numeric: tabular-nums; }
+.krai-t-title { font-family: var(--krai-font-ui); font-size: var(--krai-fs-title); font-weight: var(--krai-fw-bold); line-height: var(--krai-lh-tight); font-variant-numeric: tabular-nums; }
+.krai-t-hero { font-family: var(--krai-font-ui); font-size: var(--krai-fs-hero); font-weight: var(--krai-fw-heavy); line-height: var(--krai-lh-tight); font-variant-numeric: tabular-nums; }
+/* @tokens:end */
+/* Stránka člena v2 (PLAN 4.10 + 4.13 + 4.21, prototyp v10 „Mobil člena“). Jen tokeny --krai-*. */
+:root{--mc:var(--krai-selected)}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--krai-canvas);color:var(--krai-text);font-family:var(--krai-font-ui);font-size:var(--krai-fs-value);overscroll-behavior:none}
+body{padding:0 max(var(--krai-space-3),env(safe-area-inset-right)) calc(env(safe-area-inset-bottom) + var(--krai-space-6)) max(var(--krai-space-3),env(safe-area-inset-left))}
+button{font:inherit;color:inherit;border:0;cursor:pointer;touch-action:manipulation}
+.num{font-variant-numeric:tabular-nums}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+:focus-visible{outline:var(--krai-stroke-emphasis) solid var(--krai-selected);outline-offset:var(--krai-space-half)}
+
+header{position:sticky;top:0;z-index:var(--krai-z-sticky);display:grid;grid-template-columns:minmax(0,1fr) auto;gap:var(--krai-space-1) var(--krai-space-2);align-items:center;padding:calc(env(safe-area-inset-top) + var(--krai-space-3)) 0 var(--krai-space-3);background:var(--krai-canvas)}
+.who{display:flex;align-items:center;gap:var(--krai-space-2);min-width:0}
+.who h1{margin:0;font-size:var(--krai-fs-title);font-weight:var(--krai-fw-bold);color:var(--mc);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ini{flex:none;min-width:var(--krai-hit-pointer);height:var(--krai-hit-pointer);border-radius:var(--krai-radius-pill);background:var(--mc);color:var(--krai-tile-text);display:grid;place-items:center;font-weight:var(--krai-fw-heavy);font-size:var(--krai-fs-label)}
+.sub{grid-column:1/-1;font-size:var(--krai-fs-label);color:var(--krai-text-3)}
+.st{display:flex;align-items:center;gap:var(--krai-space-1);font-size:var(--krai-fs-label);font-weight:var(--krai-fw-semibold);padding:var(--krai-space-1) var(--krai-space-2);border-radius:var(--krai-radius-pill);background:var(--krai-surface-3);white-space:nowrap}
+.st i{width:var(--krai-size-clipLed);height:var(--krai-size-clipLed);border-radius:var(--krai-radius-pill);background:var(--krai-danger)}
+.st.ok i{background:var(--krai-ok)} .st.warn i{background:var(--krai-warn)}
+
+.banner{display:none;margin:0 0 var(--krai-space-3);padding:var(--krai-space-3);border-radius:var(--krai-radius-md);background:var(--krai-danger);color:var(--krai-on-fill);font-weight:var(--krai-fw-bold);line-height:var(--krai-lh-text)}
+.hint{display:none;margin:0 0 var(--krai-space-3);padding:var(--krai-space-3);border-radius:var(--krai-radius-md);background:var(--krai-surface-3);font-size:var(--krai-fs-value);line-height:var(--krai-lh-text)}
+.hint button{margin-top:var(--krai-space-2);min-height:var(--krai-hit-touch);padding:0 var(--krai-space-4);border-radius:var(--krai-radius-sm);background:var(--krai-surface-1);font-weight:var(--krai-fw-bold)}
+
+.card{background:linear-gradient(var(--krai-strip-top),var(--krai-strip-bottom));box-shadow:inset 0 var(--krai-stroke-hairline) 0 var(--krai-strip-edge-light),inset 0 calc(var(--krai-stroke-hairline) * -1) 0 var(--krai-strip-edge-dark);border-radius:var(--krai-radius-md);padding:var(--krai-space-3);display:grid;grid-template-columns:minmax(0,1fr);gap:var(--krai-space-3);margin-bottom:var(--krai-space-3)}
+.card.bare{background:none;box-shadow:none;padding:0}
+.card h2{margin:0;display:flex;justify-content:space-between;gap:var(--krai-space-2);font-size:var(--krai-fs-label);font-weight:var(--krai-fw-heavy);letter-spacing:var(--krai-tracking-caps);text-transform:uppercase;color:var(--krai-text-2)}
+
+/* velký posuvník: JÁ / KAPELA / KLIK / Hlasitost */
+.big{display:grid;gap:var(--krai-space-1);min-width:0}
+.big .lab{display:flex;justify-content:space-between;align-items:baseline;gap:var(--krai-space-2);min-width:0}
+/* dlaždice jména (scribble strip jako na Macu): plná barva, tmavé condensed písmo; --cc = barva kanálu / člena */
+.tile,.big .lab b{display:flex;align-items:center;gap:var(--krai-space-1);min-width:0;padding:0 var(--krai-space-2);border-radius:var(--krai-radius-sm);background:var(--cc,var(--krai-channel-unowned));color:var(--krai-tile-text);font-weight:var(--krai-fw-bold);font-stretch:condensed;line-height:var(--krai-lh-tight);box-shadow:inset 0 var(--krai-stroke-hairline) 0 var(--krai-strip-edge-light)}
+.big .lab b{display:inline-flex;min-height:var(--krai-size-tileHeight);font-size:var(--krai-font-size-tile);font-weight:var(--krai-fw-heavy)}
+.tile{min-height:var(--krai-size-tileHeight);font-size:var(--krai-font-size-tileNarrow)}
+.tile span{min-width:0;overflow-wrap:anywhere}
+.tile.nw span{overflow-wrap:normal;white-space:nowrap}   /* Hlasitost se nedělí na dva řádky */
+.tile b{flex:none;font-size:var(--krai-fs-label)}
+.tile i.inv{flex:none;font-style:normal;font-size:var(--krai-fs-label)}   /* polarita otočená (5.6) */
+/* proč neslyším (4.3b): štítek pod jménem; prázdný = kanál v mixu hraje. Červeně jen přímý MUTE, oranžově skupina / DCA */
+.sil{display:block;font-size:var(--krai-fs-label);font-weight:var(--krai-fw-bold);color:var(--krai-text-3);line-height:var(--krai-lh-tight)}
+.sil:empty{display:none}
+.sil.d{color:var(--krai-mute)}
+.sil.i{color:var(--krai-mute-indirect)}
+.big .lab small{display:block;margin-top:var(--krai-space-1);font-size:var(--krai-fs-label);color:var(--krai-text-3)}
+.big .val{flex:none;font-size:var(--krai-fs-value);font-weight:var(--krai-fw-semibold);font-variant-numeric:tabular-nums}
+.big .row{display:flex;gap:var(--krai-space-2);align-items:center}
+.nb{flex:none;width:var(--krai-hit-touchComfort);height:var(--krai-size-phone-slider-height);border-radius:var(--krai-radius-md);background:linear-gradient(var(--krai-button-top),var(--krai-button-bottom));box-shadow:inset 0 0 0 var(--krai-stroke-hairline) var(--krai-border-control);font-size:var(--krai-fs-title);font-weight:var(--krai-fw-bold)}
+.btn.ctr{justify-self:start;min-height:var(--krai-hit-touch);padding:0 var(--krai-space-3);font-size:var(--krai-fs-label)}
+.nb:disabled,.btn:disabled{opacity:var(--krai-opacity-disabled);cursor:default}
+/* fader jako na Macu (FaderControl/FaderCap): štěrbina, rysky po obou stranách, kovový jezdec s pruhem barvy kanálu; žádná výplň.
+   --capl = délka jezdce podél dráhy, --capx = napříč */
+.sl{--capl:var(--krai-size-phone-cap-width);--capx:var(--krai-size-phone-cap-height);position:relative;flex:1;min-width:0;height:var(--krai-size-phone-slider-height);border-radius:var(--krai-radius-md);touch-action:pan-y}
+.sl.me{--capl:var(--krai-size-phone-cap-widthMe);--capx:var(--krai-size-phone-cap-heightMe);height:var(--krai-size-phone-slider-heightMe)}
+.sl.unk{pointer-events:none;opacity:var(--krai-opacity-disabled)}.sl.unk .cap{display:none}
+.sl .slot{position:absolute;left:calc(var(--capl) / 2 - var(--krai-space-1));right:calc(var(--capl) / 2 - var(--krai-space-1));top:50%;height:var(--krai-size-fader-track-width);margin-top:calc(var(--krai-size-fader-track-width) / -2);border-radius:var(--krai-radius-pill);background:var(--krai-fader-slot);box-shadow:0 0 0 var(--krai-stroke-hairline) var(--krai-border-subtle)}
+.sl .tk{position:absolute;top:0;bottom:0;width:var(--krai-stroke-hairline);margin-left:calc(var(--krai-stroke-hairline) / -2)}
+.sl .tk::before,.sl .tk::after{content:"";position:absolute;left:0;right:0;height:var(--krai-space-2);background:var(--krai-tick)}
+.sl .tk::before{bottom:calc(50% + var(--krai-size-fader-track-width) / 2 + var(--krai-space-1))}
+.sl .tk::after{top:calc(50% + var(--krai-size-fader-track-width) / 2 + var(--krai-space-1))}
+.sl .tk.mi::before,.sl .tk.mi::after{height:var(--krai-space-1)}
+.sl .tk.zero{width:var(--krai-stroke-emphasis);margin-left:calc(var(--krai-stroke-emphasis) / -2)}
+.sl .tk.zero::before,.sl .tk.zero::after{background:var(--krai-text-2)}
+.sl .cap{position:absolute;top:50%;width:var(--capl);height:var(--capx);margin-top:calc(var(--capx) / -2);border-radius:var(--krai-radius-xs);background:linear-gradient(90deg,var(--krai-fader-cap-light) 0,var(--krai-fader-cap-mid) 45%,var(--krai-fader-cap-dark) 55%,var(--krai-fader-cap-mid) 100%);box-shadow:var(--krai-shadow-cap),inset 0 0 0 var(--krai-stroke-hairline) var(--krai-fader-groove)}
+.sl .cap::before{content:"";position:absolute;top:0;bottom:0;left:50%;width:var(--krai-size-capBand);margin-left:calc(var(--krai-size-capBand) / -2);background:var(--mc);box-shadow:0 0 0 var(--krai-stroke-hairline) var(--krai-fader-groove)}
+.sl .cap::after{content:"";position:absolute;top:var(--krai-space-1);bottom:var(--krai-space-1);left:12%;right:12%;background:repeating-linear-gradient(90deg,var(--krai-fader-groove) 0 var(--krai-stroke-hairline),transparent 0 calc(var(--krai-stroke-hairline) + var(--krai-space-half)));-webkit-mask:linear-gradient(90deg,black 0 28%,transparent 28% 72%,black 72%);mask:linear-gradient(90deg,black 0 28%,transparent 28% 72%,black 72%)}
+.sl[data-fine]:not([data-fine=""])::after{content:attr(data-fine);position:absolute;right:var(--krai-space-2);top:50%;transform:translateY(-50%);padding:0 var(--krai-space-1);border-radius:var(--krai-radius-xs);background:var(--krai-selected);color:var(--krai-on-fill);font-size:var(--krai-fs-label);font-weight:var(--krai-fw-bold)}
+.big.empty .sl{opacity:var(--krai-opacity-disabled)}
+.big.off .sl,.big.off .val{opacity:var(--krai-opacity-silenced)}
+.mt{position:relative;height:var(--krai-size-segMeterWidth);border-radius:var(--krai-radius-xs);background:repeating-linear-gradient(90deg,var(--krai-meter-segment-off) 0 calc(var(--krai-size-meterSegment) - var(--krai-stroke-hairline)),transparent 0 var(--krai-size-meterSegment)),var(--krai-meter-track);overflow:hidden}
+/* zóny měřáku přímo z ok/warn/danger (prahy v dB jsou --krai-meter-db-*) */
+.mt i{position:absolute;inset:0 auto 0 0;width:0;background:linear-gradient(90deg,var(--krai-ok) 0 70%,var(--krai-warn) 70% 90%,var(--krai-danger) 90% 100%);background-size:var(--w,300px) 100%;-webkit-mask:repeating-linear-gradient(90deg,black 0 calc(var(--krai-size-meterSegment) - var(--krai-stroke-hairline)),transparent 0 var(--krai-size-meterSegment));mask:repeating-linear-gradient(90deg,black 0 calc(var(--krai-size-meterSegment) - var(--krai-stroke-hairline)),transparent 0 var(--krai-size-meterSegment))}
+.mt.stale{background-image:repeating-linear-gradient(45deg,var(--krai-meter-segment-off) 0 var(--krai-stroke-hairline),transparent var(--krai-stroke-hairline) var(--krai-space-1))}
+.mt.stale i{width:0!important}
+/* špička (4.4): tenká čárka, drží 1,5 s */
+.mt b{position:absolute;top:0;bottom:0;left:0;width:var(--krai-stroke-hairline);background:var(--krai-text-2)}
+.mt.v b{top:auto;left:0;right:0;width:auto;height:var(--krai-stroke-hairline)}
+.mt.stale b{display:none}
+.grst{margin:var(--krai-space-1) 0 0;font-size:var(--krai-fs-label);color:var(--krai-text-2)}
+.grst.warn{color:var(--krai-warn);font-weight:var(--krai-fw-bold)}
+/* clip u jména: červená tečka (červená = jen MUTE a clip) */
+.ch.clip .tile span::after,.big.clip .lab b::after{content:"";display:inline-block;width:var(--krai-size-clipLed);height:var(--krai-size-clipLed);margin-left:var(--krai-space-1);border-radius:var(--krai-radius-pill);background:var(--krai-danger);vertical-align:middle}
+.pend{color:var(--krai-text-3)!important;font-style:italic}
+.pend::after{content:"…"}
+
+/* akce */
+.acts{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:var(--krai-space-2)}
+.btn{min-height:var(--krai-hit-stage);border-radius:var(--krai-radius-md);background:linear-gradient(var(--krai-button-top),var(--krai-button-bottom));box-shadow:inset 0 0 0 var(--krai-stroke-hairline) var(--krai-border-control);font-size:var(--krai-fs-body);font-weight:var(--krai-fw-bold);padding:var(--krai-space-1) var(--krai-space-2);line-height:var(--krai-lh-tight)}
+.btn.wide{grid-column:1/-1}
+.acts.three{grid-template-columns:minmax(0,1.4fr) minmax(0,1fr) minmax(0,1fr)}
+/* Kanály zvlášť = rozbalení, ne akce pultu: řádek se šipkou, bez gradientu tlačítka (odliší se od Ztlumit / −6 dB / Zpět) */
+.disc{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:0 var(--krai-space-2);width:100%;min-height:var(--krai-hit-stage);margin:0 0 var(--krai-space-3);padding:var(--krai-space-2) var(--krai-space-3);border-radius:var(--krai-radius-md);background:none;box-shadow:inset 0 0 0 var(--krai-stroke-hairline) var(--krai-border-subtle);text-align:left}
+.disc b{font-size:var(--krai-fs-body);font-weight:var(--krai-fw-bold)}
+.disc small{grid-column:1;font-size:var(--krai-fs-label);color:var(--krai-text-3)}
+.disc i{grid-column:2;grid-row:1/3;font-style:normal;font-size:var(--krai-fs-title);line-height:var(--krai-lh-tight);color:var(--krai-selected)}
+.disc[aria-expanded="true"] i{transform:rotate(90deg)}
+.btn.lit{background:var(--krai-mute);color:var(--krai-tile-text);box-shadow:0 0 var(--krai-size-glow) color-mix(in srgb,var(--krai-mute) 40%,transparent)}
+.btn.armed{background:var(--krai-accent);color:var(--krai-tile-text);box-shadow:0 0 var(--krai-size-glow) color-mix(in srgb,var(--krai-accent) 40%,transparent)}
+.btn.talk.lit{background:var(--krai-state-talk-lit);color:var(--krai-tile-text);box-shadow:0 0 var(--krai-size-glow) color-mix(in srgb,var(--krai-state-talk-lit) 40%,transparent)}
+
+/* kanály zvlášť */
+.ch{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--krai-space-2);padding:var(--krai-space-2);border-radius:var(--krai-radius-md);background:linear-gradient(var(--krai-strip-top),var(--krai-strip-bottom));box-shadow:inset 0 var(--krai-stroke-hairline) 0 var(--krai-strip-edge-light),inset 0 calc(var(--krai-stroke-hairline) * -1) 0 var(--krai-strip-edge-dark)}
+.ch.mine{box-shadow:inset 0 0 0 var(--krai-stroke-emphasis) var(--mc)}
+.pan{display:flex;align-items:center;gap:var(--krai-space-2);font-size:var(--krai-fs-label);color:var(--krai-text-2)}
+.pan b{flex:1;text-align:center;font-variant-numeric:tabular-nums;font-weight:var(--krai-fw-semibold)}
+.pan b.pend{font-style:italic;color:var(--krai-text-3)}
+.pan button{min-width:var(--krai-hit-touch);min-height:var(--krai-hit-touch);border-radius:var(--krai-radius-sm);background:linear-gradient(var(--krai-button-top),var(--krai-button-bottom));box-shadow:inset 0 0 0 var(--krai-stroke-hairline) var(--krai-border-control);font-weight:var(--krai-fw-bold)}
+.ch .top{display:flex;align-items:center;gap:var(--krai-space-2);min-height:var(--krai-hit-touch)}
+.ch .top .tile{flex:0 1 auto;min-width:var(--krai-size-phone-toggle-minWidth);margin-right:auto}   /* dlaždice jen na šířku jména jako na Macu – barva kanálu nepřebíjí stránku */
+.star{flex:none;width:var(--krai-hit-touch);height:var(--krai-hit-touch);border-radius:var(--krai-radius-sm);background:transparent;font-size:var(--krai-fs-stage);color:var(--krai-text-disabled)}
+.star[aria-pressed="true"]{color:var(--mc)}
+.ch .db{flex:none;min-width:var(--krai-hit-stage);text-align:right;font-variant-numeric:tabular-nums;font-weight:var(--krai-fw-semibold)}
+.tg{flex:none;min-width:var(--krai-size-phone-toggle-minWidth);min-height:var(--krai-hit-touch);border-radius:var(--krai-radius-sm);background:linear-gradient(var(--krai-button-top),var(--krai-button-bottom));box-shadow:inset 0 0 0 var(--krai-stroke-hairline) var(--krai-border-control);font-size:var(--krai-fs-label);font-weight:var(--krai-fw-heavy);letter-spacing:var(--krai-tracking-caps)}
+.tg[aria-pressed="true"]{background:var(--krai-mute);color:var(--krai-tile-text);box-shadow:0 0 var(--krai-size-glow) color-mix(in srgb,var(--krai-mute) 40%,transparent)}
+.ch.off .sl,.ch.off .db{opacity:var(--krai-opacity-silenced)}
+.sec{margin:var(--krai-space-2) 0 0;font-size:var(--krai-fs-label);font-weight:var(--krai-fw-heavy);letter-spacing:var(--krai-tracking-caps);text-transform:uppercase;color:var(--krai-text-2)}
+.lock{display:flex;justify-content:center;align-items:center;gap:var(--krai-space-1);font-size:var(--krai-fs-label);color:var(--krai-text-3);text-align:center}
+
+/* na šířku a na širokém displeji (iPad): svislé pásy, stránky Skupiny / Kanály, listování ‹ › (ne nekonečné posouvání) */
+.pgl{display:none}
+body.ls{padding-bottom:calc(env(safe-area-inset-bottom) + var(--krai-space-2))}
+body.ls header{grid-template-columns:minmax(0,1fr) auto auto;padding:calc(env(safe-area-inset-top) + var(--krai-space-2)) 0 var(--krai-space-2)}
+body.ls .sub{display:none}
+body.ls .who h1{font-size:var(--krai-fs-stage)}
+body.ls .pgl{display:block;font-size:var(--krai-fs-label);font-weight:var(--krai-fw-heavy);letter-spacing:var(--krai-tracking-caps);text-transform:uppercase;color:var(--krai-text-2);white-space:nowrap}
+body.ls .toast{bottom:auto;top:calc(env(safe-area-inset-top) + var(--krai-space-2))}
+.lsw{display:grid;grid-template-columns:var(--krai-size-mixStripStereo) var(--krai-hit-touch) minmax(0,1fr) var(--krai-hit-touch) calc(var(--krai-hit-stage) * 2);grid-template-rows:minmax(0,1fr);gap:var(--krai-space-2);align-items:stretch}
+.lsg{display:grid;grid-template-columns:repeat(var(--per,4),minmax(0,1fr));gap:var(--krai-space-2);min-width:0}
+.lsa{min-height:0;display:grid;grid-auto-rows:minmax(var(--krai-hit-touch),calc(var(--krai-hit-stage) * 2));gap:var(--krai-space-2);align-content:start}
+.lsa .btn{min-height:var(--krai-hit-touch)}
+.pg{border-radius:var(--krai-radius-md);background:linear-gradient(var(--krai-button-top),var(--krai-button-bottom));box-shadow:inset 0 0 0 var(--krai-stroke-hairline) var(--krai-border-control);font-size:var(--krai-fs-title);font-weight:var(--krai-fw-bold)}
+.pg:disabled{opacity:var(--krai-opacity-disabled);cursor:default}
+.vs{display:grid;grid-template-rows:auto auto minmax(0,1fr) auto;gap:var(--krai-space-1);min-width:0;min-height:0;padding:var(--krai-space-2);border-radius:var(--krai-radius-md);background:linear-gradient(var(--krai-strip-top),var(--krai-strip-bottom));box-shadow:inset 0 var(--krai-stroke-hairline) 0 var(--krai-strip-edge-light),inset 0 calc(var(--krai-stroke-hairline) * -1) 0 var(--krai-strip-edge-dark)}
+.vs.mine{box-shadow:inset 0 0 0 var(--krai-stroke-emphasis) var(--mc)}
+.vs.empty .sl{opacity:var(--krai-opacity-disabled)}
+.vs.off .sl,.vs.off .vdb{opacity:var(--krai-opacity-silenced)}
+.vdb{text-align:center;font-size:var(--krai-fs-value);font-weight:var(--krai-fw-semibold);font-variant-numeric:tabular-nums}
+.vrow{display:flex;justify-content:center;gap:var(--krai-space-1);min-height:0}
+.vh{display:flex;align-items:center;justify-content:center;min-height:var(--krai-hit-touch);font-size:var(--krai-fs-label);color:var(--krai-text-3);text-align:center;line-height:var(--krai-lh-tight)}
+.vs .tg{min-width:0;width:100%}
+.sl.v{flex:none;width:var(--krai-hit-touchComfort);height:auto;align-self:stretch;touch-action:pan-x}
+/* tablet Odposlechy kapely (13.4): lišta s tím, čí odposlech se ladí */
+#tabBar{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:var(--krai-space-2);margin:0;padding:var(--krai-space-2) var(--krai-space-3);background:var(--krai-surface-2);font-weight:var(--krai-fw-bold)}
+#tabBar .btn{min-height:var(--krai-hit-touch)}
+/* podržení jezdce 500 ms (3.4): 0 dB / −∞ / Vrátit */
+.lp{position:fixed;z-index:30;display:flex;gap:var(--krai-space-1);padding:var(--krai-space-1);border-radius:var(--krai-radius-md);background:var(--krai-surface-2);box-shadow:0 0 0 var(--krai-stroke-hairline) var(--krai-border-control)}
+.lp button{min-height:var(--krai-hit-touch);padding:0 var(--krai-space-3);border-radius:var(--krai-radius-sm);background:var(--krai-surface-3);font-weight:var(--krai-fw-bold)}
+.sl.v .slot{left:50%;right:auto;top:calc(var(--capl) / 2 - var(--krai-space-1));bottom:calc(var(--capl) / 2 - var(--krai-space-1));width:var(--krai-size-fader-track-width);height:auto;margin:0 0 0 calc(var(--krai-size-fader-track-width) / -2)}
+.sl.v .tk{left:0;right:0;top:auto;bottom:auto;width:auto;height:var(--krai-stroke-hairline);margin:0 0 calc(var(--krai-stroke-hairline) / -2)}
+.sl.v .tk::before,.sl.v .tk::after{top:0;bottom:0;left:auto;right:auto;width:var(--krai-space-2);height:auto}
+.sl.v .tk::before{right:calc(50% + var(--krai-size-fader-track-width) / 2 + var(--krai-space-1))}
+.sl.v .tk::after{left:calc(50% + var(--krai-size-fader-track-width) / 2 + var(--krai-space-1))}
+.sl.v .tk.mi::before,.sl.v .tk.mi::after{width:var(--krai-space-1);height:auto}
+.sl.v .tk.zero{height:var(--krai-stroke-emphasis);margin:0 0 calc(var(--krai-stroke-emphasis) / -2)}
+.sl.v .cap{top:auto;left:50%;width:var(--capx);height:var(--capl);margin:0 0 0 calc(var(--capx) / -2);background:linear-gradient(180deg,var(--krai-fader-cap-light) 0,var(--krai-fader-cap-mid) 45%,var(--krai-fader-cap-dark) 55%,var(--krai-fader-cap-mid) 100%)}
+.sl.v .cap::before{left:0;right:0;top:50%;bottom:auto;width:auto;height:var(--krai-size-capBand);margin:calc(var(--krai-size-capBand) / -2) 0 0}
+.sl.v .cap::after{left:var(--krai-space-1);right:var(--krai-space-1);top:12%;bottom:12%;background:repeating-linear-gradient(180deg,var(--krai-fader-groove) 0 var(--krai-stroke-hairline),transparent 0 calc(var(--krai-stroke-hairline) + var(--krai-space-half)));-webkit-mask:linear-gradient(180deg,black 0 28%,transparent 28% 72%,black 72%);mask:linear-gradient(180deg,black 0 28%,transparent 28% 72%,black 72%)}
+.sl.v[data-fine]:not([data-fine=""])::after{right:auto;left:50%;top:var(--krai-space-1);transform:translateX(-50%)}
+.mt.v{flex:none;width:var(--krai-size-segMeterWidth);height:auto;align-self:stretch;background:repeating-linear-gradient(0deg,var(--krai-meter-segment-off) 0 calc(var(--krai-size-meterSegment) - var(--krai-stroke-hairline)),transparent 0 var(--krai-size-meterSegment)),var(--krai-meter-track)}
+.mt.v i{inset:auto 0 0 0;width:auto;height:0;background:linear-gradient(0deg,var(--krai-ok) 0 70%,var(--krai-warn) 70% 90%,var(--krai-danger) 90% 100%);background-size:100% var(--h,200px);background-position:bottom;-webkit-mask:repeating-linear-gradient(0deg,black 0 calc(var(--krai-size-meterSegment) - var(--krai-stroke-hairline)),transparent 0 var(--krai-size-meterSegment));mask:repeating-linear-gradient(0deg,black 0 calc(var(--krai-size-meterSegment) - var(--krai-stroke-hairline)),transparent 0 var(--krai-size-meterSegment))}
+.mt.v.stale i{height:0!important}
+
+/* přepínač jazyka CZ / EN (patička stránky a párování) */
+.lng{display:flex;justify-content:center;gap:var(--krai-space-1);margin-top:var(--krai-space-1)}
+.lng button{min-width:var(--krai-hit-touch);min-height:var(--krai-hit-touch);padding:0 var(--krai-space-2);border-radius:var(--krai-radius-sm);background:none;color:var(--krai-text-3);font-size:var(--krai-fs-label);font-weight:var(--krai-fw-semibold);letter-spacing:var(--krai-tracking-caps)}
+.lng button[aria-pressed="true"]{color:var(--krai-text);box-shadow:inset 0 0 0 var(--krai-stroke-hairline) var(--krai-border-subtle)}
+
+/* párování mobilu (ONBOARDING §B, PLAN 13.2): kdo jsi → PIN → co je tvoje → tři posuvníky. Server: docs/specs/PAIRING-API.md.
+   Věty ≥ 17 px (fs-stage), cíle ≥ 44 px, hlavní tlačítko dole u palce. */
+body.pairing{padding-bottom:env(safe-area-inset-bottom)}
+body.pairing header,body.pairing main,body.pairing .hint,body.pairing .banner{display:none!important}
+.pair{display:grid;grid-template-rows:auto auto minmax(0,1fr) auto auto;gap:var(--krai-space-4);min-height:100vh;min-height:100svh;max-width:calc(var(--krai-size-mixSideColumn) * 2);margin:0 auto;padding:calc(env(safe-area-inset-top) + var(--krai-space-4)) 0 var(--krai-space-4)}
+.pair[hidden]{display:none}
+.pfoot .mark{width:var(--krai-space-5);height:var(--krai-space-5);vertical-align:middle;margin-right:var(--krai-space-1)}
+.pstep{min-height:var(--krai-fs-label);font-size:var(--krai-fs-label);font-weight:var(--krai-fw-heavy);letter-spacing:var(--krai-tracking-caps);text-transform:uppercase;color:var(--krai-text-2)}
+.phead{display:grid;gap:var(--krai-space-3)}
+.pid{display:flex;align-items:center;gap:var(--krai-space-3)}
+.pid .ini{min-width:var(--krai-hit-stage);height:var(--krai-hit-stage);font-size:var(--krai-fs-title)}
+.pair h1{margin:0;font-size:var(--krai-fs-title);font-weight:var(--krai-fw-bold);line-height:var(--krai-lh-tight);outline:none}
+.pair h1 em{font-style:normal;color:var(--mc)}
+.lead{margin:0;font-size:var(--krai-fs-stage);line-height:var(--krai-lh-text);color:var(--krai-text-2)}
+.pbody{display:grid;gap:var(--krai-space-3);align-content:start;min-width:0}
+.pbody .card{margin:0}
+.it{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:var(--krai-space-3);align-items:start;font-size:var(--krai-fs-stage);line-height:var(--krai-lh-text)}
+.it svg{width:var(--krai-fs-stage);height:var(--krai-fs-stage);margin-top:var(--krai-space-half);color:var(--krai-text-2)}
+.it b{display:block;font-weight:var(--krai-fw-bold)}
+.it small{display:block;font-size:var(--krai-fs-stage);color:var(--krai-text-2)}
+.it .dot{width:var(--krai-size-clipLed);height:var(--krai-size-clipLed);margin-top:var(--krai-space-2);border-radius:var(--krai-radius-pill);background:var(--krai-ok)}
+.pacts{display:grid;gap:var(--krai-space-2)}
+.cta{width:100%;min-height:var(--krai-hit-stage);padding:var(--krai-space-2) var(--krai-space-4);border-radius:var(--krai-radius-md);background:var(--krai-accent);color:var(--krai-text-on-accent);font-size:var(--krai-fs-stage);font-weight:var(--krai-fw-bold);line-height:var(--krai-lh-tight)}
+.cta:disabled{opacity:var(--krai-opacity-disabled);cursor:default}
+.alt{width:100%;min-height:var(--krai-hit-touch);padding:var(--krai-space-1) var(--krai-space-4);border-radius:var(--krai-radius-md);background:none;color:var(--krai-text-2);font-size:var(--krai-fs-stage);font-weight:var(--krai-fw-semibold);text-decoration:underline;text-underline-offset:var(--krai-space-1)}
+.pfoot{text-align:center;font-size:var(--krai-fs-label);color:var(--krai-text-3)}
+.perr{min-height:calc(var(--krai-fs-stage) * var(--krai-lh-text));margin:0;font-size:var(--krai-fs-stage);line-height:var(--krai-lh-text);color:var(--krai-text-danger);text-align:center}
+.perr.info{color:var(--krai-text-2)}
+/* PIN: 4 políčka + číselná klávesnice 3×4 (tlačítka pultu) */
+.pins{display:flex;justify-content:center;gap:var(--krai-space-3)}
+.pins span{display:grid;place-items:center;width:var(--krai-hit-touchComfort);height:var(--krai-hit-stage);border-radius:var(--krai-radius-sm);background:var(--krai-well);box-shadow:inset 0 0 0 var(--krai-stroke-hairline) var(--krai-border-control);font-size:var(--krai-fs-title);font-weight:var(--krai-fw-bold);font-variant-numeric:tabular-nums}
+.pins span.f{box-shadow:inset 0 0 0 var(--krai-stroke-emphasis) var(--mc)}
+.pins span.nx{box-shadow:inset 0 0 0 var(--krai-stroke-emphasis) var(--krai-selected)}
+.keys{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--krai-space-2)}
+.keys button{min-height:var(--krai-hit-stage);border-radius:var(--krai-radius-md);background:linear-gradient(var(--krai-button-top),var(--krai-button-bottom));box-shadow:inset 0 0 0 var(--krai-stroke-hairline) var(--krai-border-control);font-size:var(--krai-fs-title);font-weight:var(--krai-fw-semibold);font-variant-numeric:tabular-nums}
+.keys button:active{background:var(--krai-surface-3)}
+.keys button:disabled{opacity:var(--krai-opacity-disabled);cursor:default}
+/* Co je tvoje: čipy = dlaždice jmen; vybraný = plná barva kanálu + ✓, nevybraný = tlačítko s proužkem barvy */
+.chips{display:flex;flex-wrap:wrap;gap:var(--krai-space-2)}
+.chip{display:inline-flex;align-items:center;gap:var(--krai-space-1);min-height:var(--krai-hit-touch);padding:0 var(--krai-space-3);border-radius:var(--krai-radius-sm);background:linear-gradient(var(--krai-button-top),var(--krai-button-bottom));box-shadow:inset 0 0 0 var(--krai-stroke-hairline) var(--krai-border-control),inset var(--krai-space-1) 0 0 0 var(--cc,var(--krai-channel-unowned));font-size:var(--krai-font-size-tile);font-weight:var(--krai-fw-bold);font-stretch:condensed}
+.chip[aria-pressed="true"]{background:var(--cc,var(--krai-channel-unowned));color:var(--krai-tile-text);box-shadow:inset 0 var(--krai-stroke-hairline) 0 var(--krai-strip-edge-light)}
+.chip[aria-pressed="true"]::before{content:"✓"}
+/* tři posuvníky – legenda */
+.legend{display:grid;grid-template-columns:auto minmax(0,1fr);gap:var(--krai-space-2) var(--krai-space-3);align-items:center;margin:0}
+.legend dt .tile{display:inline-flex;font-size:var(--krai-font-size-tile);font-weight:var(--krai-fw-heavy)}
+.legend dd{margin:0;font-size:var(--krai-fs-stage);line-height:var(--krai-lh-text);color:var(--krai-text-2);min-width:0;overflow-wrap:anywhere}
+.code{width:100%;min-height:var(--krai-hit-stage);padding:0 var(--krai-space-3);border:0;border-radius:var(--krai-radius-md);background:var(--krai-well);box-shadow:inset 0 0 0 var(--krai-stroke-hairline) var(--krai-border-control);color:var(--krai-text);font-family:var(--krai-font-mono);font-size:var(--krai-fs-title);letter-spacing:var(--krai-tracking-caps);text-align:center;text-transform:uppercase}
+.code:focus-visible{box-shadow:inset 0 0 0 var(--krai-stroke-emphasis) var(--krai-selected);outline:none}
+
+.toast{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom) + 120px);transform:translateX(-50%);display:none;width:max-content;align-items:center;gap:var(--krai-space-3);max-width:calc(100% - var(--krai-space-6));padding:var(--krai-space-2) var(--krai-space-2) var(--krai-space-2) var(--krai-space-4);border-radius:var(--krai-radius-pill);background:var(--krai-surface-3);border:var(--krai-stroke-hairline) solid var(--krai-border-subtle);box-shadow:var(--krai-shadow-overlay);font-weight:var(--krai-fw-bold);z-index:var(--krai-z-toast);pointer-events:none}
+.toast.on{display:flex}
+.toast.err{background:var(--krai-danger);color:var(--krai-on-fill)}
+.toast button{pointer-events:auto;min-height:var(--krai-hit-touch);padding:0 var(--krai-space-4);border-radius:var(--krai-radius-pill);background:var(--krai-surface-1);color:var(--krai-text);font-weight:var(--krai-fw-heavy)}
+.dis main{pointer-events:none;opacity:var(--krai-opacity-offline)}
+@media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<header>
+  <div class="who"><span class="ini" id="ini" aria-hidden="true">·</span><h1 id="who">Můj odposlech</h1></div>
+  <div class="pgl" id="pgl"></div>
+  <div class="st" id="st" role="status"><i aria-hidden="true"></i><span id="stt">připojuji</span></div>
+  <div class="sub" id="sub">Ovládáš jen svůj odposlech – sál ani ostatní nezměníš.</div>
+</header>
+<div class="banner" id="banner" role="alert"></div>
+<div class="hint" id="hint"></div>
+<section class="pair" id="pair" hidden aria-labelledby="pairH"></section>
+<main id="main"></main>
+<div class="toast" id="toast"><span id="toastT"></span></div>
+<div class="sr" id="live" role="status" aria-live="polite"></div>
+<script>
+'use strict';
+let token = null, tick = 0, qTick = 0;   // klíč mobilu (session nebo starý odkaz člena) – nastaví párování / boot()
+let cfg = null, V = {}, K = {}, M = [], last = Date.now(), lastM = 0, mixerOK = false, es = null;
+let stars = new Set(), undo = [], showDetail = false, showRest = false;
+const P = {};             // čeká na pult: adresa → {v, t}
+const dragging = new Set();
+const pings = [];         // odstupy pingů (kvalita spojení, 4.16)
+let drops = 0;            // kolikrát se stránka znovu připojovala (hlásí se Macu, 4.16)
+let lastPing = 0;
+const $ = id => document.getElementById(id);
+
+// MARK: - jazyk: ?lang=cs|en > ruční volba (CZ / EN v patičce, localStorage) > jazyk zařízení (cs, sk → čeština) > angličtina
+const LANGS = ['cs', 'en'];
+function urlLang(){ try { const l = (new URLSearchParams(location.search).get('lang') || '').toLowerCase(); return LANGS.includes(l) ? l : null; } catch (e) { return null; } }
+function pickLang(){
+  const u = urlLang(); if (u) return u;
+  try { const s = localStorage.getItem('krai-lang'); if (LANGS.includes(s)) return s; } catch (e) {}
+  const list = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || ''];
+  for (const x of list) { const p = String(x || '').toLowerCase().split('-')[0]; if (p === 'cs' || p === 'sk') return 'cs'; if (p === 'en') return 'en'; }
+  return 'en';
+}
+let L = pickLang();
+document.documentElement.lang = L;
+/* Slovník: česky přesně jako dřív; anglicky krátce, „you“, bez žargonu zvukařů (odposlech = monitor mix, pult = mixer, sál = house).
+   Menu Macu se v angličtině jmenují anglicky (Band), i když Mac zatím mluví jen česky. */
+const T = {
+  cs: {
+    title: 'Můj odposlech', connecting: 'připojuji', sub: 'Ovládáš jen svůj odposlech – sál ani ostatní nezměníš.',
+    langGroup: 'Jazyk',
+    toastBtn: a => ' Tlačítko ' + a + ' je dole.', offline: 'Bez spojení – nic se neodeslalo',
+    docTitle: n => 'Odposlech · ' + n, busFallback: b => 'Odposlech ' + b,
+    quick: 'Rychle', quickRight: 'JÁ · KAPELA · KLIK', ME: 'JÁ', BAND: 'KAPELA', CLICK: 'KLIK',
+    meEmpty: 'Označ ★ svoje kanály dole v „Kanály zvlášť“', everyoneElse: 'všichni ostatní', clickSub: 'jen v uších, ne v sále',
+    myMix: 'Můj odposlech', volume: 'Hlasitost', volumeSub: 'všechno v uších najednou · pojistka hlídá strop',
+    inMyMix: x => x + ' v mých uších', panIn: x => x + ' – kde ho slyším (vlevo / vpravo)', panC: 'střed', panL: 'L', panR: 'P',
+    masterLabel: 'Můj odposlech – celková hlasitost',
+    mute: 'Ztlumit odposlech', muted: 'ODPOSLECH ZTLUMENÝ', undo: '↶ Zpět', talk: 'MLUVIT KE KAPELE (drž)', talking: 'MLUVÍŠ KE KAPELE',
+    detail: 'Kanály zvlášť',
+    detailCount: n => `${n} ${n === 1 ? 'kanál' : n >= 2 && n <= 4 ? 'kanály' : 'kanálů'} · moje ★ nahoře`,
+    detailRight: 'jen v tvých uších', secMine: '★ Moje', secMineEmpty: '★ Moje – klepni na hvězdičku u svého nástroje', secOn: 'V uších',
+    hideOff: 'Skrýt vypnuté', showOff: n => `Vypnuté v uších (${n})`,
+    saved: 'Uložený odposlech', savedRight: 'v Mixtetu', save: 'Uložit', restore: 'Vrátit uložené', restoreArm: 'Ještě jednou: vrátit',
+    copyTitle: 'Začít od mixu…', copyRight: 'přepíše tvůj odposlech', copyArm: 'Ještě jednou: převzít',
+    lockNote: 'Mixtet · Tenhle odkaz ovládá jen tvůj odposlech.',
+    pgGroups: 'Skupiny', pgChannels: (a, b, n) => `Kanály ${a}–${b} z ${n}`,
+    meMarkLs: '★ označ na výšku', clickLs: 'jen v uších', prevPage: 'Předchozí stránka', nextPage: 'Další stránka', wholeLs: 'všechno v uších',
+    mineSuffix: ' (moje)',
+    silMute: 'ztlumeno v mixu', silGroup: 'ztlumeno v mixu – skupina', silDca: 'ztlumeno v mixu – DCA', silNoSignal: 'nehraje – žádný signál',
+    polarity: 'polarita otočená', silent: 'ticho', center: 'střed', toCenter: 'Na střed', centerSub: 'střed = tvůj uložený odposlech',
+    hearOff: 'VYPNUTO', hearOn: 'SLYŠÍM', hearOffLabel: n => n + ' vypnuto v mých uších – zapnout', hearOnLabel: n => n + ' slyším – vypnout',
+    starLabel: n => 'Moje: ' + n,
+    tMuted: 'Odposlech ztlumený.', undoAct: 'Vrátit', tUnmuted: 'Odposlech zase hraje.',
+    tTooQuiet: 'Odposlech je už pod −60 dB – víc neztiším', tQuiet: 'Odposlech −6 dB', tUndone: 'Vráceno',
+    tSaved: 'Tvůj odposlech je uložený v Mixtetu', tabTitle: 'Čí odposlech ladíš?', tabLead: 'Tablet Odposlechy kapely – ťukni na jméno. Po 20 s bez dotyku se zase zamkne. Sál odsud nejde.',
+    tabBar: n => 'Ladíš odposlech: ' + n + ' · zamkne se po 20 s bez dotyku', tabOther: 'Jiný člen',
+    grOn: d => '🛡 Pojistka uší ubírá −' + String(d).replace('.', ',') + ' dB', grLoud: d => '🛡 Pojistka ubírá −' + d + ' dB – máš to moc nahlas, ztiš si odposlech',
+    songSave: s => 'Uložit do písně „' + s + '“', songResave: s => 'Uložit do „' + s + '“ znovu',
+    tSongSaved: s => 'Uloženo do „' + s + '“ – při další písni ho dostaneš zpátky', tNotSaved: 'Neuloženo – pult neodpovídá',
+    tCopied: n => 'Převzat mix: ' + n + ' – kvůli bezpečí o 6 dB tišeji, zesil si Hlasitostí',
+    tCopyFail: 'Nepodařilo se – mix ještě není načtený nebo pult neodpovídá',
+    tRestored: 'Uložený odposlech vrácen', tFail: 'Nepodařilo se – pult neodpovídá',
+    confirm5: a => a + '. Potvrď do 5 sekund.', tTalkBusy: 'Teď mluví někdo jiný – zkus to za chvíli',
+    tNotSent: 'Neodesláno – pult neodpovídá', tReverted: 'Pult změnu nepotvrdil – vráceno na poslední potvrzenou hodnotu',
+    bannerLost: 'Spojení ztraceno – tvůj odposlech hraje dál, jak byl. Zkouším znovu…',
+    bannerMixer: 'Mixtet běží, ale pult neodpovídá – ovládání je zamčené.',
+    stLost: 'bez spojení', stMixer: 'pult neodpovídá', stWeak: 'slabé spojení', stGood: 'spojení dobré',
+    wakeHint: '<b>Displej může zhasnout.</b> Na koncert: iPhone › Nastavení › Zobrazení a jas › Automatický zámek › <b>Nikdy</b> (Android: Displej › Časový limit). Tip: stránku si přidej na plochu.<br><button>Rozumím</button>',
+    browser: 'prohlížeč', hubFallback: 'Mixtet kapelníka',
+    pfoot: 'Mixtet · ovládáš jen svůj odposlech', step: (i, n) => 'Krok ' + i + ' ze ' + n,
+    whoTitle: (n, a) => 'Odposlech pro ' + a, whoName: (n, a) => a,
+    whoHMember: 'Ahoj, tohle je odposlech pro ', whoHOther: 'Ahoj, tohle je odposlech: ',
+    whoLead: 'Ovládáš jen svůj odposlech. Sál ani ostatní nezměníš.', viaWifi: 'spojeno přes Wi‑Fi kapely',
+    iAm: n => 'Jsem ' + n + ' →', theyreMine: 'Jsou moje →', iAmNot: n => 'Nejsem ' + n, notMine: 'Nejsou moje',
+    otherQrTitle: 'Jiný QR', otherQrH: 'Tohle není tvůj odposlech',
+    otherQrLead: 'Každý má svůj QR. Řekni kapelníkovi, ať ti ukáže tvůj (Mixtet › Kapela).',
+    back: 'Zpět', haveCode: 'Mám kód od kapelníka',
+    delDigit: 'Smazat číslici', pinTitle: 'PIN kapely', pinH: 'Zadej PIN kapely', pinLead: 'Kapelník ho najde v Mixtetu na stránce Kapela.',
+    pinCount: n => 'Zadáno ' + n + ' ze 4', checking: 'Ověřuji…', hubDown: h => h + ' neodpovídá – zkus to znovu.',
+    pinWrong: left => 'Špatný PIN. ' + (left === 1 ? 'Zbývá 1 pokus.' : 'Zbývají ' + (left || 0) + ' pokusy.'),
+    pinLocked: s => 'Moc špatných pokusů. Další za ' + s + ' s.', canRetry: 'Můžeš zkusit znovu.',
+    hubDownToast: h => h + ' neodpovídá – zkus to znovu',
+    waitTitle: 'Čekám na kapelníka', waitH: 'Čekám, až tě kapelník pustí',
+    waitLead: (h, n, d) => 'Na zařízení ' + h + ' se ukázalo „' + n + ' (' + d + ') se chce připojit“. Kapelník ťukne na Povolit.',
+    waitItem: 'Cizí síť – nový mobil musí povolit kapelník', waitItemSub: 'Až to povolí, pokračuje se samo.', cancel: 'Zrušit',
+    mineTitle: 'Co je tvoje?', mineLeadPre: 'Z toho bude posuvník JÁ. Kapelník už vybral – ťuknutím upravíš.',
+    mineLead: 'Ťukni na svoje kanály – z nich bude posuvník JÁ.', thatsMe: 'To jsem já →',
+    picked: n => 'Vybráno: ' + n, pickedNone: 'Nic nevybráno – JÁ zůstane prázdné. ★ přidáš kdykoli v Kanálech zvlášť.',
+    noMe: 'Pokračovat bez JÁ →', hubDownSave: h => h + ' neodpovídá – nic se neuložilo. Zkus to znovu.',
+    andMore: n => ' a další ' + n, meNone: 'zatím nic – ★ přidáš v Kanálech zvlášť',
+    homeTitle: 'Přidej si stránku na plochu', homeApple: 'Sdílet → Přidat na plochu.', homeAndroid: '⋮ → Přidat na plochu.',
+    homeOther: 'V prohlížeči: Přidat na plochu.', homeNext: ' Příště jedním ťuknutím.',
+    wakeYes: 'Displej zůstane svítit, dokud je stránka otevřená.', wakeNo: 'Displej může zhasnout – na koncert Automatický zámek › Nikdy.',
+    wakeOn: 'Displej necháme svítit', wakeOnSub: 'dokud máš stránku otevřenou.', wakeOff: 'Ať displej nezhasne',
+    wakeApple: 'Nastavení › Zobrazení a jas › Automatický zámek › Nikdy (na zkoušku a koncert).', wakeAndroid: 'Nastavení › Displej › Časový limit obrazovky.',
+    doneTitle: 'Tři posuvníky', doneLead: 'Nahoře máš JÁ, KAPELA a KLIK – každý posune celou skupinu najednou.',
+    doneGuard: ' Pojistka hlídá tvůj odposlech.', startPlaying: 'Začít hrát',
+    errExpired: ['Tenhle kód už neplatí', 'Kód platí 10 minut. Řekni kapelníkovi o nový QR (Mixtet › Kapela › Nový kód).'],
+    errUnknown: ['Tenhle odkaz neznám', 'Možná je opsaný s chybou. Naskenuj svůj QR znovu, nebo zadej kód od kapelníka.'],
+    errRevoked: ['Tenhle mobil je odpojený', 'Kapelník ho odpojil nebo vytvořil nový odkaz. Naskenuj nový QR, nebo zadej kód.'],
+    errDenied: ['Kapelník připojení odmítl', 'Jestli to byl omyl, řekni mu a zkus to znovu.'],
+    errTimeout: ['Kapelník zatím nepovolil', 'Žádost vypršela – nikdo neťukl na Povolit. Řekni kapelníkovi a zkus to znovu.'],
+    errNet: ['Spojení se nepovedlo', 'Jsi na Wi‑Fi kapely? Mobil musí být ve stejné síti jako zařízení s Mixtetem (Mac, iPad…) a Mixtet na něm musí běžet.'],
+    errLocked: ['Moc pokusů', ''],
+    tryAgain: 'Zkusit znovu', enterCode: 'Zadat kód od kapelníka', retryIn: s => 'Zkus to znovu za ' + s + ' s.',
+    codeLabel: 'Kód nebo odkaz od kapelníka', codeTitle: 'Kód od kapelníka', codeH: 'Zadej kód od kapelníka',
+    codeLead: 'Je pod QR v Mixtetu (stránka Kapela) – 6 znaků. Můžeš vložit i celý odkaz.', next: 'Pokračovat →',
+    code6: 'Kód má 6 znaků.', codeNet: 'Spojení se nepovedlo – jsi na Wi‑Fi kapely?', codeLocked: s => 'Moc pokusů – zkus to za ' + s + ' s.',
+    codeExpired: 'Tenhle kód už neplatí – řekni kapelníkovi o nový.', codeUnknown: 'Tenhle kód neznám – zkontroluj ho.'
+  },
+  en: {
+    title: 'My monitor mix', connecting: 'connecting', sub: 'You control only your monitor mix – not the house, not the others.',
+    langGroup: 'Language',
+    toastBtn: a => ' The ' + a + ' button is at the bottom.', offline: 'No connection – nothing was sent',
+    docTitle: n => 'Monitor mix · ' + n, busFallback: b => 'Monitor ' + b,
+    quick: 'Quick', quickRight: 'ME · BAND · CLICK', ME: 'ME', BAND: 'BAND', CLICK: 'CLICK',
+    meEmpty: 'Mark your channels with ★ below in “Individual channels”', everyoneElse: 'everyone else', clickSub: 'monitors only, not in the house',
+    myMix: 'My monitor mix', volume: 'Volume', volumeSub: 'your whole mix at once · the ear guard caps it',
+    inMyMix: x => x + ' in my mix', panIn: x => x + ' – where I hear it (left / right)', panC: 'centre', panL: 'L', panR: 'R',
+    masterLabel: 'My monitor mix – overall volume',
+    mute: 'Mute my mix', muted: 'MY MIX MUTED', undo: '↶ Undo', talk: 'TALK TO BAND (hold)', talking: 'TALKING TO BAND',
+    detail: 'Individual channels',
+    detailCount: n => `${n} ${n === 1 ? 'channel' : 'channels'} · my ★ on top`,
+    detailRight: 'only in your mix', secMine: '★ Mine', secMineEmpty: '★ Mine – tap the star on your instrument', secOn: 'In my mix',
+    hideOff: 'Hide channels that are off', showOff: n => `Off in my mix (${n})`,
+    saved: 'Saved monitor mix', savedRight: 'in Mixtet', save: 'Save', restore: 'Restore saved', restoreArm: 'Tap again: restore',
+    copyTitle: 'Start from a mix…', copyRight: 'replaces yours', copyArm: 'Tap again: copy',
+    lockNote: 'Mixtet · This link controls only your monitor mix.',
+    pgGroups: 'Groups', pgChannels: (a, b, n) => `Channels ${a}–${b} of ${n}`,
+    meMarkLs: '★ mark in portrait', clickLs: 'monitors only', prevPage: 'Previous page', nextPage: 'Next page', wholeLs: 'whole mix',
+    mineSuffix: ' (mine)',
+    silMute: 'muted in the mix', silGroup: 'muted in the mix – group', silDca: 'muted in the mix – DCA', silNoSignal: 'silent – no signal',
+    polarity: 'polarity inverted', silent: 'silent', center: 'centre', toCenter: 'Back to centre', centerSub: 'centre = your saved mix',
+    hearOff: 'OFF', hearOn: 'ON', hearOffLabel: n => n + ' is off in my mix – turn on', hearOnLabel: n => n + ' is on in my mix – turn off',
+    starLabel: n => 'Mine: ' + n,
+    tMuted: 'Monitor mix muted.', undoAct: 'Undo', tUnmuted: 'Monitor mix is back on.',
+    tTooQuiet: 'Your mix is already below −60 dB – can’t go lower', tQuiet: 'Monitor mix −6 dB', tUndone: 'Undone',
+    tSaved: 'Your monitor mix is saved in Mixtet', tabTitle: 'Whose monitor mix?', tabLead: 'Band monitors tablet – tap a name. It locks again after 20 s without a touch. The main mix can’t be changed here.',
+    tabBar: n => 'Adjusting: ' + n + ' · locks after 20 s without a touch', tabOther: 'Other member',
+    grOn: d => '🛡 Ear guard is taking off −' + d + ' dB', grLoud: d => '🛡 Ear guard is taking off −' + d + ' dB – it’s too loud, turn your mix down',
+    songSave: s => 'Save to song “' + s + '”', songResave: s => 'Save to “' + s + '” again',
+    tSongSaved: s => 'Saved to “' + s + '” – you’ll get it back whenever this song loads', tNotSaved: 'Not saved – mixer not responding',
+    tCopied: n => 'Copied mix: ' + n + ' – 6 dB quieter to be safe, turn it up with Volume',
+    tCopyFail: 'Didn’t work – mix not loaded yet or mixer not responding',
+    tRestored: 'Saved monitor mix restored', tFail: 'Didn’t work – mixer not responding',
+    confirm5: a => a + '. Confirm within 5 seconds.', tTalkBusy: 'Someone else is talking – try again in a moment',
+    tNotSent: 'Not sent – mixer not responding', tReverted: 'Mixer didn’t confirm the change – back to the last confirmed value',
+    bannerLost: 'Lost connection to the Mac – your monitor mix keeps playing as it was. Retrying…',
+    bannerMixer: 'Mixtet is running, but the mixer isn’t responding – controls are locked.',
+    stLost: 'no connection', stMixer: 'mixer not responding', stWeak: 'weak connection', stGood: 'good connection',
+    wakeHint: '<b>The screen may turn off.</b> For a gig: iPhone › Settings › Display &amp; Brightness › Auto-Lock › <b>Never</b> (Android: Display › Screen timeout). Tip: add this page to your home screen.<br><button>Got it</button>',
+    browser: 'browser', hubFallback: 'Bandleader’s Mixtet',
+    pfoot: 'Mixtet · you control only your monitor mix', step: (i, n) => 'Step ' + i + ' of ' + n,
+    whoTitle: n => 'Monitor mix for ' + n, whoName: n => n,
+    whoHMember: 'Hi, this is the monitor mix for ', whoHOther: 'Hi, this is the monitor mix: ',
+    whoLead: 'You control only your monitor mix. You can’t change the house or the others.', viaWifi: 'connected via the band’s Wi‑Fi',
+    iAm: n => 'I’m ' + n + ' →', theyreMine: 'It’s mine →', iAmNot: n => 'I’m not ' + n, notMine: 'It’s not mine',
+    otherQrTitle: 'Different QR', otherQrH: 'This isn’t your monitor mix',
+    otherQrLead: 'Everyone has their own QR. Ask the bandleader to show you yours (Mixtet › Band).',
+    back: 'Back', haveCode: 'I have a code from the bandleader',
+    delDigit: 'Delete digit', pinTitle: 'Band PIN', pinH: 'Enter the band PIN', pinLead: 'The bandleader finds it in Mixtet on the Band page.',
+    pinCount: n => n + ' of 4 entered', checking: 'Checking…', hubDown: h => h + ' isn’t responding – try again.',
+    pinWrong: left => 'Wrong PIN. ' + (left === 1 ? '1 try left.' : (left || 0) + ' tries left.'),
+    pinLocked: s => 'Too many wrong tries. Next one in ' + s + ' s.', canRetry: 'You can try again.',
+    hubDownToast: h => h + ' isn’t responding – try again',
+    waitTitle: 'Waiting for the bandleader', waitH: 'Waiting for the bandleader to let you in',
+    waitLead: (h, n, d) => h + ' now shows “' + n + ' (' + d + ') wants to connect”. The bandleader taps Allow.',
+    waitItem: 'Unknown network – the bandleader has to allow a new phone', waitItemSub: 'Once allowed, it continues on its own.', cancel: 'Cancel',
+    mineTitle: 'What’s yours?', mineLeadPre: 'This becomes your ME slider. The bandleader already picked – tap to change.',
+    mineLead: 'Tap your channels – they become your ME slider.', thatsMe: 'That’s me →',
+    picked: n => 'Selected: ' + n, pickedNone: 'Nothing selected – ME stays empty. Add ★ anytime in Individual channels.',
+    noMe: 'Continue without ME →', hubDownSave: h => h + ' isn’t responding – nothing was saved. Try again.',
+    andMore: n => ' and ' + n + ' more', meNone: 'nothing yet – add ★ in Individual channels',
+    homeTitle: 'Add this page to your home screen', homeApple: 'Share → Add to Home Screen.', homeAndroid: '⋮ → Add to Home screen.',
+    homeOther: 'In your browser: Add to Home screen.', homeNext: ' Next time it’s one tap.',
+    wakeYes: 'The screen stays on while this page is open.', wakeNo: 'The screen may turn off – for a gig set Auto-Lock › Never.',
+    wakeOn: 'We’ll keep the screen on', wakeOnSub: 'while this page is open.', wakeOff: 'Keep the screen on',
+    wakeApple: 'Settings › Display & Brightness › Auto-Lock › Never (for rehearsals and gigs).', wakeAndroid: 'Settings › Display › Screen timeout.',
+    doneTitle: 'Three sliders', doneLead: 'At the top: ME, BAND and CLICK – each one moves its whole group at once.',
+    doneGuard: ' The ear guard protects your mix.', startPlaying: 'Start playing',
+    errExpired: ['This code has expired', 'A code is valid for 10 minutes. Ask the bandleader for a new QR (Mixtet › Band › New code).'],
+    errUnknown: ['I don’t know this link', 'Maybe it was copied wrong. Scan your QR again, or enter the code from the bandleader.'],
+    errRevoked: ['This phone is disconnected', 'The bandleader disconnected it or made a new link. Scan a new QR, or enter a code.'],
+    errDenied: ['The bandleader declined', 'If it was a mistake, tell them and try again.'],
+    errTimeout: ['Not allowed yet', 'The request expired – nobody tapped Allow. Tell the bandleader and try again.'],
+    errNet: ['Couldn’t connect', 'Are you on the band’s Wi‑Fi? Your phone must be on the same network as the device running Mixtet (Mac, iPad…), and Mixtet must be running.'],
+    errLocked: ['Too many tries', ''],
+    tryAgain: 'Try again', enterCode: 'Enter code from bandleader', retryIn: s => 'Try again in ' + s + ' s.',
+    codeLabel: 'Code or link from the bandleader', codeTitle: 'Code from bandleader', codeH: 'Enter the code from the bandleader',
+    codeLead: 'It’s under the QR in Mixtet (Band page) – 6 characters. You can paste the whole link too.', next: 'Continue →',
+    code6: 'The code has 6 characters.', codeNet: 'Couldn’t connect – are you on the band’s Wi‑Fi?', codeLocked: s => 'Too many tries – try again in ' + s + ' s.',
+    codeExpired: 'This code has expired – ask the bandleader for a new one.', codeUnknown: 'I don’t know this code – check it.'
+  }
+};
+function t(k, ...a){ const d = T[L] && k in T[L] ? T[L] : T.cs; const v = d[k]; return typeof v === 'function' ? v(...a) : v; }
+/* jméno odposlechu bez jména člena posílá server česky („Odposlech 5“) – v angličtině „Monitor 5“ */
+const nm = n => L === 'en' ? String(n == null ? '' : n).replace(/^Odposlech (\d+)$/, 'Monitor $1') : n;
+/* ?lang= v adrese platí i po přepsání adresy na /m/<klíč> (zástupce na ploše) */
+const langQ = () => { const l = urlLang(); return l ? '?lang=' + l : ''; };
+/* statické texty hlavičky (v HTML zůstává čeština pro první vykreslení) */
+function paintStatic(){
+  document.documentElement.lang = L;
+  if (!cfg) { $('who').textContent = t('title'); if (!document.body.classList.contains('pairing')) document.title = t('title'); }
+  $('sub').textContent = t('sub');
+  if (!token || !cfg) $('stt').textContent = t('connecting');
+}
+/* přepínač CZ / EN: nenápadně v patičce; aria-pressed = vybraný jazyk */
+let REDRAW = null;        // překreslí aktuální obrazovku párování v novém jazyce
+function langSwitch(){
+  const g = el('div', 'lng'); g.setAttribute('role', 'group'); g.setAttribute('aria-label', t('langGroup'));
+  [['cs', 'CZ', 'Čeština'], ['en', 'EN', 'English']].forEach(([l, txt, name]) => {
+    const b = el('button', '', txt); b.type = 'button'; b.id = 'lng-' + l; b.lang = l; b.setAttribute('aria-label', name);
+    b.setAttribute('aria-pressed', L === l); b.onclick = () => setLang(l); g.append(b);
+  });
+  return g;
+}
+function setLang(l){
+  if (!LANGS.includes(l)) return;
+  try { localStorage.setItem('krai-lang', l); } catch (e) {}
+  if (urlLang()) { try { history.replaceState(null, '', location.pathname + '?lang=' + l); } catch (e) {} }
+  if (l === L) return;
+  L = l; paintStatic();
+  if (!$('pair').hidden && REDRAW) REDRAW();
+  else if (cfg) { build(); status(); }
+  setTimeout(() => { const b = $('lng-' + l); if (b) b.focus({preventScroll: true}); }, 0);   // po fokusu nadpisu z screen()
+}
+try { showDetail = localStorage.getItem('krai-detail') === '1'; } catch (e) {}
+
+// MARK: - fader law (stejné jako XAirCodec)
+const lin = f => { if (f <= 0) return -Infinity; if (f >= .5) return f*40-30; if (f >= .25) return f*80-50; if (f >= .0625) return f*160-70; return f*480-90; };
+const q = f => Math.floor(Math.min(1, Math.max(0, f)) * 1023.5) / 1023;
+const dbf = d => { if (d <= -90) return 0; let f; if (d >= -10) f = (d+30)/40; else if (d >= -30) f = (d+50)/80; else if (d >= -60) f = (d+70)/160; else f = (d+90)/480; return q(f); };
+const dbt = d => { if (!isFinite(d) || d < -89.5) return '−∞'; const r = Math.round(d * 10) / 10 || 0; return (r > 0 ? '+' : r < 0 ? '−' : '') + Math.abs(r).toFixed(1); };
+const TOL = 0.007;        // sendy mají 161 kroků → shoda echa v toleranci jednoho kroku
+const buzz = ms => { try { if (navigator.vibrate) navigator.vibrate(ms); } catch (e) {} };
+
+// MARK: - hlášky (zákon 6: status oblast, doba podle délky, s akcí o 3 s déle)
+let tt = 0;
+function say(t){ const l = $('live'); l.textContent = ''; setTimeout(() => { l.textContent = t; }, 30); }
+function toast(msg, opts = {}){
+  const e = $('toast'); $('toastT').textContent = msg; e.classList.toggle('err', !!opts.err);
+  const old = e.querySelector('button'); if (old) old.remove();
+  if (opts.act) { const b = document.createElement('button'); b.textContent = opts.act; b.onclick = () => { e.classList.remove('on'); opts.fn && opts.fn(); }; e.append(b); }
+  e.classList.add('on'); say(msg + (opts.act ? t('toastBtn', opts.act) : ''));
+  clearTimeout(tt); tt = setTimeout(() => e.classList.remove('on'), Math.max(opts.err ? 5000 : 2800, msg.length * 65) + (opts.act ? 3000 : 0));
+}
+function online(){ return mixerOK && Date.now() - last < 7000; }
+const offline = () => toast(t('offline'), {err: true});
+
+// MARK: - skupiny JÁ / KAPELA / KLIK (4.10) – relativní, poměr uvnitř skupiny zůstává
+const isClick = s => /klik|click|metro/i.test(s.name || '');
+function groups(){
+  const all = cfg.strips.map(s => ({...s, addr: s.send}));
+  const ja = all.filter(s => stars.has(s.id));
+  const klik = all.filter(s => !stars.has(s.id) && isClick(s));
+  const kapela = all.filter(s => !stars.has(s.id) && !isClick(s));
+  return {all, ja, klik, kapela};
+}
+function groupDb(list){ let m = -Infinity; for (const s of list) { const v = V[s.addr] || 0; if (v > 0) m = Math.max(m, lin(v)); } return m; }
+/* skupiny ±15 dB (4.10): střed C = uložený odposlech člena (server `center`), bez uloženého stav při prvním načtení.
+   Poloha skupiny = průměrný posun jejích kanálů od středu; kanály na −∞ nebo bez středu se nehýbou. */
+let C = {};
+const GROUP_RANGE = [-15, 15];
+const cdb = a => (C[a] !== undefined && isFinite(C[a]) && C[a] > -89.5) ? C[a] : null;
+function groupLive(list){ return list.filter(s => kn(s.addr) && cdb(s.addr) !== null && (V[s.addr] || 0) > 0); }
+function groupOff(list){ const l = groupLive(list); if (!l.length) return 0;
+  return Math.round(l.reduce((n, s) => n + lin(V[s.addr]) - cdb(s.addr), 0) / l.length * 10) / 10; }
+function offText(d){ return Math.abs(d) < 0.05 ? t('center') : dbt(d) + ' dB'; }
+function setCenter(fromSaved){
+  const src = fromSaved && Object.keys(fromSaved).length ? fromSaved : (Object.keys(C).length ? null : cfg.values);
+  if (!src) return;   // po obnově spojení bez uloženého odposlechu zůstává střed z prvního načtení
+  C = {}; for (const a in src) C[a] = lin(src[a]);
+}
+function toCenter(list){
+  if (!online()) return offline();
+  const l = groupLive(list); if (!l.length) return;
+  pushUndo(l.map(s => ({a: s.addr, v: V[s.addr]})));
+  for (const s of l) setVal(s.addr, dbf(Math.min(10, cdb(s.addr))), true);
+}
+
+// MARK: - stavba stránky (jen při init / ★ / přepnutí detailu – jinak se jen překresluje, fokus zůstává)
+let W = {};   // id prvku → {paint()}
+const kn = a => V[a] !== undefined;   // pult hodnotu potvrdil? neznámá = „—“ a zamčený jezdec (zákon 2, 2.6)
+let LS = false, PER = 4, page = 0;   // na šířku: pásy, počet pásů na stránku, aktuální stránka
+/* pásy: telefon na šířku (nízký displej) nebo široký displej (iPad, Mac) */
+function stripsMode(){ return innerWidth >= 700 || (innerWidth > innerHeight && innerHeight < 560); }
+function build(){
+  const focusId = document.activeElement && document.activeElement.id;
+  const mc = 'var(--krai-member-' + cfg.bus + ')';
+  document.documentElement.style.setProperty('--mc', mc);
+  const bn = nm(cfg.busName);
+  $('who').textContent = bn; $('ini').textContent = (bn || '·').trim()[0] || '·';
+  document.title = t('docTitle', bn);
+  const main = $('main'); main.innerHTML = ''; main.className = ''; W = {};
+  LS = stripsMode(); document.body.classList.toggle('ls', LS);
+  const g = groups();
+  if (LS) buildStrips(main, g); else buildPortrait(main, g);
+  fitStrips(); paintAll(); paintMeters(); gate();
+  if (focusId && $(focusId)) $(focusId).focus({preventScroll: true});
+}
+function buildPortrait(main, g){
+  $('pgl').textContent = '';
+  // 1) Rychle
+  const c1 = card(t('quick'), t('quickRight'));
+  c1.append(macro('ja', t('ME'), g.ja.length ? g.ja.map(s => s.name).join(' + ') : t('meEmpty'), g.ja));
+  c1.append(macro('kapela', t('BAND'), t('everyoneElse'), g.kapela));
+  if (g.klik.length) c1.append(macro('klik', t('CLICK'), t('clickSub'), g.klik));
+  main.append(c1);
+
+  // 2) Hlasitost = kolečko na sluchátkovém přijímači: celý můj odposlech najednou
+  const c2 = card(t('myMix'), '');
+  c2.append(single('me', t('volume'), t('volumeSub'), cfg.master, cfg.masterMeter));
+  // stažení Pojistky uší z pultu (4.2) – jen když server posílá „g“
+  const gs = document.createElement('p'); gs.className = 'grst'; gs.id = 'grSt'; gs.setAttribute('role', 'status'); c2.append(gs); paintGR();
+  main.append(c2);
+
+  // 3) akce
+  const acts = document.createElement('div'); acts.className = 'acts three';
+  acts.append(button('bMute', t('mute'), toggleMyMute),
+              button('bQuiet', '−6 dB', doQuiet),
+              button('bUndo', t('undo'), doUndo));
+  if (cfg.talk) { const tb = button('bTalk', t('talk'), null); tb.classList.add('wide', 'talk'); bindHold(tb); acts.append(tb); }
+  const c3 = card('', ''); c3.querySelector('h2').remove(); c3.append(acts); main.append(c3);
+
+  // Kanály zvlášť – rozbalovací řádek (aria-expanded), hned nad seznamem
+  const disc = document.createElement('button'); disc.className = 'disc'; disc.id = 'bDetail'; disc.setAttribute('aria-expanded', showDetail); disc.setAttribute('aria-controls', 'detail');
+  disc.innerHTML = '<b></b><small></small><i aria-hidden="true">›</i>'; disc.querySelector('b').textContent = t('detail');
+  const n = g.all.length; disc.querySelector('small').textContent = t('detailCount', n);
+  disc.onclick = () => { showDetail = !showDetail; try { localStorage.setItem('krai-detail', showDetail ? '1' : '0'); } catch (e) {} build(); };
+  main.append(disc);
+
+  // 4) kanály zvlášť (4.21: moje nahoře s rámečkem)
+  if (showDetail) {
+    const c4 = card('', t('detailRight')); c4.classList.add('bare'); c4.id = 'detail';
+    const {mine, on, rest} = split(g);
+    if (mine.length) { c4.append(sec(t('secMine'))); mine.forEach(s => c4.append(channel(s, true))); }
+    else c4.append(sec(t('secMineEmpty')));
+    c4.append(sec(t('secOn'))); on.forEach(s => c4.append(channel(s, false)));
+    if (rest.length) { const b = button('bRest', showRest ? t('hideOff') : t('showOff', rest.length), () => { showRest = !showRest; build(); }); b.classList.add('wide'); c4.append(b);
+      if (showRest) rest.forEach(s => c4.append(channel(s, false))); }
+    main.append(c4);
+  }
+
+  // 5) uložený odposlech (4.4: vlastní potvrzení místo confirm()) – na tabletu kapely ne (13.4)
+  if (!cfg.tablet) {
+  const c5 = card(t('saved'), t('savedRight'));
+  const a5 = document.createElement('div'); a5.className = 'acts';
+  a5.append(button('bSave', t('save'), doSave), armedButton('bRestore', t('restore'), t('restoreArm'), doRestore));
+  c5.append(a5);
+  // do písně, která hraje (4.5): při dalším načtení písně dostaneš tenhle odposlech zpátky
+  if (cfg.song) {
+    const b = button('bSong', t(cfg.songHas ? 'songResave' : 'songSave', cfg.song), doSongSave); b.classList.add('wide');
+    c5.append(b);
+  }
+  main.append(c5);
+  }
+
+  // 6) začít od mixu jiného člena (4.12) – přepíše celý můj odposlech → dvojí stisk; pak o 6 dB tišeji
+  if ((cfg.copyFrom || []).length && !cfg.tablet) {
+    const c6 = card(t('copyTitle'), t('copyRight'));
+    const a6 = document.createElement('div'); a6.className = 'acts';
+    cfg.copyFrom.forEach(f => a6.append(armedButton('bCopy' + f.bus, nm(f.name), t('copyArm'), () => doCopy(f))));
+    c6.append(a6); main.append(c6);
+  }
+
+  const lock = document.createElement('p'); lock.className = 'lock';
+  lock.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>';
+  lock.append(document.createTextNode(t('lockNote')));
+  const ws = document.createElement('p'); ws.className = 'lock'; ws.id = 'wakeSt'; ws.setAttribute('role', 'status');
+  main.append(lock, ws, langSwitch()); paintWake();
+}
+function split(g){
+  return {mine: g.all.filter(s => stars.has(s.id)),
+          on: g.all.filter(s => !stars.has(s.id) && (V[s.addr] || 0) > 0),
+          rest: g.all.filter(s => !stars.has(s.id) && !((V[s.addr] || 0) > 0))};
+}
+
+// MARK: - na šířku: Hlasitost | ‹ | stránka pásů | › | akce. Stránka 1 = skupiny, další = kanály (★ první, vypnuté poslední).
+function perPage(main){ const w = main.clientWidth - 108 - 2 * 44 - 112 - 4 * 8; return Math.max(2, Math.min(8, Math.floor((w + 8) / 104))); }
+function stripPages(g){
+  const {mine, on, rest} = split(g); const order = [...mine, ...on, ...rest];
+  const pages = [{label: t('pgGroups')}];
+  for (let i = 0; i < order.length; i += PER) pages.push({label: t('pgChannels', i + 1, Math.min(i + PER, order.length), order.length), items: order.slice(i, i + PER)});
+  return pages;
+}
+function buildStrips(main, g){
+  main.className = 'lsw';
+  PER = perPage(main); main.style.setProperty('--per', PER);
+  const pages = stripPages(g); page = Math.max(0, Math.min(page, pages.length - 1));
+  const pg = pages[page];
+  $('pgl').textContent = pg.label + ' · ' + (page + 1) + '/' + pages.length;
+  const grid = document.createElement('div'); grid.className = 'lsg';
+  if (!pg.items) {
+    grid.append(vMacro('ja', t('ME'), g.ja.length ? '' : t('meMarkLs'), g.ja), vMacro('kapela', t('BAND'), t('everyoneElse'), g.kapela));
+    if (g.klik.length) grid.append(vMacro('klik', t('CLICK'), t('clickLs'), g.klik));
+    grid.style.setProperty('--per', grid.children.length);   // skupiny jsou hlavní ovládání – celá šířka
+  } else pg.items.forEach(s => grid.append(vChannel(s, stars.has(s.id))));
+  const acts = document.createElement('div'); acts.className = 'lsa';
+  acts.append(button('bMute', t('mute'), toggleMyMute), button('bQuiet', '−6 dB', doQuiet), button('bUndo', t('undo'), doUndo));
+  if (cfg.talk) { const tb = button('bTalk', t('talk'), null); tb.classList.add('talk'); bindHold(tb); acts.append(tb); }
+  main.append(vSingle('me', t('volume'), cfg.master, cfg.masterMeter),
+              pager('pgPrev', '‹', t('prevPage'), -1, page > 0), grid,
+              pager('pgNext', '›', t('nextPage'), 1, page < pages.length - 1), acts);
+}
+function pager(id, t, label, d, enabled){
+  const b = document.createElement('button'); b.className = 'pg'; b.id = id; b.textContent = t; b.setAttribute('aria-label', label); b.disabled = !enabled;
+  b.onclick = () => { page += d; build(); say($('pgl').textContent); buzz(8);
+    if ($(id).disabled) $(d > 0 ? 'pgPrev' : 'pgNext').focus({preventScroll: true}); };
+  return b;
+}
+/* výška pásů = zbytek obrazovky pod hlavičkou (na šířku se nic neposouvá) */
+function fitStrips(){
+  const main = $('main');
+  if (!LS) { main.style.height = ''; return; }
+  const pb = parseFloat(getComputedStyle(document.body).paddingBottom) || 0;
+  main.style.height = Math.max(240, innerHeight - main.getBoundingClientRect().top - window.scrollY - pb) + 'px';
+}
+function vStrip(title, cls){
+  const w = document.createElement('div'); w.className = 'vs' + (cls ? ' ' + cls : '');
+  w.innerHTML = '<div class="tile"><span></span></div><span class="vdb num"></span><div class="vrow"></div>';
+  w.querySelector('.tile span').textContent = title; return w;
+}
+// proč neslyším (4.3b): štítek se jen přepisuje (struktura se nemění), data z události „silence“
+let S = {};
+function silTag(s){ const e = document.createElement('small'); e.className = 'sil'; e.dataset.sil = s.id; e.setAttribute('aria-live', 'polite'); return e; }
+const SIL = {mute: ['silMute', 'd'], group: ['silGroup', 'i'], dca: ['silDca', 'i'], nosignal: ['silNoSignal', '']};
+function paintSilence(){ document.querySelectorAll('[data-sil]').forEach(e => { const s = SIL[S[e.dataset.sil]]; const k = s ? [t(s[0]), s[1]] : ['', ''];
+  if (e.textContent !== k[0]) e.textContent = k[0]; e.className = 'sil' + (k[1] ? ' ' + k[1] : ''); }); }
+// polarita otočená v pultu (5.6) – jen štítek, mobil ji nemění
+function invTag(tile, s){
+  if (!s.inv) return;
+  const i = document.createElement('i'); i.className = 'inv'; i.textContent = 'Ø'; i.title = t('polarity');
+  i.setAttribute('aria-label', t('polarity')); tile.append(i);
+}
+function hintRow(t){ const n = document.createElement('div'); n.className = 'vh'; n.textContent = t; return n; }
+function vMacro(id, title, sub, list){
+  const w = vStrip(title, list.length ? '' : 'empty'); const val = w.querySelector('.vdb');
+  if (id === 'ja') w.querySelector('.tile').style.setProperty('--cc', 'var(--mc)');
+  const sl = slider('s-' + id, t('inMyMix', title), () => groupOff(list), groupApply(id, list), null, true, GROUP_RANGE);
+  w.querySelector('.vrow').append(sl); w.append(hintRow(sub || list.map(s => s.name).join(' + ')));
+  const cb = button('c-' + id, t('toCenter'), () => toCenter(list)); cb.classList.add('ctr'); w.append(cb);
+  W[id] = {paint(){ const d = groupOff(list); val.textContent = list.length ? offText(d) : '–'; val.classList.toggle('pend', list.some(s => P[s.addr]));
+    cb.disabled = !list.length || Math.abs(d) < 0.05; sl._paint(); }, list};
+  return w;
+}
+function vSingle(id, title, addr, meter){
+  const w = vStrip(title, ''); const val = w.querySelector('.vdb'); w.querySelector('.tile').style.setProperty('--cc', 'var(--mc)'); w.querySelector('.tile').classList.add('nw');
+  const sl = slider('s-' + id, t('masterLabel'), () => lin(V[addr] || 0), oneApply(addr), null, true);
+  const mt = document.createElement('div'); mt.className = 'mt v'; mt.innerHTML = '<i></i>';
+  w.querySelector('.vrow').append(sl, mt); w.append(hintRow(t('wholeLs')));
+  W[id] = {paint(){ const on = (V[cfg.masterOn] ?? 1) == 1; val.textContent = kn(addr) ? dbt(lin(V[addr])) : '—'; val.classList.toggle('pend', !!P[addr]); w.classList.toggle('off', !on); sl.classList.toggle('unk', !kn(addr)); sl._paint(); }, mt, meter};
+  return w;
+}
+function vChannel(s, mine){
+  const col = chColor(s);
+  const w = vStrip(s.name, mine ? 'mine' : ''); const val = w.querySelector('.vdb');
+  const tile = w.querySelector('.tile'); tile.style.setProperty('--cc', col); invTag(tile, s); tile.after(silTag(s));
+  if (mine) { const b = document.createElement('b'); b.textContent = '★'; b.setAttribute('aria-hidden', 'true'); tile.append(b); }
+  const sl = slider('s-' + s.id, t('inMyMix', s.name + (mine ? t('mineSuffix') : '')), () => lin(V[s.addr] || 0), oneApply(s.addr), null, true);
+  const mt = document.createElement('div'); mt.className = 'mt v'; mt.innerHTML = '<i></i>';
+  w.querySelector('.vrow').append(sl, mt);
+  const tg = document.createElement('button'); tg.className = 'tg'; tg.id = 'tg-' + s.id; tg.onclick = () => toggleHear(s); w.append(tg);
+  const pr = s.pan ? panRow(s) : null; if (pr) w.append(pr);
+  W['ch-' + s.id] = {paint(){ const v = V[s.addr] || 0; val.textContent = kn(s.addr) ? dbt(lin(v)) : '—'; val.classList.toggle('pend', !!P[s.addr]); paintHear(s, w, tg, v); sl.classList.toggle('unk', !kn(s.addr)); sl._paint(); if (pr) pr._paint(); }, mt, meter: s.meter};
+  return w;
+}
+function card(title, right){ const c = document.createElement('section'); c.className = 'card'; const h = document.createElement('h2'); h.innerHTML = '<span></span><span></span>'; h.children[0].textContent = title; h.children[1].textContent = right; c.append(h); return c; }
+function sec(t){ const d = document.createElement('div'); d.className = 'sec'; d.textContent = t; return d; }
+function button(id, t, fn){ const b = document.createElement('button'); b.className = 'btn'; b.id = id; b.textContent = t; if (fn) b.onclick = fn; return b; }
+
+// MARK: - posuvník: relativní tah, jemný krok odtažením prstu kolmo (×¼ / ×⅒), klávesnice ±1 dB / ±6 dB; vert = svislý pás
+function slider(id, label, getDb, applyDelta, color, vert, range){
+  const sl = document.createElement('div'); sl.className = 'sl' + (vert ? ' v' : ''); sl.id = id; sl.tabIndex = 0;
+  // range [od, do] = lineární stupnice posunu skupiny (4.10), jinak zákon faderu −∞…+10 dB
+  const pos = d => range ? Math.min(1, Math.max(0, (d - range[0]) / (range[1] - range[0]))) : (isFinite(d) ? dbf(d) : 0);
+  const ticks = range ? [-15, -10, -5, 0, 5, 10, 15].map(d => [d, d === 0 ? ' zero' : '']) : TICKS;
+  sl.setAttribute('role', 'slider'); sl.setAttribute('aria-label', label);
+  sl.setAttribute('aria-valuemin', range ? range[0] : '-90'); sl.setAttribute('aria-valuemax', range ? range[1] : '10');
+  if (vert) sl.setAttribute('aria-orientation', 'vertical');
+  if (color) sl.style.setProperty('--cc', color);
+  sl.innerHTML = '<div class="slot"></div>' + ticks.map(([db, cls]) => `<i class="tk${cls}" style="${vert ? 'bottom' : 'left'}:${along(pos(db), true)}"></i>`).join('') + '<div class="cap"></div>';
+  let x0 = 0, y0 = 0, xs = 0, ys = 0, acc = 0, active = false, pending = false, lpTimer = 0;
+  /* zámek osy (3.4): dotyk se jezdce chytí, až když jde prst víc do strany jezdce (> 8 px) – jinak stránka roluje */
+  const engage = ev => { pending = false; clearTimeout(lpTimer); active = true; x0 = ev.clientX; y0 = ev.clientY; acc = 0;
+    try { sl.setPointerCapture(ev.pointerId); } catch (e) {} applyDelta(0, 'start'); };
+  sl.addEventListener('pointerdown', ev => { if (!online()) { offline(); return; }
+    xs = ev.clientX; ys = ev.clientY; sl.focus({preventScroll: true});
+    clearTimeout(lpTimer); lpTimer = setTimeout(() => { if (pending) { pending = false; longPressMenu(sl, getDb, applyDelta); } }, 500);
+    if (ev.pointerType === 'mouse') { engage(ev); ev.preventDefault(); } else pending = true; });
+  sl.addEventListener('pointermove', ev => {
+    if (pending) {
+      const dx = Math.abs(ev.clientX - xs), dy = Math.abs(ev.clientY - ys), along = vert ? dy : dx, across = vert ? dx : dy;
+      if (along > 8 && along > across) engage(ev);
+      else if (across > 8) { pending = false; clearTimeout(lpTimer); }   // roluje se stránka
+      return;
+    }
+    if (!active) return;
+    const off = vert ? Math.abs(ev.clientX - xs) : Math.abs(ev.clientY - ys); const k = off > 140 ? .1 : off > 50 ? .25 : 1;
+    sl.dataset.fine = k < 1 ? (k === .1 ? '×⅒' : '×¼') : '';
+    if (vert) { acc -= (ev.clientY - y0) / Math.max(1, sl.clientHeight) * 70 * k; y0 = ev.clientY; }
+    else { acc += (ev.clientX - x0) / Math.max(1, sl.clientWidth) * 70 * k; x0 = ev.clientX; }
+    applyDelta(acc, 'move'); });
+  const end = () => { pending = false; clearTimeout(lpTimer); if (!active) return; active = false; sl.dataset.fine = ''; applyDelta(acc, 'end'); };
+  sl.addEventListener('pointerup', end); sl.addEventListener('pointercancel', end); sl.addEventListener('lostpointercapture', end);
+  sl.addEventListener('keydown', ev => { const s = {ArrowUp: 1, ArrowRight: 1, ArrowDown: -1, ArrowLeft: -1, PageUp: 6, PageDown: -6}[ev.key];
+    if (!s) return; ev.preventDefault(); if (!online()) return offline(); applyDelta(0, 'start'); applyDelta(s, 'end'); });
+  const cap = sl.querySelector('.cap');
+  sl._paint = () => { const d = getDb(); const f = pos(d);
+    cap.style[vert ? 'bottom' : 'left'] = along(f, false);
+    sl.setAttribute('aria-valuenow', isFinite(d) ? Math.round(d) : -90);
+    sl.setAttribute('aria-valuetext', range ? offText(d) : isFinite(d) ? dbt(d) + ' dB' : t('silent')); };
+  return sl;
+}
+/* podržení jezdce (3.4): 0 dB / −∞ / Vrátit – vždy existuje i viditelná cesta (± a Vrátit dole), tohle je zkratka */
+function longPressMenu(sl, getDb, apply){
+  document.querySelectorAll('.lp').forEach(e => e.remove());
+  const m = document.createElement('div'); m.className = 'lp'; m.setAttribute('role', 'menu');
+  const item = (txt, fn) => { const b = document.createElement('button'); b.textContent = txt; b.setAttribute('role', 'menuitem');
+    b.onclick = () => { m.remove(); if (!online()) return offline(); fn(); }; m.append(b); };
+  item('0 dB', () => { const d = getDb(); apply(0, 'start'); apply(isFinite(d) ? -d : 61, 'end'); });
+  item('−∞', () => { apply(0, 'start'); apply(-200, 'end'); });
+  item(t('undoAct'), () => doUndo());
+  const r = sl.getBoundingClientRect();
+  m.style.left = Math.max(8, Math.min(innerWidth - 260, r.left)) + 'px';
+  m.style.top = Math.max(8, r.top - 56) + 'px';
+  document.body.append(m); buzz(15); m.querySelector('button').focus();
+  setTimeout(() => addEventListener('pointerdown', function off(e){ if (!m.contains(e.target)) { m.remove(); removeEventListener('pointerdown', off, true); } }, true), 0);
+}
+/* poloha na dráze: jezdec nikdy nepřečnívá (jako na Macu); tick = střed jezdce */
+const along = (f, center) => `calc(${center ? 'var(--capl) / 2 + ' : ''}(100% - var(--capl)) * ${f.toFixed(4)})`;
+/* rysky stupnice jako na Macu (FaderControl.marks / minor); 0 dB zvýrazněná */
+const TICKS = [10, 5, 0, -5, -10, -20, -30, -50].map(d => [d, d === 0 ? ' zero' : '']).concat([7.5, 2.5, -2.5, -7.5, -15, -25, -40, -60].map(d => [d, ' mi']));
+function nudgeBtn(label, fn){ const b = document.createElement('button'); b.className = 'nb'; b.textContent = label === '+' ? '+' : '−'; b.setAttribute('aria-label', label === '+' ? '+1 dB' : '−1 dB'); b.onclick = fn; return b; }
+function nudges(row, sl, apply){ row.append(nudgeBtn('-', () => { if (!online()) return offline(); apply(0, 'start'); apply(-1, 'end'); }), sl, nudgeBtn('+', () => { if (!online()) return offline(); apply(0, 'start'); apply(1, 'end'); })); }
+
+/* skupina: relativně, nahoru jen tak, aby nikdo nepřetekl +10 dB – poměr zůstane; dolů nejníž −60 dB */
+function groupApply(id, list){
+  let base = null;
+  return (delta, phase) => {
+    if (!list.length) return;
+    if (phase === 'start' || !base) { base = list.filter(s => kn(s.addr)).map(s => ({a: s.addr, d: lin(V[s.addr])})); pushUndo(base.map(x => ({a: x.a, v: V[x.a]}))); dragging.add(id); }
+    if (phase === 'start') return;
+    // každý kanál od své hodnoty o stejně dB, ale nejvýš ±15 dB od středu (4.10); strop +10, dno −60
+    const live = base.filter(x => isFinite(x.d) && x.d > -89.5 && cdb(x.a) !== null);
+    for (const x of live) { const c = cdb(x.a);
+      setVal(x.a, dbf(Math.max(-60, Math.min(10, c + GROUP_RANGE[1], Math.max(c + GROUP_RANGE[0], x.d + delta)))), true); }
+    if (phase === 'end') { base = null; dragging.delete(id); buzz(8); }
+  };
+}
+function oneApply(addr){
+  let base = null;
+  return (delta, phase) => {
+    if (!kn(addr)) return;   // neznámou hodnotu nejde měnit (zákon 2)
+    if (phase === 'start' || base == null) { base = lin(V[addr] || 0); if (!isFinite(base)) base = -61; pushUndo([{a: addr, v: V[addr] || 0}]); dragging.add(addr); }
+    if (phase === 'start') return;
+    setVal(addr, dbf(Math.min(10, Math.max(-90, base + delta))), true);
+    if (phase === 'end') { base = null; dragging.delete(addr); buzz(8); }
+  };
+}
+
+function macro(id, title, sub, list){
+  const w = document.createElement('div'); w.className = 'big' + (list.length ? '' : ' empty');
+  w.innerHTML = '<div class="lab"><span><b></b><small></small></span><span class="val num"></span></div><div class="row"></div>';
+  w.querySelector('b').textContent = title; w.querySelector('small').textContent = sub;
+  const val = w.querySelector('.val'); const apply = groupApply(id, list);
+  if (id === 'ja') w.querySelector('b').style.setProperty('--cc', 'var(--mc)');
+  const sl = slider('s-' + id, t('inMyMix', title), () => groupOff(list), apply, null, false, GROUP_RANGE);
+  nudges(w.querySelector('.row'), sl, apply);
+  const cb = button('c-' + id, t('toCenter'), () => toCenter(list)); cb.classList.add('ctr');
+  cb.title = t('centerSub'); cb.setAttribute('aria-label', t('toCenter') + ' – ' + t('centerSub')); w.append(cb);
+  W[id] = {paint(){ const d = groupOff(list); val.textContent = list.length ? offText(d) : '–'; val.classList.toggle('pend', list.some(s => P[s.addr]));
+    cb.disabled = !list.length || Math.abs(d) < 0.05; sl._paint(); }, list};
+  return w;
+}
+function single(id, title, sub, addr, meter){
+  const w = document.createElement('div'); w.className = 'big';
+  w.innerHTML = '<div class="lab"><span><b></b><small></small></span><span class="val num"></span></div><div class="row"></div><div class="mt"><i></i></div>';
+  w.querySelector('b').textContent = title; w.querySelector('small').textContent = sub;
+  const val = w.querySelector('.val'); const apply = oneApply(addr);
+  const sl = slider('s-' + id, t('masterLabel'), () => lin(V[addr] || 0), apply); sl.classList.add('me');
+  w.querySelector('b').style.setProperty('--cc', 'var(--mc)');
+  nudges(w.querySelector('.row'), sl, apply);
+  const mt = w.querySelector('.mt');
+  W[id] = {paint(){ const on = (V[cfg.masterOn] ?? 1) == 1; val.textContent = kn(addr) ? dbt(lin(V[addr])) + ' dB' : '—'; val.classList.toggle('pend', !!P[addr]); w.classList.toggle('off', !on); sl.classList.toggle('unk', !kn(addr)); sl._paint(); }, mt, meter};
+  return w;
+}
+function chColor(s){ return s.owner ? 'var(--krai-member-' + s.owner + ')' : 'var(--krai-ch-' + (((s.color || 0) % 8) + 8) % 8 + ')'; }
+function toggleHear(s){ if (!online()) return offline(); const v = V[s.addr] || 0; pushUndo([{a: s.addr, v}]); if (v > 0) { mem[s.addr] = v; setVal(s.addr, 0, true); } else setVal(s.addr, mem[s.addr] || 0.75, true); }
+function paintHear(s, el, tg, v){ const off = !(v > 0); el.classList.toggle('off', off); tg.textContent = off ? t('hearOff') : t('hearOn'); tg.setAttribute('aria-pressed', off);
+  tg.setAttribute('aria-label', off ? t('hearOffLabel', s.name) : t('hearOnLabel', s.name)); }
+// pan v uších u stereo odposlechu (4.9): ◀ L30 ▶ po 10 %, střed = 0.5; neznámé „—“ a zamčené
+function panRow(s){
+  const r = document.createElement('div'); r.className = 'pan'; r.setAttribute('role', 'group'); r.setAttribute('aria-label', t('panIn', s.name));
+  const l = document.createElement('button'), v = document.createElement('b'), p = document.createElement('button');
+  l.textContent = '◀'; p.textContent = '▶'; l.setAttribute('aria-label', t('panL')); p.setAttribute('aria-label', t('panR'));
+  const step = d => { if (!kn(s.pan)) return; if (!online()) return offline(); setVal(s.pan, Math.round(Math.min(1, Math.max(0, V[s.pan] + d)) * 10) / 10); };
+  l.onclick = () => step(-0.1); p.onclick = () => step(0.1);
+  r.append(l, v, p);
+  r._paint = () => { const k = kn(s.pan), x = V[s.pan];
+    l.disabled = p.disabled = !k; v.classList.toggle('pend', !!P[s.pan]);
+    v.textContent = !k ? '—' : Math.abs(x - 0.5) < 0.005 ? t('panC') : (x < 0.5 ? t('panL') : t('panR')) + Math.round(Math.abs(x - 0.5) * 200) + (P[s.pan] ? '…' : ''); };
+  return r;
+}
+function channel(s, mine){
+  const d = document.createElement('div'); d.className = 'ch' + (mine ? ' mine' : '');
+  const col = chColor(s);
+  d.innerHTML = '<div class="top"><button class="star"><span aria-hidden="true">★</span></button><div class="tile"><span></span></div><span class="db num"></span><button class="tg"></button></div><div class="big"><div class="row"></div></div><div class="mt"><i></i></div>';
+  d.querySelector('.tile').style.setProperty('--cc', col); d.querySelector('.tile span').textContent = s.name; invTag(d.querySelector('.tile'), s);
+  d.querySelector('.top').after(silTag(s));
+  const st = d.querySelector('.star'); st.id = 'star-' + s.id; st.setAttribute('aria-pressed', stars.has(s.id)); st.setAttribute('aria-label', t('starLabel', s.name)); st.onclick = () => toggleStar(s.id);
+  const tg = d.querySelector('.tg'); tg.id = 'tg-' + s.id; tg.onclick = () => toggleHear(s);
+  const apply = oneApply(s.addr);
+  const sl = slider('s-' + s.id, t('inMyMix', s.name), () => lin(V[s.addr] || 0), apply);
+  nudges(d.querySelector('.row'), sl, apply);
+  const db = d.querySelector('.db');
+  const pr = s.pan ? panRow(s) : null; if (pr) d.querySelector('.big').after(pr);
+  W['ch-' + s.id] = {paint(){ const v = V[s.addr] || 0; db.textContent = dbt(lin(v)); db.classList.toggle('pend', !!P[s.addr]); paintHear(s, d, tg, v); sl._paint(); if (pr) pr._paint(); }, mt: d.querySelector('.mt'), meter: s.meter};
+  return d;
+}
+const mem = {};
+function paintAll(){ for (const k in W) W[k].paint(); paintActions(); paintSilence(); }
+
+// MARK: - měřáky (bez čerstvých dat > 1,5 s nic nepředstírají)
+function metersStale(){ return !online() || Date.now() - lastM > 1500; }
+/* Pojistka uší (4.2): kolik právě ubírá; nad 6 dB rada ztišit si odposlech */
+let GR = 0, grAt = 0;
+function paintGR(){ const e = $('grSt'); if (!e) return;
+  const fresh = Date.now() - grAt < 2000 && online();
+  e.hidden = !fresh || GR < 0.5;
+  e.classList.toggle('warn', fresh && GR > 6);
+  e.textContent = fresh && GR >= 0.5 ? (GR > 6 ? t('grLoud', GR.toFixed(0)) : t('grOn', GR.toFixed(1))) : ''; }
+setInterval(paintGR, 1000);
+/* špička drží 1,5 s, pak padá s měřákem; clip (0 dBFS) = červená tečka u jména 5 s (4.4) */
+const PEAK_HOLD = 1500, CLIP_SHOW = 5000;
+function paintMeters(){
+  const stale = metersStale(), now = Date.now();
+  for (const k in W) { const e = W[k]; if (!e.mt) continue; e.mt.classList.toggle('stale', stale);
+    const box = e.mt.closest('.ch, .big');
+    if (stale) { if (box) box.classList.remove('clip'); continue; }
+    const db = M[e.meter]; if (db == null) continue; const i = e.mt.querySelector('i'); const fr = Math.max(0, Math.min(1, (db + 60) / 60));
+    if (!e.pk || fr >= e.pk.fr || now - e.pk.t > PEAK_HOLD) e.pk = {fr, t: now};
+    let b = e.mt.querySelector('b'); if (!b) { b = document.createElement('b'); e.mt.append(b); }
+    if (db >= -0.5) e.clipAt = now;
+    if (box) box.classList.toggle('clip', !!e.clipAt && now - e.clipAt < CLIP_SHOW);
+    if (e.mt.classList.contains('v')) { const h = e.mt.clientHeight; i.style.setProperty('--h', h + 'px'); i.style.height = fr * h + 'px'; b.style.bottom = e.pk.fr * h + 'px'; }
+    else { const w = e.mt.clientWidth; i.style.setProperty('--w', w + 'px'); i.style.width = fr * w + 'px'; b.style.left = e.pk.fr * w + 'px'; } }
+}
+
+// MARK: - akce
+function toggleMyMute(){
+  if (!online()) return offline();
+  const on = (V[cfg.masterOn] ?? 1) == 1;
+  setVal(cfg.masterOn, on ? 0 : 1);
+  if (on) { buzz(30); toast(t('tMuted'), {act: t('undoAct'), fn: () => setVal(cfg.masterOn, 1)}); }
+  else toast(t('tUnmuted'));
+}
+function doQuiet(){
+  if (!online()) return offline();
+  const d = lin(V[cfg.master] || 0);
+  if (!isFinite(d) || d <= -60) return toast(t('tTooQuiet'));
+  const from = V[cfg.master] || 0;
+  setVal(cfg.master, dbf(Math.max(-60, d - 6))); buzz(20);
+  toast(t('tQuiet'), {act: t('undoAct'), fn: () => setVal(cfg.master, from, true)});
+}
+function pushUndo(items){ undo.push(items); if (undo.length > 30) undo.shift(); paintActions(); }
+function doUndo(){ const u = undo.pop(); if (!u) return; if (!online()) return offline(); for (const x of u) setVal(x.a, x.v, true); paintActions(); toast(t('tUndone')); }
+function paintActions(){
+  const ok = online(); const on = cfg ? (V[cfg.masterOn] ?? 1) == 1 : true;
+  const m = $('bMute'); if (m) { m.textContent = on ? t('mute') : t('muted'); m.classList.toggle('lit', !on); m.setAttribute('aria-pressed', !on); m.disabled = !ok; }
+  const u = $('bUndo'); if (u) u.disabled = !undo.length || !ok;
+  const r = $('bRestore'); if (r && !r.classList.contains('armed')) r.disabled = !cfg.hasSnapshot || !ok;
+  for (const id of ['bQuiet', 'bSave', 'bSong']) { const e = $(id); if (e) e.disabled = !ok; }
+  document.querySelectorAll('[id^=bCopy]').forEach(e => { if (!e.classList.contains('armed')) e.disabled = !ok; });
+}
+async function doSave(){ const r = await post('save', {}); if (r && r.ok) { cfg.hasSnapshot = true; C = {}; setCenter(K); paintAll(); toast(t('tSaved')); } else toast(t('tNotSaved'), {err: true}); }
+async function doCopy(f){ const r = await post('copy', {from: f.bus});
+  r && r.ok ? toast(t('tCopied', nm(f.name))) : toast(t('tCopyFail'), {err: true}); }
+async function doSongSave(){
+  if (!online()) return offline();
+  const r = await post('songsave', {});
+  if (r && r.ok) { cfg.songHas = true; const b = $('bSong'); if (b) b.textContent = t('songResave', r.song); toast(t('tSongSaved', r.song)); }
+  else toast(t('tNotSaved'), {err: true});
+}
+async function doRestore(){ const r = await post('restore', {}); r && r.ok ? toast(t('tRestored')) : toast(t('tFail'), {err: true}); }
+/* nevratné akce = dvojí stisk, okno 5 s s odpočtem a oznámením (zákon 5) */
+function armedButton(id, label, armTxt, fn){
+  const b = button(id, label, null); let n = 0, iv = 0;
+  const reset = () => { clearInterval(iv); n = 0; b.classList.remove('armed'); b.textContent = label; paintActions(); };
+  b.onclick = () => { if (!online()) return offline();
+    if (!n) { n = 5; b.classList.add('armed'); b.textContent = armTxt + ' · ' + n; say(t('confirm5', armTxt));
+      iv = setInterval(() => { n--; if (n <= 0) reset(); else b.textContent = armTxt + ' · ' + n; }, 1000); return; }
+    reset(); fn(); };
+  return b;
+}
+function toggleStar(id){ if (stars.has(id)) stars.delete(id); else stars.add(id); post('stars', {stars: [...stars]}); buzz(15); build(); }
+/* MLUVIT KE KAPELE: jen když ho server nabízí (cfg.talk). Uvolní se při ztrátě fokusu / skrytí stránky (zákon 7). */
+function bindHold(b){
+  let hb = 0;   // drží → obnovit každou 1 s; bez obnovení server MLUVIT pustí do 2 s (zhasnutý mobil, ztracená Wi‑Fi)
+  const paint = v => { b.classList.toggle('lit', v); b.setAttribute('aria-pressed', v); b.textContent = v ? t('talking') : t('talk'); };
+  const on = v => { paint(v); clearInterval(hb); hb = 0;
+    post('talk', {on: v}).then(r => { if (v && b.classList.contains('lit') && !(r && r.ok)) { paint(false); clearInterval(hb); hb = 0; toast(t('tTalkBusy'), {err: true}); } });
+    if (v) hb = setInterval(() => post('talk', {on: true}), 1000); };
+  b.setAttribute('aria-pressed', 'false');
+  b.addEventListener('pointerdown', e => { if (!online()) return offline(); e.preventDefault(); b.setPointerCapture(e.pointerId); on(true); });
+  const up = () => { if (b.classList.contains('lit')) on(false); };
+  b.addEventListener('pointerup', up); b.addEventListener('pointercancel', up); b.addEventListener('blur', up);
+  b.addEventListener('click', e => { if (e.detail === 0) on(!b.classList.contains('lit')); });   // VoiceOver / klávesnice přepíná
+  b._release = up;
+}
+document.addEventListener('visibilitychange', () => { const t = $('bTalk'); if (document.hidden && t && t._release) t._release(); });
+
+// MARK: - zápis: hodnota hned za prstem, číslo čeká na pult (zákon 3), offline nic (zákon 4)
+let pend = {}, pt = 0, failToast = 0;
+function setVal(a, v, noUndo){
+  if (!online()) { offline(); return; }
+  if (!noUndo) pushUndo([{a, v: V[a] ?? 0}]);
+  if (K[a] !== undefined && Math.abs(K[a] - v) < 1e-6 && !P[a]) { V[a] = v; paintAll(); return; }   // nic se nemění – nic neposílat
+  V[a] = v; P[a] = {v, t: Date.now()};
+  pend[a] = v; if (!pt) pt = setTimeout(flush, 40);
+  paintAll();
+}
+let seq = 0;   // pořadí zápisů (4.4): předběhnutý starší POST server zahodí
+function flush(){ pt = 0; const p = pend; pend = {}; for (const a in p) post('set', {a, v: p[a], s: ++seq}).then(r => { if (!r || !r.ok) { revert(a); toast(t('tNotSent'), {err: true}); } }); }
+function revert(a){ if (K[a] !== undefined) V[a] = K[a]; delete P[a]; paintAll(); }
+setInterval(() => { const now = Date.now(); let n = 0;
+  for (const a in P) { if (dragging.size && [...dragging].some(d => d === a || (W[d] && W[d].list && W[d].list.some(s => s.addr === a)))) continue;
+    if (now - P[a].t > 1000) { revert(a); n++; } }
+  if (n && now - failToast > 4000) { failToast = now; toast(t('tReverted'), {err: true}); } }, 250);
+function post(what, body){
+  return fetch(apiBase() + '/' + what, {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(body)}).then(r => r.json()).catch(() => null);
+}
+
+// MARK: - spojení
+function gate(){
+  const ok = online(); if (cfg) paintActions();
+  document.body.classList.toggle('dis', !ok);
+  const b = $('banner'); b.style.display = ok ? 'none' : 'block';
+  b.textContent = Date.now() - last > 7000 ? t('bannerLost') : t('bannerMixer');
+}
+function status(){
+  const age = Date.now() - last, st = $('st'), tx = $('stt'); const lost = age > 7000;
+  const weak = !lost && mixerOK && (age > 4500 || pings.some(g => g > 4500));
+  st.className = 'st ' + (lost ? '' : (!mixerOK || weak ? 'warn' : 'ok'));
+  tx.textContent = lost ? t('stLost') : (!mixerOK ? t('stMixer') : weak ? t('stWeak') : t('stGood'));
+  gate(); if (metersStale()) paintMeters();
+  if (age > 9000 && !document.hidden) { drops++; connect(); checkKey(); }   // skrytá stránka se nepřipojuje (9.4)
+}
+function connect(){
+  if (!token) return;
+  if (es) es.close(); last = Date.now();
+  es = new EventSource(apiBase() + '/events');
+  es.addEventListener('init', ev => { cfg = JSON.parse(ev.data);
+    if (cfg.bus == null) { const m = /\/bus\/(\d+)\//.exec(cfg.master || ''); cfg.bus = m ? +m[1] : 1; }
+    V = Object.assign({}, cfg.values); K = Object.assign({}, cfg.values); for (const a in P) delete P[a];
+    stars = new Set(cfg.stars || []); S = cfg.silence || {}; mixerOK = cfg.connected; last = Date.now();
+    setCenter(cfg.center); build(); });
+  es.addEventListener('silence', ev => { S = JSON.parse(ev.data); last = Date.now(); paintSilence(); });
+  es.addEventListener('p', ev => { const d = JSON.parse(ev.data); last = Date.now(); K[d.a] = d.v;
+    const p = P[d.a];
+    if (p) { if (Math.abs(p.v - d.v) <= TOL) { delete P[d.a]; paintAll(); } return; }   // potvrzení vlastní změny
+    if (dragging.has(d.a)) return;
+    V[d.a] = d.v; paintAll(); });
+  es.addEventListener('g', ev => { GR = JSON.parse(ev.data).gr; grAt = Date.now(); paintGR(); });
+  es.addEventListener('m', ev => { M = JSON.parse(ev.data); last = lastM = Date.now(); paintMeters(); });
+  es.addEventListener('ping', ev => { const now = Date.now(); if (lastPing) { pings.push(now - lastPing); if (pings.length > 5) pings.shift(); } lastPing = now;
+    last = now; mixerOK = JSON.parse(ev.data).connected; gate(); });
+  es.addEventListener('reload', () => connect());
+  es.addEventListener('bye', () => revoked());   // Odpojit u kapelníka / nový odkaz
+  es.onerror = () => {};
+}
+/* displej (9.2): Wake Lock jde jen přes https. Na http (místní síť bez certifikátu) drží displej svítit tichá
+   smyčka 3 s černého videa 16 px (technika NoSleep) – bez instalace čehokoli v telefonu. Prohlížeč zámek pustí
+   při skrytí stránky nebo úspoře baterie → po návratu / dalším dotyku se o něj appka řekne znovu. */
+let wl = null, wakeOK = false, wakeRetry = false, nsv = null;
+const AWAKE_MP4 = 'data:video/mp4;base64,AAAAHGZ0eXBtcDQyAAAAAWlzb21tcDQxbXA0MgAAAAFtZGF0AAAAAAAAAKkAAAA8BgUyR1ZK3FxMQz+U78URPNFDqAEAAAMAAQMAAAMAAQIAAAMD6AsAAAMAAAMAAAMDNAwDiSgBDf////+AAAAALCW4IACD/x67v//kEgSNX+DnNZFyOrEq66nhSLYlwKvMIM3cpcAAG+Bdb8yAAAAAECHhCEPfRYxsDH2A5cSQyYAAAAARAaiBiCD/oHl7gUimUjF0wUkAAAL5bW9vdgAAAGxtdmhkAAAAAOb+GUnm/hlKAAACWAAABwgAAQAAAQAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAoV0cmFrAAAAXHRraGQAAAAB5v4ZSub+GUoAAAABAAAAAAAABwgAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAABAAAAAABAAAAAQAAAAAAAkZWR0cwAAABxlbHN0AAAAAAAAAAEAAAcIAAACWAABAAAAAAH9bWRpYQAAACBtZGhkAAAAAOb+GUrm/hlKAAACWAAABwhVxAAAAAAAMWhkbHIAAAAAAAAAAHZpZGUAAAAAAAAAAAAAAABDb3JlIE1lZGlhIFZpZGVvAAAAAaRtaW5mAAAAFHZtaGQAAAABAAAAAAAAAAAAAAAkZGluZgAAABxkcmVmAAAAAAAAAAEAAAAMdXJsIAAAAAEAAAFkc3RibAAAAKFzdHNkAAAAAAAAAAEAAACRYXZjMQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAQABAASAAAAEgAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABj//wAAACdhdmNDAWQAC//hAAwnZAALrFZQw3gWYKUBAAQo7jyw/fj4AAAAAApmaWVsAQAAAAAKY2hybQAAAAAAGHN0dHMAAAAAAAAAAQAAAAMAAAJYAAAAKGN0dHMAAAAAAAAAAwAAAAEAAAJYAAAAAQAABLAAAAABAAAAAAAAABRzdHNzAAAAAAAAAAEAAAABAAAAD3NkdHAAAAAAIBAYAAAAHHN0c2MAAAAAAAAAAQAAAAEAAAABAAAAAQAAACBzdHN6AAAAAAAAAAAAAAADAAAAcAAAABQAAAAVAAAAHHN0Y28AAAAAAAAAAwAAACwAAACcAAAAsA==';
+function wakeVideo(){
+  if (!nsv) {
+    nsv = document.createElement('video');
+    nsv.muted = true; nsv.loop = true; nsv.playsInline = true;
+    nsv.setAttribute('playsinline', ''); nsv.setAttribute('muted', ''); nsv.setAttribute('aria-hidden', 'true');
+    nsv.className = 'sr'; nsv.src = AWAKE_MP4;
+    document.body.append(nsv);
+  }
+  const p = nsv.play();
+  if (p && p.then) p.then(() => { wakeOK = true; paintWake(); }).catch(() => {
+    wakeOK = false; paintWake();
+    // přehrávání chce dotyk – zkusit znovu při dalším dotyku, bez hlášky
+    if (!wakeRetry) { wakeRetry = true; addEventListener('pointerdown', () => { wakeRetry = false; wakeVideo(); }, {once: true}); }
+  });
+}
+async function wake(){
+  if (!token) return;
+  if (!('wakeLock' in navigator)) { if (document.visibilityState === 'visible') wakeVideo(); return; }
+  if (document.visibilityState !== 'visible') return;
+  try {
+    wl = await navigator.wakeLock.request('screen'); wakeOK = true;
+    wl.addEventListener('release', () => { wakeOK = false; paintWake();
+      if (document.visibilityState === 'visible') setTimeout(wake, 1000); });
+  } catch (e) {
+    wakeOK = false;
+    // NotAllowedError (úspora baterie, chybí dotyk) – tiše zkusit znovu při dalším dotyku, bez hlášky
+    if (e && e.name === 'NotAllowedError') {
+      if (!wakeRetry) { wakeRetry = true; addEventListener('pointerdown', () => { wakeRetry = false; wake(); }, {once: true}); }
+    } else showHint();
+  }
+  paintWake();
+}
+function paintWake(){ const e = $('wakeSt'); if (e) e.textContent = wakeOK ? t('wakeYes') : t('wakeNo'); }
+function showHint(){
+  let seen = false; try { seen = localStorage.getItem('krai-hint-wake') === '1'; } catch (e) {}
+  if (seen) return;
+  const h = $('hint'); h.style.display = 'block';
+  h.innerHTML = t('wakeHint');
+  if (cfg) { fitStrips(); paintAll(); paintMeters(); }
+  h.querySelector('button').onclick = () => { h.style.display = 'none'; try { localStorage.setItem('krai-hint-wake', '1'); } catch (e) {} if (cfg) { fitStrips(); paintAll(); paintMeters(); } };
+}
+/* Úsporný mobil (9.4): skrytá stránka (zhasnutý displej, jiná appka) se od Macu odpojí – žádné měřáky 10× za
+   sekundu na pozadí. Po návratu se připojí znovu a dostane celý stav busu (init), nic se neztratí. */
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState === 'visible') { if (token) { connect(); wake(); } return; }
+  if (es) { es.close(); es = null; }
+});
+let rs = 0;
+window.addEventListener('resize', () => { clearTimeout(rs); rs = setTimeout(() => { if (!cfg) return;
+  const changed = stripsMode() !== LS || (LS && perPage($('main')) !== PER);
+  if (changed && !dragging.size) build(); else { fitStrips(); paintAll(); paintMeters(); } }, 120); });
+// MARK: - párování mobilu (ONBOARDING §B, PLAN 13.2 / 13.3) – co musí umět server: docs/specs/PAIRING-API.md
+/* Klíč v adrese /m/<klíč> je buď párovací kód z QR (platí 10 min), nebo klíč spárovaného mobilu (session).
+   Starý server bez /api/pair odpoví bez JSON → klíč = odkaz člena jako dřív (nic se nerozbije). */
+const SKEY = 'krai-session';
+let PF = null;            // rozpracované párování
+function savedSession(){ try { return JSON.parse(localStorage.getItem(SKEY) || 'null'); } catch (e) { return null; } }
+function saveSession(s){ try { if (s) localStorage.setItem(SKEY, JSON.stringify(s)); else localStorage.removeItem(SKEY); } catch (e) {} }
+async function call(path, body){
+  try {
+    const r = await fetch(path, body === undefined ? {cache: 'no-store'} : {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(body)});
+    let j = null;
+    if ((r.headers.get('Content-Type') || '').indexOf('json') >= 0) { try { j = await r.json(); } catch (e) {} }
+    return {s: r.status, j};
+  } catch (e) { return {s: 0, j: null}; }
+}
+const keyPath = k => '/api/pair/' + encodeURIComponent(k);
+function cleanKey(t){
+  const m = /\/m\/([^/?#\s]+)/.exec(t || '');                 // vložený celý odkaz
+  return (m ? m[1] : String(t || '')).trim().toLowerCase().replace(/[\s-]/g, '');
+}
+/* „odposlech pro Toma / Dana / Filipa“ – server může poslat nameAcc */
+function acc(n){ if (/a$/.test(n)) return n.slice(0, -1) + 'u'; if (/[bcčdďfghjklmnňpqrřsštťvwxzž]$/i.test(n)) return n + 'a'; return n; }
+function deviceName(){ const u = navigator.userAgent; return /iPad/.test(u) || (/Macintosh/.test(u) && navigator.maxTouchPoints > 1) ? 'iPad' : /iPhone/.test(u) ? 'iPhone' : /Android/.test(u) ? 'Android' : t('browser'); }
+/* zařízení s Mixtetem, ke kterému se mobil páruje (Mac dnes, iPad M14, jiné později) – jméno posílá server v `hub` */
+const hubName = () => (PF && PF.info && ((PF.info.hub && PF.info.hub.name) || PF.info.mac)) || t('hubFallback');   // `mac` = starší server (#77)
+const isApple = () => /iPhone|iPad|Macintosh/.test(navigator.userAgent);
+const standalone = () => { try { return navigator.standalone === true || matchMedia('(display-mode: standalone)').matches; } catch (e) { return false; } };
+function el(tag, cls, text){ const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
+const ICON = {
+  lock: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>',
+  pin: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 17v5"/><path d="M9 10.76V6h6v4.76l2 2.24v2H7v-2z"/><path d="M8 2h8"/></svg>',
+  sun: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>'
+};
+function item(icon, title, text, dot){
+  const d = el('div', 'it'); d.innerHTML = ICON[icon] || '<span></span>';
+  const t = el('span'); t.append(el('b', '', title)); if (text) t.append(el('small', '', text)); d.append(t);
+  d.append(dot ? el('i', 'dot') : el('span')); if (dot) d.lastChild.setAttribute('aria-hidden', 'true');
+  const c = el('div', 'card'); c.append(d); return c;
+}
+/* jedna obrazovka: krok, (iniciála +) nadpis, věta, obsah, hlavní tlačítko dole, vedlejší pod ním */
+function screen(o){
+  const p = $('pair'); p.innerHTML = ''; p.hidden = false; document.body.classList.add('pairing');
+  p.append(el('div', 'pstep', o.step || ''));
+  const head = el('div', 'phead'), h = el('h1'); h.id = 'pairH'; h.tabIndex = -1;
+  if (o.h) o.h(h);
+  if (o.ini) { const r = el('div', 'pid'), i = el('span', 'ini', o.ini); i.setAttribute('aria-hidden', 'true'); r.append(i, h); head.append(r); } else head.append(h);
+  if (o.lead) head.append(el('p', 'lead', o.lead));
+  const body = el('div', 'pbody'); if (o.body) body.append(...[].concat(o.body));
+  const acts = el('div', 'pacts');
+  if (o.cta) { const b = el('button', 'cta', o.cta[0]); b.id = 'pCta'; b.onclick = o.cta[1]; acts.append(b); }
+  if (o.alt) { const b = el('button', 'alt', o.alt[0]); b.id = 'pAlt'; b.onclick = o.alt[1]; acts.append(b); }
+  const foot = el('div', 'pfoot', t('pfoot')); foot.append(langSwitch());
+  // značka Mixtet (10.3) – skutečné PNG z Macu; když chybí, zůstane jen text
+  const mark = document.createElement('img'); mark.className = 'mark'; mark.src = '/demo/logo.png'; mark.alt = '';
+  mark.onerror = () => mark.remove(); foot.prepend(mark);
+  p.append(head, body, acts, foot);
+  document.title = o.title || t('title'); scrollTo(0, 0);
+  setTimeout(() => (o.focus ? $(o.focus) : h).focus({preventScroll: true}), 0);
+  return p;
+}
+function text(s){ return h => { h.textContent = s; }; }
+function stepOf(i){ return PF ? t('step', i, PF.steps) : ''; }
+let pinTimer = 0;
+
+/* tablet „Odposlechy kapely“ (13.4): /t/<klíč> – výběr člena, pak stejná stránka jako mobil; zámek po 20 s */
+let tTok = null, tBus = null, tLockAt = 0, tTimer = 0;
+const TAB_LOCK = 20000;
+function apiBase(){ return tTok ? '/api/t/' + tTok + '/' + tBus : '/api/m/' + token; }
+async function tabletBoot(k){
+  tTok = k;
+  const r = await call('/api/t/' + encodeURIComponent(k));
+  if (!r.j || !r.j.buses) return errScreen(r.s === 0 ? 'net' : 'unknown', () => tabletBoot(k));
+  TB = r.j; tabletChooser();
+}
+let TB = null;   // tablet: seznam členů (T = texty, nepřepsat)
+function tabletChooser(){
+  if (es) { es.close(); es = null; } cfg = null; tBus = null; token = null; clearInterval(tTimer);
+  const bar = $('tabBar'); if (bar) bar.remove();
+  REDRAW = tabletChooser;
+  const list = document.createElement('div'); list.className = 'acts';
+  (TB.buses || []).forEach(m => { const b = button('tab' + m.bus, nm(m.name), () => tabletOpen(m)); b.classList.add('wide'); list.append(b); });
+  screen({title: t('tabTitle'), h: text(t('tabTitle')), lead: t('tabLead'), body: list});
+}
+function tabletOpen(m){
+  tBus = m.bus; token = 'tablet';
+  $('pair').hidden = true; $('pair').innerHTML = ''; document.body.classList.remove('pairing');
+  const bar = document.createElement('div'); bar.id = 'tabBar';
+  bar.setAttribute('role', 'status');
+  const tx = document.createElement('span'); tx.textContent = t('tabBar', nm(m.name));
+  const other = button('tabOther', t('tabOther'), tabletChooser);
+  bar.append(tx, other); document.body.prepend(bar);
+  tLockAt = Date.now();
+  connect(); wake(); if (!tick) tick = setInterval(status, 1000);
+  clearInterval(tTimer); tTimer = setInterval(() => { if (tBus && Date.now() - tLockAt > TAB_LOCK && !dragging.size) tabletChooser(); }, 1000);
+}
+['pointerdown', 'keydown'].forEach(e => addEventListener(e, () => { if (tBus) tLockAt = Date.now(); }, true));
+async function boot(){
+  const seg = location.pathname.split('/').filter(Boolean);
+  if (seg[0] === 't' && seg[1]) return tabletBoot(seg[1]);
+  const key = seg[0] === 'm' && seg[1] ? seg[1] : null;
+  const saved = savedSession();
+  if (key) return lookup(key, saved);
+  if (saved && saved.session) return lookup(saved.session, null, true);
+  codeScreen();
+}
+/* Co je tohle za klíč? ok = párovací kód, session = spárovaný mobil, expired / unknown / locked */
+async function lookup(key, saved, fromSaved){
+  const r = await call(keyPath(key));
+  if (!r.j || !r.j.state) {
+    if (r.s === 0) return errScreen('net', () => lookup(key, saved, fromSaved));
+    return start(key);                                          // starý server: odkaz člena jako dřív
+  }
+  const st = r.j.state;
+  if (st === 'session') { saveSession({session: key, bus: r.j.bus, name: r.j.name}); return start(key); }
+  if (st === 'locked') return errScreen('locked', () => lookup(key, saved, fromSaved), r.j.retryIn);
+  if (saved && saved.session && saved.session !== key && !(st === 'ok' && saved.bus !== r.j.bus)) {
+    const c = await call(keyPath(saved.session));                // už spárovaný mobil → rovnou do odposlechu (návrat < 1 min)
+    if (c.j && c.j.state === 'session') return start(saved.session);
+  }
+  if (st === 'ok') return pairFlow(key, r.j);
+  if (fromSaved) { saveSession(null); return errScreen('revoked'); }
+  errScreen(st === 'expired' ? 'expired' : 'unknown');
+}
+function start(key){
+  clearInterval(pinTimer); PF = null; token = key;
+  $('pair').hidden = true; $('pair').innerHTML = ''; document.body.classList.remove('pairing');
+  if (location.pathname !== '/m/' + key) { try { history.replaceState(null, '', '/m/' + key + langQ()); } catch (e) {} }
+  connect(); wake(); if (!tick) tick = setInterval(status, 1000);
+  if (!qTick) qTick = setInterval(() => { if (token && online() && !document.hidden) post('q', {gap: Math.max(0, ...pings), drops}); }, 10000);
+}
+/* Odpojený mobil (Odpojit u kapelníka, nový odkaz): server pošle „bye“, nebo klíč přestane platit */
+let checking = false;
+async function checkKey(){
+  if (checking || !token || tTok) return; checking = true;
+  const r = await call(keyPath(token)); checking = false;
+  if (r.j && (r.j.state === 'unknown' || r.j.state === 'expired')) revoked();
+}
+function revoked(){
+  if (es) es.close(); es = null; token = null; cfg = null; clearInterval(tick); tick = 0; clearInterval(qTick); qTick = 0;
+  saveSession(null); errScreen('revoked');
+}
+
+// 1 · kdo jsi
+function pairFlow(code, info){
+  PF = {code, info, session: null, mine: new Set(info.mine || []), pin: '', steps: 2 + (info.pin ? 1 : 0) + (info.strips && info.strips.length ? 1 : 0)};
+  document.documentElement.style.setProperty('--mc', 'var(--krai-member-' + info.bus + ')');
+  whoScreen();
+}
+function whoScreen(){
+  REDRAW = whoScreen;
+  const i = PF.info, n = nm(i.name) || t('busFallback', i.bus), member = !!i.member, a = i.nameAcc || acc(n);
+  screen({step: stepOf(1), ini: n.trim()[0], title: t('whoTitle', n, a),
+    h: h => { h.append(member ? t('whoHMember') : t('whoHOther'), el('em', '', member ? t('whoName', n, a) : n)); },
+    lead: t('whoLead'),
+    body: item('lock', (i.band ? i.band + ' · ' : '') + hubName(), t('viaWifi'), true),
+    cta: [member ? t('iAm', n) : t('theyreMine'), () => i.pin ? pinScreen() : claim(null)],
+    alt: [member ? t('iAmNot', n) : t('notMine'), notMe]});
+}
+function notMe(){
+  REDRAW = notMe;
+  screen({title: t('otherQrTitle'),
+    h: text(t('otherQrH')),
+    lead: t('otherQrLead'),
+    cta: [t('back'), whoScreen], alt: [t('haveCode'), codeScreen]});
+}
+
+// 2 · PIN (jen když je zapnutý) – 4 číslice, po 3 špatných pauza 30 s (hlídá server)
+function pinScreen(){
+  REDRAW = pinScreen; PF.pin = '';
+  const pins = el('div', 'pins'); pins.setAttribute('aria-hidden', 'true');
+  for (let k = 0; k < 4; k++) pins.append(el('span'));
+  const keys = el('div', 'keys');
+  ['1', '2', '3', '4', '5', '6', '7', '8', '9', '', '0', '⌫'].forEach(x => {
+    if (!x) { keys.append(el('span')); return; }
+    const b = el('button', '', x); b.type = 'button';
+    if (x === '⌫') { b.setAttribute('aria-label', t('delDigit')); b.onclick = () => pinKey('del'); } else b.onclick = () => pinKey(x);
+    keys.append(b);
+  });
+  const err = el('p', 'perr'); err.id = 'pErr'; err.setAttribute('role', 'status');
+  screen({step: stepOf(2), title: t('pinTitle'), h: text(t('pinH')),
+    lead: t('pinLead'),
+    body: [pins, err, keys], alt: [t('back'), whoScreen]});
+  paintPin();
+}
+function paintPin(){
+  const sp = document.querySelectorAll('.pins span');
+  sp.forEach((s, k) => { s.textContent = PF.pin[k] || ''; s.className = k < PF.pin.length ? 'f' : k === PF.pin.length ? 'nx' : ''; });
+}
+function pinLock(on){ document.querySelectorAll('.keys button').forEach(b => { b.disabled = on; }); }
+async function pinKey(x){
+  if (!PF || PF.busy) return;
+  if (x === 'del') { PF.pin = PF.pin.slice(0, -1); paintPin(); say(t('pinCount', PF.pin.length)); return; }
+  if (PF.pin.length >= 4) return;
+  PF.pin += x; paintPin(); buzz(5);
+  if (PF.pin.length < 4) { say(t('pinCount', PF.pin.length)); return; }
+  PF.busy = true; $('pErr').className = 'perr info'; $('pErr').textContent = t('checking');
+  const r = await claim(PF.pin); PF && (PF.busy = false);
+  if (!r) return;                                                // spárováno nebo jiná obrazovka
+  PF.pin = ''; paintPin();
+  const e = $('pErr'); e.className = 'perr';
+  if (r.locked) { lockPin(r.locked); return; }
+  e.textContent = r.net ? t('hubDown', hubName()) : t('pinWrong', r.left);
+  buzz(60);
+}
+function lockPin(s){
+  let left = Math.max(1, Math.round(s)); pinLock(true); const e = $('pErr'); e.tabIndex = -1; e.focus({preventScroll: true});   // fokus nesmí zůstat na zamčené klávese
+  const paint = () => { e.textContent = t('pinLocked', left); };
+  paint(); clearInterval(pinTimer);
+  pinTimer = setInterval(() => { left--; if (!$('pErr')) { clearInterval(pinTimer); return; }
+    if (left <= 0) { clearInterval(pinTimer); pinLock(false); e.className = 'perr info'; e.textContent = t('canRetry'); const k = document.querySelector('.keys button'); if (k) k.focus({preventScroll: true}); } else paint(); }, 1000);
+}
+document.addEventListener('keydown', ev => {
+  if (!PF || !document.querySelector('.keys') || ev.metaKey || ev.ctrlKey || ev.altKey) return;
+  if (/^[0-9]$/.test(ev.key)) { ev.preventDefault(); if (!document.querySelector('.keys button:disabled')) pinKey(ev.key); }
+  else if (ev.key === 'Backspace') { ev.preventDefault(); pinKey('del'); }
+});
+/* Spárovat: server vrátí klíč mobilu (session); adresa se přepíše na /m/<session> – funguje i z plochy */
+async function claim(pin){
+  return claimResult(await call(keyPath(PF.code) + '/claim', pin == null ? {device: deviceName()} : {pin, device: deviceName()}), pin);
+}
+function claimResult(r, pin){
+  if (r.j && r.j.ok && r.j.session) {
+    PF.session = r.j.session; saveSession({session: r.j.session, bus: PF.info.bus, name: PF.info.name});
+    try { history.replaceState(null, '', '/m/' + r.j.session + langQ()); } catch (e) {}
+    if (PF.info.strips && PF.info.strips.length) mineScreen(); else doneScreen();
+    return null;
+  }
+  if (r.s === 0) { if (pin == null) toast(t('hubDownToast', hubName()), {err: true}); return {net: true}; }
+  const st = r.j && r.j.state;
+  if (st === 'pin') { if (pin == null) { PF.info.pin = true; PF.steps++; pinScreen(); return null; } return {left: r.j.left}; }
+  if (st === 'locked') { if (pin == null) { errScreen('locked', () => claim(null), r.j.retryIn); return null; } return {locked: r.j.retryIn || 30}; }
+  if (st === 'wait') { waitScreen(pin, r.j.ticket, r.j.retryIn); return null; }
+  if (st === 'denied') { errScreen('denied'); return null; }
+  errScreen(st === 'expired' ? 'expired' : 'unknown'); return null;
+}
+/* Povolit na hubu (cizí síť): mobil čeká, až kapelník ťukne na Povolit; ptá se znovu po pár sekundách, nejdéle 2 min */
+function waitScreen(pin, ticket, every){
+  const i = PF.info, n = nm(i.name) || t('busFallback', i.bus), t0 = Date.now(), my = PF;
+  REDRAW = () => { if (PF === my && PF.wait === t0) { clearTimeout(PF.waitT); waitScreen(pin, ticket, every); } };
+  screen({title: t('waitTitle'), h: text(t('waitH')),
+    lead: t('waitLead', hubName(), n, deviceName()),
+    body: item('lock', t('waitItem'), t('waitItemSub'), false),
+    alt: [t('cancel'), () => { PF.wait = 0; whoScreen(); }]});
+  const tick = async () => {
+    if (PF !== my || PF.wait !== t0) return;
+    if (Date.now() - t0 > 120000) { errScreen('timeout', () => { PF = my; whoScreen(); }); return; }
+    const r = await call(keyPath(PF.code) + '/claim', {ticket, device: deviceName(), pin: pin == null ? undefined : pin});
+    if (PF !== my || PF.wait !== t0) return;
+    if (r.j && r.j.state === 'wait') { PF.waitT = setTimeout(tick, (r.j.retryIn || every || 2) * 1000); return; }
+    if (r.s === 0) { PF.waitT = setTimeout(tick, 3000); return; }
+    PF.wait = 0; claimResult(r, pin);
+  };
+  PF.wait = t0; PF.waitT = setTimeout(tick, (every || 2) * 1000);
+}
+
+// 3 · Co je tvoje? (z toho je JÁ; předvyplnil kapelník)
+function mineScreen(){
+  REDRAW = mineScreen;
+  const i = PF.info, chips = el('div', 'chips'); chips.setAttribute('role', 'group'); chips.setAttribute('aria-labelledby', 'pairH');
+  const note = el('p', 'perr info'); note.id = 'pNote'; note.setAttribute('role', 'status');
+  i.strips.forEach(s => {
+    const b = el('button', 'chip', s.name); b.type = 'button'; b.id = 'chip-' + s.id; b.style.setProperty('--cc', chColor(s));
+    b.setAttribute('aria-pressed', PF.mine.has(s.id));
+    b.onclick = () => { PF.mine.has(s.id) ? PF.mine.delete(s.id) : PF.mine.add(s.id); b.setAttribute('aria-pressed', PF.mine.has(s.id)); paintMine(); };
+    chips.append(b);
+  });
+  const pre = (i.mine || []).length > 0;
+  screen({step: stepOf(PF.steps - 1), title: t('mineTitle'), h: text(t('mineTitle')),
+    lead: pre ? t('mineLeadPre') : t('mineLead'),
+    body: [chips, note], cta: [t('thatsMe'), saveMine]});
+  paintMine();
+}
+function paintMine(){
+  const n = PF.mine.size, b = $('pCta');
+  $('pNote').textContent = n ? t('picked', n) : t('pickedNone');
+  if (b) b.textContent = n ? t('thatsMe') : t('noMe');
+}
+async function saveMine(){
+  if (PF.busy) return; PF.busy = true;   // tlačítko se nezamyká – fokus zůstane na něm
+  const r = await call('/api/m/' + encodeURIComponent(PF.session) + '/stars', {stars: [...PF.mine]});
+  PF.busy = false;
+  if (r.s === 0 || !r.j || r.j.ok === false) { toast(t('hubDownSave', hubName()), {err: true}); return; }
+  doneScreen();
+}
+
+// 4 · Tři posuvníky + tipy (plocha, displej)
+function doneScreen(){
+  REDRAW = doneScreen;
+  const i = PF.info, strips = i.strips || [];
+  const names = list => list.length > 3 ? list.slice(0, 3).join(', ') + t('andMore', list.length - 3) : list.join(', ');
+  const mine = strips.filter(s => PF.mine.has(s.id)), clicks = strips.filter(s => !PF.mine.has(s.id) && isClick(s));
+  const dl = el('dl', 'legend');
+  const row = (label, cc, txt) => { const dt = el('dt'), t = el('span', 'tile', label); t.style.setProperty('--cc', cc); dt.append(t); dl.append(dt, el('dd', '', txt)); };
+  row(t('ME'), 'var(--mc)', mine.length ? names(mine.map(s => s.name)) : t('meNone'));
+  row(t('BAND'), 'var(--krai-channel-unowned)', t('everyoneElse'));
+  if (clicks.length) row(t('CLICK'), 'var(--krai-channel-unowned)', names(clicks.map(s => s.name)));
+  const tips = [];
+  if (!standalone()) tips.push(item('pin', t('homeTitle'), (isApple() ? t('homeApple') : /Android/.test(navigator.userAgent) ? t('homeAndroid') : t('homeOther')) + t('homeNext')));
+  tips.push(item('sun', t('wakeOn'), t('wakeOnSub')));   // wake lock, nebo na http tiché video (9.2)
+  screen({step: stepOf(PF.steps), title: t('doneTitle'), h: text(t('doneTitle')),
+    lead: t('doneLead') + (i.guard ? t('doneGuard') : ''),
+    body: [dl, ...tips], cta: [t('startPlaying'), () => { try { localStorage.setItem('krai-hint-wake', '1'); } catch (e) {} start(PF.session); }]});
+}
+
+// Chyby a ruční kód
+function errScreen(kind, retry, secs, rest){
+  const E = t({expired: 'errExpired', unknown: 'errUnknown', revoked: 'errRevoked', denied: 'errDenied',
+    timeout: 'errTimeout', net: 'errNet', locked: 'errLocked'}[kind]);
+  if (kind === 'denied' && !retry && PF) { const my = PF; retry = () => { PF = my; whoScreen(); }; }
+  const again = kind === 'net' || kind === 'locked' || ((kind === 'denied' || kind === 'timeout') && retry);
+  const left0 = rest != null ? rest : Math.max(1, Math.round(secs || 30)), until = Date.now() + left0 * 1000;
+  REDRAW = () => errScreen(kind, retry, secs, Math.max(0, Math.round((until - Date.now()) / 1000)));   // odpočet přežije přepnutí jazyka
+  // „Moc pokusů“ nemá vlastní větu – podtitul je odpočet (bez něj chyběl text a odpočet spadl na null)
+  screen({title: E[0], h: text(E[0]), lead: kind === 'locked' ? t('retryIn', left0) : E[1],
+    cta: again ? [t('tryAgain'), retry] : [t('enterCode'), codeScreen],
+    alt: again ? [t('enterCode'), codeScreen] : null});
+  if (kind === 'locked') {
+    let left = left0; const b = $('pCta'), l = document.querySelector('#pair .lead');
+    l.setAttribute('role', 'status');
+    const paint = () => { l.textContent = left > 0 ? t('retryIn', left) : t('canRetry'); b.disabled = left > 0; };
+    paint(); clearInterval(pinTimer);
+    if (left > 0) pinTimer = setInterval(() => { left--; paint(); if (left <= 0) clearInterval(pinTimer); }, 1000);
+  }
+}
+function codeScreen(){
+  clearInterval(pinTimer);
+  REDRAW = () => { const v = $('pCode') ? $('pCode').value : ''; codeScreen(); $('pCode').value = v; };
+  const lab = el('label', 'sr', t('codeLabel')); lab.htmlFor = 'pCode';
+  const inp = el('input', 'code'); inp.id = 'pCode'; inp.autocomplete = 'off'; inp.spellcheck = false;
+  inp.setAttribute('autocapitalize', 'characters'); inp.setAttribute('autocorrect', 'off'); inp.setAttribute('enterkeyhint', 'go');
+  const err = el('p', 'perr'); err.id = 'pErr'; err.setAttribute('role', 'status');
+  inp.addEventListener('keydown', ev => { if (ev.key === 'Enter') { ev.preventDefault(); sendCode(); } });
+  screen({title: t('codeTitle'), h: text(t('codeH')),
+    lead: t('codeLead'),
+    body: [lab, inp, err], cta: [t('next'), sendCode], focus: 'pCode'});
+}
+async function sendCode(){
+  const k = cleanKey($('pCode').value), e = $('pErr'), b = $('pCta');
+  if (k.length < 6) { e.className = 'perr'; e.textContent = t('code6'); return; }
+  if (b.dataset.busy) return; b.dataset.busy = '1'; e.className = 'perr info'; e.textContent = t('checking');
+  const r = await call(keyPath(k)); delete b.dataset.busy; e.className = 'perr';
+  const st = r.j && r.j.state;
+  if (r.s === 0) { e.textContent = t('codeNet'); return; }
+  if (st === 'ok') return pairFlow(k, r.j);
+  if (st === 'session') { saveSession({session: k, bus: r.j.bus, name: r.j.name}); return start(k); }
+  if (st === 'locked') { e.textContent = t('codeLocked', r.j.retryIn || 30); return; }
+  e.textContent = st === 'expired' ? t('codeExpired') : t('codeUnknown');
+}
+
+paintStatic();
+boot();
+</script>
+</body>
+</html>

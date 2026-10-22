@@ -1,0 +1,631 @@
+{
+  "banks": 8,
+  "channel": 15,
+  "controls": [
+    {
+      "index": 0,
+      "kind": "fader",
+      "msg": "cc",
+      "number": 0,
+      "slot": "fader"
+    },
+    {
+      "index": 1,
+      "kind": "fader",
+      "msg": "cc",
+      "number": 1,
+      "slot": "fader"
+    },
+    {
+      "index": 2,
+      "kind": "fader",
+      "msg": "cc",
+      "number": 2,
+      "slot": "fader"
+    },
+    {
+      "index": 3,
+      "kind": "fader",
+      "msg": "cc",
+      "number": 3,
+      "slot": "fader"
+    },
+    {
+      "index": 4,
+      "kind": "fader",
+      "msg": "cc",
+      "number": 4,
+      "slot": "fader"
+    },
+    {
+      "index": 5,
+      "kind": "fader",
+      "msg": "cc",
+      "number": 5,
+      "slot": "fader"
+    },
+    {
+      "index": 6,
+      "kind": "fader",
+      "msg": "cc",
+      "number": 6,
+      "slot": "fader"
+    },
+    {
+      "index": 7,
+      "kind": "fader",
+      "msg": "cc",
+      "number": 7,
+      "slot": "fader"
+    },
+    {
+      "index": 0,
+      "kind": "knob",
+      "msg": "cc",
+      "number": 16,
+      "slot": "knob"
+    },
+    {
+      "index": 1,
+      "kind": "knob",
+      "msg": "cc",
+      "number": 17,
+      "slot": "knob"
+    },
+    {
+      "index": 2,
+      "kind": "knob",
+      "msg": "cc",
+      "number": 18,
+      "slot": "knob"
+    },
+    {
+      "index": 3,
+      "kind": "knob",
+      "msg": "cc",
+      "number": 19,
+      "slot": "knob"
+    },
+    {
+      "index": 4,
+      "kind": "knob",
+      "msg": "cc",
+      "number": 20,
+      "slot": "knob"
+    },
+    {
+      "index": 5,
+      "kind": "knob",
+      "msg": "cc",
+      "number": 21,
+      "slot": "knob"
+    },
+    {
+      "index": 6,
+      "kind": "knob",
+      "msg": "cc",
+      "number": 22,
+      "slot": "knob"
+    },
+    {
+      "index": 7,
+      "kind": "knob",
+      "msg": "cc",
+      "number": 23,
+      "slot": "knob"
+    },
+    {
+      "index": 0,
+      "kind": "button",
+      "led": {
+        "msg": "cc",
+        "off": 0,
+        "on": 127
+      },
+      "msg": "cc",
+      "number": 32,
+      "slot": "solo"
+    },
+    {
+      "index": 1,
+      "kind": "button",
+      "led": {
+        "msg": "cc",
+        "off": 0,
+        "on": 127
+      },
+      "msg": "cc",
+      "number": 33,
+      "slot": "solo"
+    },
+    {
+      "index": 2,
+      "kind": "button",
+      "led": {
+        "msg": "cc",
+        "off": 0,
+        "on": 127
+      },
+      "msg": "cc",
+      "number": 34,
+      "slot": "solo"
+    },
+    {
+      "index": 3,
+      "kind": "button",
+      "led": {
+        "msg": "cc",
+        "off": 0,
+        "on": 127
+      },
+      "msg": "cc",
+      "number": 35,
+      "slot": "solo"
+    },
+    {
+      "index": 4,
+      "kind": "button",
+      "led": {
+        "msg": "cc",
+        "off": 0,
+        "on": 127
+      },
+      "msg": "cc",
+      "number": 36,
+      "slot": "solo"
+    },
+    {
+      "index": 5,
+      "kind": "button",
+      "led": {
+        "msg": "cc",
+        "off": 0,
+        "on": 127
+      },
+      "msg": "cc",
+      "number": 37,
+      "slot": "solo"
+    },
+    {
+      "index": 6,
+      "kind": "button",
+      "led": {
+        "msg": "cc",
+        "off": 0,
+        "on": 127
+      },
+      "msg": "cc",
+      "number": 38,
+      "slot": "solo"
+    },
+    {
+      "index": 7,
+      "kind": "button",
+      "led": {
+        "msg": "cc",
+        "off": 0,
+        "on": 127
+      },
+      "msg": "cc",
+      "number": 39,
+      "slot": "solo"
+    },
+    {
+      "index": 0,
+      "kind": "button",
+      "led": {
+        "msg": "cc",
+        "off": 0,
+        "on": 127
+      },
+      "msg": "cc",
+      "number": 48,
+      "slot": "mute"
+    },
+    {
+      "index": 1,
+      "kind": "button",
+      "led": {
+        "msg": "cc",
+        "off": 0,
+        "on": 127
+      },
+      "msg": "cc",
+      "number": 49,
+      "slot": "mute"
+    },
+    {
+      "index": 2,
+      "kind": "button",
+      "led": {
+        "msg": "cc",
+        "off": 0,
+        "on": 127
+      },
+      "msg": "cc",
+      "number": 50,
+      "slot": "mute"
+    },
+    {
+      "index": 3,
+      "kind": "button",
+      "led": {
+        "msg": "cc",
+        "off": 0,
+        "on": 127
+      },
+      "msg": "cc",
+      "number": 51,
+      "slot": "mute"
+    },
+    {
+      "index": 4,
+      "kind": "button",
+      "led": {
+        "msg": "cc",
+        "off": 0,
+        "on": 127
+      },
+      "msg": "cc",
+      "number": 52,
+      "slot": "mute"
+    },
+    {
+      "index": 5,
+      "kind": "button",
+      "led": {
+        "msg": "cc",
+        "off": 0,
+        "on": 127
+      },
+      "msg": "cc",
+      "number": 53,
+      "slot": "mute"
+    },
+    {
+      "index": 6,
+      "kind": "button",
+      "led": {
+        "msg": "cc",
+        "off": 0,
+        "on": 127
+      },
+      "msg": "cc",
+      "number": 54,
+      "slot": "mute"
+    },
+    {
+      "index": 7,
+      "kind": "button",
+      "led": {
+        "msg": "cc",
+        "off": 0,
+        "on": 127
+      },
+      "msg": "cc",
+      "number": 55,
+      "slot": "mute"
+    },
+    {
+      "index": 0,
+      "kind": "button",
+      "led": {
+        "msg": "cc",
+        "off": 0,
+        "on": 127
+      },
+      "msg": "cc",
+      "number": 64,
+      "slot": "rec"
+    },
+    {
+      "index": 1,
+      "kind": "button",
+      "led": {
+        "msg": "cc",
+        "off": 0,
+        "on": 127
+      },
+      "msg": "cc",
+      "number": 65,
+      "slot": "rec"
+    },
+    {
+      "index": 2,
+      "kind": "button",
+      "led": {
+        "msg": "cc",
+        "off": 0,
+        "on": 127
+      },
+      "msg": "cc",
+      "number": 66,
+      "slot": "rec"
+    },
+    {
+      "index": 3,
+      "kind": "button",
+      "led": {
+        "msg": "cc",
+        "off": 0,
+        "on": 127
+      },
+      "msg": "cc",
+      "number": 67,
+      "slot": "rec"
+    },
+    {
+      "index": 4,
+      "kind": "button",
+      "led": {
+        "msg": "cc",
+        "off": 0,
+        "on": 127
+      },
+      "msg": "cc",
+      "number": 68,
+      "slot": "rec"
+    },
+    {
+      "index": 5,
+      "kind": "button",
+      "led": {
+        "msg": "cc",
+        "off": 0,
+        "on": 127
+      },
+      "msg": "cc",
+      "number": 69,
+      "slot": "rec"
+    },
+    {
+      "index": 6,
+      "kind": "button",
+      "led": {
+        "msg": "cc",
+        "off": 0,
+        "on": 127
+      },
+      "msg": "cc",
+      "number": 70,
+      "slot": "rec"
+    },
+    {
+      "index": 7,
+      "kind": "button",
+      "led": {
+        "msg": "cc",
+        "off": 0,
+        "on": 127
+      },
+      "msg": "cc",
+      "number": 71,
+      "slot": "rec"
+    },
+    {
+      "index": 0,
+      "kind": "button",
+      "led": {
+        "msg": "cc",
+        "off": 0,
+        "on": 127
+      },
+      "msg": "cc",
+      "number": 80,
+      "slot": "select"
+    },
+    {
+      "index": 1,
+      "kind": "button",
+      "led": {
+        "msg": "cc",
+        "off": 0,
+        "on": 127
+      },
+      "msg": "cc",
+      "number": 81,
+      "slot": "select"
+    },
+    {
+      "index": 2,
+      "kind": "button",
+      "led": {
+        "msg": "cc",
+        "off": 0,
+        "on": 127
+      },
+      "msg": "cc",
+      "number": 82,
+      "slot": "select"
+    },
+    {
+      "index": 3,
+      "kind": "button",
+      "led": {
+        "msg": "cc",
+        "off": 0,
+        "on": 127
+      },
+      "msg": "cc",
+      "number": 83,
+      "slot": "select"
+    },
+    {
+      "index": 4,
+      "kind": "button",
+      "led": {
+        "msg": "cc",
+        "off": 0,
+        "on": 127
+      },
+      "msg": "cc",
+      "number": 84,
+      "slot": "select"
+    },
+    {
+      "index": 5,
+      "kind": "button",
+      "led": {
+        "msg": "cc",
+        "off": 0,
+        "on": 127
+      },
+      "msg": "cc",
+      "number": 85,
+      "slot": "select"
+    },
+    {
+      "index": 6,
+      "kind": "button",
+      "led": {
+        "msg": "cc",
+        "off": 0,
+        "on": 127
+      },
+      "msg": "cc",
+      "number": 86,
+      "slot": "select"
+    },
+    {
+      "index": 7,
+      "kind": "button",
+      "led": {
+        "msg": "cc",
+        "off": 0,
+        "on": 127
+      },
+      "msg": "cc",
+      "number": 87,
+      "slot": "select"
+    },
+    {
+      "kind": "button",
+      "msg": "cc",
+      "number": 58,
+      "slot": "bankLeft"
+    },
+    {
+      "kind": "button",
+      "msg": "cc",
+      "number": 59,
+      "slot": "bankRight"
+    },
+    {
+      "kind": "button",
+      "led": {
+        "msg": "cc",
+        "off": 0,
+        "on": 127
+      },
+      "msg": "cc",
+      "number": 41,
+      "slot": "play",
+      "verified": false
+    },
+    {
+      "kind": "button",
+      "led": {
+        "msg": "cc",
+        "off": 0,
+        "on": 127
+      },
+      "msg": "cc",
+      "number": 42,
+      "slot": "stop",
+      "verified": false
+    },
+    {
+      "kind": "button",
+      "msg": "cc",
+      "number": 43,
+      "slot": "rewind",
+      "verified": false
+    },
+    {
+      "kind": "button",
+      "msg": "cc",
+      "number": 44,
+      "slot": "forward",
+      "verified": false
+    },
+    {
+      "kind": "button",
+      "led": {
+        "msg": "cc",
+        "off": 0,
+        "on": 127
+      },
+      "msg": "cc",
+      "number": 45,
+      "slot": "record",
+      "verified": false
+    },
+    {
+      "kind": "button",
+      "led": {
+        "msg": "cc",
+        "off": 0,
+        "on": 127
+      },
+      "msg": "cc",
+      "number": 46,
+      "slot": "cycle",
+      "verified": false
+    },
+    {
+      "kind": "button",
+      "msg": "cc",
+      "number": 47,
+      "slot": "home",
+      "verified": false
+    },
+    {
+      "kind": "button",
+      "led": {
+        "msg": "cc",
+        "off": 0,
+        "on": 127
+      },
+      "msg": "cc",
+      "number": 60,
+      "slot": "markerSet",
+      "verified": false
+    },
+    {
+      "kind": "button",
+      "msg": "cc",
+      "number": 61,
+      "slot": "markerLeft",
+      "verified": false
+    },
+    {
+      "kind": "button",
+      "msg": "cc",
+      "number": 62,
+      "slot": "markerRight",
+      "verified": false
+    },
+    {
+      "kind": "encoder",
+      "msg": "cc",
+      "number": 110,
+      "relative": "auto",
+      "slot": "jog",
+      "verified": false
+    }
+  ],
+  "id": "korg-nanokontrol-studio",
+  "match": {
+    "deviceInquiry": [
+      66
+    ],
+    "manufacturer": "KORG",
+    "names": [
+      "nanoKONTROL Studio"
+    ]
+  },
+  "motorized": false,
+  "name": "Korg nanoKONTROL Studio",
+  "notes": "Vlastní scéna Assignable na MIDI kanálu 16 s čísly podle nanoKONTROL2 (ne tovární scéna Studia – ta má fadery CC 2–12, knoby 13–20, Mute 21–28 atd.; po továrním resetu Scene + Stop profil nesedí). V Korg Kontrol Editoru LED Mode = External. Fadery, knoby, S/M/R/Select a Track ◀▶ jsou naučené; transport, Set, Marker a kolečko ověřit (krai-probe midi, VERIFY 13). Kolečko v režimu Sign Magnitude posílá 1–64 doprava, 65–127 doleva. Rešerše čísel: docs/research/ovladace-mapy.md §5.",
+  "verified": true
+}

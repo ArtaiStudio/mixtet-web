@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Vyzkoušej Mixtet v prohlížeči – ukázka s pultem XR18</title>
+<meta name="description" content="Ukázka Mixtetu bez instalace: iPad kapelníka a mobil člena kapely nad simulovaným pultem Behringer XR18. Ztlum nástroje jednou mute skupinou, uprav si odposlech, zkus MLUVIT KE KAPELE.">
+<link rel="canonical" href="https://mixtet.live/demo/cs/">
+<link rel="alternate" hreflang="en" href="https://mixtet.live/demo/">
+<link rel="alternate" hreflang="cs" href="https://mixtet.live/demo/cs/">
+<link rel="alternate" hreflang="x-default" href="https://mixtet.live/demo/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://mixtet.live/demo/cs/">
+<meta property="og:title" content="Vyzkoušej Mixtet v prohlížeči – ukázka s pultem XR18">
+<meta property="og:description" content="Ukázka Mixtetu bez instalace: iPad kapelníka a mobil člena kapely nad simulovaným pultem Behringer XR18. Ztlum nástroje jednou mute skupinou, uprav si odposlech, zkus MLUVIT KE KAPELE.">
+<meta property="og:image" content="https://mixtet.live/img/og-cs.png">
+<meta name="theme-color" content="#0C1014">
+<link rel="icon" type="image/png" href="/img/znacka.png">
+<link rel="stylesheet" href="/site.css">
+<link rel="stylesheet" href="/demo/demo.css">
+<script>window.MIXTET_DEMO={"lang": "cs", "signup": "/cs/#signup", "t": {"tourA": "Jsi Tom (kytara). V mobilu si uber kytaru a přidej si zpěv.", "tourAHint": "JÁ = tvoje kanály, KAPELA = ostatní. Jednotlivé kanály najdeš v „Kanály zvlášť“.", "tourASwitch": "Dát mobil Tomovi", "tourB": "Mezi písněmi ztlum nástroje jedním tlačítkem – na iPadu dlaždice 1 Nástroje (mute skupina).", "tourBHint": "S ovladačem stačí Play. Ztlumené kanály mobil ukáže jako „ztlumeno v mixu – skupina“.", "tourC": "Řekni kapele něco do odposlechů – drž MLUVIT KE KAPELE.", "tourCHint": "Na iPadu vpravo nahoře, nebo dole v mobilu. Sál to neslyší.", "tourDone": "Hotovo! Chceš to na svou kapelu? Přihlas se do bety – je zdarma.", "stepDone": "Úkol {n} hotový.", "allDone": "Všechny tři úkoly hotové.", "doneMark": "hotovo", "todoMark": "zbývá", "outageRun": "Pult neodpovídá… {s} s", "outageBack": "Pult je zpět. Nic se znovu neposlalo – Mixtet jen načetl, co pult má.", "outageLive": "Simulovaný výpadek pultu na 5 sekund.", "phoneOf": "Mobil člena · {name}", "midiUnsupported": "Ovladač zkus v Chrome nebo Edge na počítači.", "midiDenied": "Prohlížeč přístup k ovladači nepovolil.", "midiNone": "Žádný ovladač – připoj ho přes USB nebo Bluetooth, zkus to znovu.", "midiWait": "Hledám ovladač…", "midiChip": "Ovladač: {name} · Banka {bank}: {first} – {last}", "midiUnknown": "Ovladač {name}: mapu neznám – v appce ho naučíš pohybem.", "midiOffline": "Bez spojení – nic se neodeslalo", "midiUnsupportedSlot": "Tohle tlačítko v ukázce nic nedělá.", "midiMcu": "Ovladač je v režimu DAW (Mackie Control) – fadery, sál, MUTE, SELECT, pan, Bank ◀▶, Play (SK1) i Rec (MLUVIT KE KAPELE) fungují.", "midiMcuName": "{name} (DAW / Mackie)", "midiPickup": "{name}: dojeď faderem na hodnotu v pultu", "fbSending": "Odesílám…", "fbOk": "Díky! Přečteme to.", "fbErr": "Nepodařilo se odeslat – zkus to prosím znovu.", "fbShort": "Napiš aspoň pár slov.", "fbEmailErr": "Tenhle e-mail nevypadá správně."}};</script>
+<script src="/demo/hub-sim.js"></script>
+<script src="/demo/midi.js"></script>
+<script src="/demo/demo.js" defer></script>
+</head>
+<body class="demo">
+<a class="skip" href="#stage">Přeskočit na obsah</a>
+<header class="top"><div class="wrap wide bar">
+  <a class="brand" href="/cs/"><img src="/img/znacka.png" width="28" height="28" alt="">Mixtet</a>
+  <span class="dtag">Demo</span>
+  <div class="right">
+    <div class="lang" role="group" aria-label="Jazyk / Language">
+      <a href="/demo/cs/" data-lang="cs" hreflang="cs" aria-current="true">CZ</a><a href="/demo/" data-lang="en" hreflang="en">EN</a>
+    </div>
+    <a class="btn sm" href="/cs/#signup" data-signup>Chci testovat</a>
+  </div>
+</div></header>
+
+<main id="main">
+<section class="dhero"><div class="wrap wide">
+  <p class="eyebrow">Ukázka · simulovaný pult</p>
+  <h1>Vyzkoušej Mixtet v prohlížeči</h1>
+  <p class="lead">Simulovaný pult, nic se neinstaluje. Vlevo kapelník na iPadu ovládá celý mix, vpravo mobil člena kapely ovládá jen svůj odposlech. Co změníš na jednom, uvidíš hned na druhém.</p>
+  <p class="badge"><span aria-hidden="true">◌</span> Zvuk a měřáky jsou simulované – nic nehraje</p>
+</div></section>
+
+<section class="tour" id="tour" aria-labelledby="tourH"><div class="wrap wide">
+  <div class="tour-head"><h2 id="tourH">Vyzkoušej si tři věci</h2>
+    <button type="button" class="btn ghost sm" id="tourToggle" aria-expanded="true" aria-controls="tourBody" data-hide="Skrýt úkoly" data-show="Ukázat úkoly">Skrýt úkoly</button></div>
+  <div id="tourBody">
+    <ol class="steps3"><li class="step" id="step-a"><span class="mark" aria-hidden="true">1</span><div><p class="st-t">Jsi Tom (kytara). V mobilu si uber kytaru a přidej si zpěv. <span class="sr st-s"></span></p><p class="st-h">JÁ = tvoje kanály, KAPELA = ostatní. Jednotlivé kanály najdeš v „Kanály zvlášť“.</p><button type="button" class="btn ghost sm" id="toTom">Dát mobil Tomovi</button></div></li><li class="step" id="step-b"><span class="mark" aria-hidden="true">2</span><div><p class="st-t">Mezi písněmi ztlum nástroje jedním tlačítkem – na iPadu dlaždice 1 Nástroje (mute skupina). <span class="sr st-s"></span></p><p class="st-h">S ovladačem stačí Play. Ztlumené kanály mobil ukáže jako „ztlumeno v mixu – skupina“.</p></div></li><li class="step" id="step-c"><span class="mark" aria-hidden="true">3</span><div><p class="st-t">Řekni kapele něco do odposlechů – drž MLUVIT KE KAPELE. <span class="sr st-s"></span></p><p class="st-h">Na iPadu vpravo nahoře, nebo dole v mobilu. Sál to neslyší.</p></div></li></ol>
+    <div class="tour-done" id="tourDone" hidden><p>Hotovo! Chceš to na svou kapelu? Přihlas se do bety – je zdarma.</p><a class="btn" href="/cs/#signup" data-signup>Přihlásit kapelu do bety</a></div>
+  </div>
+  <p class="sr" id="tourLive" role="status" aria-live="polite"></p>
+</div></section>
+
+<div class="wrap wide">
+  <div class="toolbar" role="toolbar" aria-label="Ukázka / Demo">
+    <div class="picker" role="group" aria-labelledby="pickL"><span id="pickL">Mobil patří:</span><button type="button" class="pick" data-bus="1" aria-pressed="true">Adam</button><button type="button" class="pick" data-bus="2" aria-pressed="false">Tom</button><button type="button" class="pick" data-bus="3" aria-pressed="false">Dan</button><button type="button" class="pick" data-bus="4" aria-pressed="false">Filip</button></div>
+    <button type="button" class="btn ghost sm" id="outage">Simulovat výpadek pultu (5 s)</button>
+    <button type="button" class="btn ghost sm" id="midi">Připojit ovladač (Chrome / Edge)</button>
+    <button type="button" class="btn ghost sm" id="reset">Začít znovu</button>
+  </div>
+  <p class="status" id="status" role="status" aria-live="polite"></p>
+  <p class="midichip" id="midiChip" hidden></p>
+
+  <div class="tabs" role="tablist" aria-label="Zařízení">
+    <button type="button" role="tab" id="tab-tablet" aria-controls="pane-tablet" aria-selected="true">iPad</button>
+    <button type="button" role="tab" id="tab-mac" aria-controls="pane-mac" aria-selected="false" tabindex="-1">Mac</button>
+    <button type="button" role="tab" id="tab-phone" aria-controls="pane-phone" aria-selected="false" tabindex="-1">Mobil člena</button>
+  </div>
+  <div class="stage" id="stage" tabindex="-1">
+    <div class="left">
+    <section class="dev dev-tablet" id="pane-tablet" role="tabpanel" aria-labelledby="tab-tablet">
+      <div class="cap"><h2>Kapelník · iPad – Celý mix</h2><p>kanály, sál, skupiny, mute skupiny, MLUVIT KE KAPELE</p></div>
+      <div class="bezel ipad"><div class="scroller" id="ipadFit"><div class="sizer" id="ipadSizer"><iframe id="fTablet" title="iPad kapelníka – stránka Celý mix (skutečná stránka z Mixtetu nad simulovaným pultem)" loading="eager"></iframe></div></div></div>
+      <p class="hint-scroll">iPad na šířku (1180 × 820) – pásy se posouvají do strany nebo tlačítky Banka.</p>
+    </section>
+    <section class="dev dev-mac inactive" id="pane-mac" role="tabpanel" aria-labelledby="tab-mac">
+      <div class="cap"><h2>Kapelník · Mac appka</h2><p class="tnote">Mac appka – snímky; interaktivně si vyzkoušej iPad a mobil.</p></div>
+      <div class="macwin" id="macGallery" role="region" aria-roledescription="carousel" aria-label="Snímky Mac appky" tabindex="0" data-of="{n} z {all}"><div class="mbar" aria-hidden="true"><span class="lights"><i></i><i></i><i></i></span><span class="mtitle" id="macTitle">Mixtet</span></div><figure class="mslide" data-title="Mixer"><div class="mview"><img src="/img/screens/web-mixer.webp" width="1600" height="1000" alt="Mixer – Všechny kanály jako na pultu – vpravo sál, mute skupiny a DCA." loading="eager" decoding="async"></div><figcaption><b>Mixer</b> Všechny kanály jako na pultu – vpravo sál, mute skupiny a DCA.</figcaption></figure><figure class="mslide" data-title="Odposlechy" hidden><div class="mview"><img src="/img/screens/web-odposlechy.webp" width="1600" height="1000" alt="Odposlechy – Co kdo slyší v uších – a když něco neslyší, appka řekne proč." loading="lazy" decoding="async"></div><figcaption><b>Odposlechy</b> Co kdo slyší v uších – a když něco neslyší, appka řekne proč.</figcaption></figure><figure class="mslide" data-title="Koncert" hidden><div class="mview"><img src="/img/screens/web-koncert.webp" width="1600" height="1000" alt="Koncert – Velké písmo, píseň HRAJE / DALŠÍ a mute skupina na mezerník." loading="lazy" decoding="async"></div><figcaption><b>Koncert</b> Velké písmo, píseň HRAJE / DALŠÍ a mute skupina na mezerník.</figcaption></figure><figure class="mslide" data-title="Kanál" hidden><div class="mview"><img src="/img/screens/web-kanal.webp" width="1600" height="1000" alt="Kanál – „Zní Zpev Adam dobře?“ – hlasitost, čistota, vyrovnání a kdo ho slyší." loading="lazy" decoding="async"></div><figcaption><b>Kanál</b> „Zní Zpev Adam dobře?“ – hlasitost, čistota, vyrovnání a kdo ho slyší.</figcaption></figure><figure class="mslide" data-title="Inspektor" hidden><div class="mview"><img src="/img/screens/web-inspektor.webp" width="1600" height="1000" alt="Inspektor – EQ, dynamika a odposlechy vybraného kanálu hned vedle mixu." loading="lazy" decoding="async"></div><figcaption><b>Inspektor</b> EQ, dynamika a odposlechy vybraného kanálu hned vedle mixu.</figcaption></figure><figure class="mslide" data-title="Scény" hidden><div class="mview"><img src="/img/screens/web-sceny.webp" width="1514" height="605" alt="Scény – Každá píseň má svůj mix – scéna mění sál, odposlechy nepřepíše." loading="lazy" decoding="async"></div><figcaption><b>Scény</b> Každá píseň má svůj mix – scéna mění sál, odposlechy nepřepíše.</figcaption></figure></div><div class="mnav"><button type="button" class="mbtn" id="macPrev" aria-label="Předchozí snímek">‹</button><span class="mcount" id="macCount" aria-live="polite">1 / 6</span><button type="button" class="mbtn" id="macNext" aria-label="Další snímek">›</button></div><div class="mdots" role="group" aria-label="Snímky Mac appky"><button type="button" class="mdot" data-i="0" aria-pressed="true">Mixer</button><button type="button" class="mdot" data-i="1" aria-pressed="false">Odposlechy</button><button type="button" class="mdot" data-i="2" aria-pressed="false">Koncert</button><button type="button" class="mdot" data-i="3" aria-pressed="false">Kanál</button><button type="button" class="mdot" data-i="4" aria-pressed="false">Inspektor</button><button type="button" class="mdot" data-i="5" aria-pressed="false">Scény</button></div>
+    </section>
+    </div>
+    <section class="dev dev-phone" id="pane-phone" role="tabpanel" aria-labelledby="tab-phone">
+      <div class="cap"><h2 id="phoneH">Mobil člena</h2><p>jen jeho odposlech – sál ani ostatní nezmění</p></div>
+      <div class="bezel iphone"><iframe id="fPhone" title="Mobil člena kapely – stránka Můj odposlech (skutečná stránka z Mixtetu nad simulovaným pultem)" loading="eager"></iframe></div>
+    </section>
+  </div>
+  <noscript><p class="status">Ukázka potřebuje JavaScript.</p></noscript>
+  <p class="simnote">Pult, zvuk a měřáky běží jen v tomhle prohlížeči a po obnovení stránky začnou znovu. Stránky v rámečcích jsou skutečné stránky z Mixtetu – stejné, jaké dostanou mobily a iPad u vás ve zkušebně.</p>
+  <details class="mididbg" id="midiDbg" hidden><summary>Ovladač – poslední zpráva (pro ladění)</summary><pre id="midiLog"></pre></details>
+</div>
+
+<section class="sec" id="missing"><div class="wrap wide">
+  <h2>Co v ukázce není</h2>
+  <p class="sub">Ukázka je jen kousek Mixtetu. Tohle najdeš v appce pro Mac:</p>
+  <ul class="miss"><li><h3>Kanál</h3><p>EQ, kompresor, gate a „Zní kopák dobře?“ – Hlasitost, Čistota, Vyrovnání.</p></li><li><h3>Písně, scény a setlist</h3><p>Každá píseň má svůj mix, Režim Koncert s velkým písmem a HRAJE / DALŠÍ.</p></li><li><h3>Průvodce a párování</h3><p>Nastavení za večer, QR a PIN pro mobily, Kontrola před koncertem.</p></li><li><h3>Skutečný pult a zvuk</h3><p>Tady je pult jen simulace – v appce jde všechno do XR18 a zpátky.</p></li></ul>
+  <div class="mshots"><figure><img src="/img/screens/web-kanal.webp" width="1600" height="1000" alt="Kanál jednoduše" loading="lazy" decoding="async"><figcaption>Kanál jednoduše</figcaption></figure><figure><img src="/img/screens/web-sceny.webp" width="1514" height="605" alt="Písně a scény" loading="lazy" decoding="async"><figcaption>Písně a scény</figcaption></figure></div>
+  <div class="mid"><div><p class="mid-h">Chceš to na svou kapelu?</p><p>Beta je zdarma pro 50 kapel s XR18 – bez karty a závazku.</p></div><a class="btn" href="/cs/#signup" data-signup>Přihlásit kapelu do bety</a></div>
+</div></section>
+</main>
+
+<footer><div class="wrap wide"><p>Mixtet · kapela KRAI, Litoměřice · Behringer, X AIR, XR12/16/18, Midas a MR18 jsou ochranné známky jejich vlastníků; Mixtet s nimi není spojen.</p><p><a href="/cs/">Zpět na Mixtet</a> · <a href="/ochrana-udaju.html">Ochrana osobních údajů</a></p></div></footer>
+
+<button type="button" class="fbbtn" id="fbOpen" aria-haspopup="dialog" aria-label="Něco nesedí?"><span class="fbt">Něco nesedí?</span><span class="fbq" aria-hidden="true">?</span></button>
+<dialog id="fb" aria-labelledby="fbH">
+  <form id="fbForm" class="card form" novalidate>
+    <h2 id="fbH" class="form-h">Něco nesedí?</h2>
+    <p class="hint">Napiš, co nefungovalo nebo co ti chybí. Pošleme to rovnou vývojáři.</p>
+    <div class="f"><label for="fbMsg">Co se stalo?</label><textarea id="fbMsg" name="message" rows="4" maxlength="3000" required></textarea></div>
+    <div class="f"><label for="fbEmail">E-mail (nepovinné – když chceš odpověď)</label><input id="fbEmail" name="email" type="email" autocomplete="email" inputmode="email"></div>
+    <div class="hp" aria-hidden="true"><label>Web <input name="web" tabindex="-1" autocomplete="off"></label></div>
+    <p class="err" id="fbErr" role="alert" hidden></p>
+    <p class="okmsg" id="fbOk" role="status" hidden></p>
+    <div class="fbacts"><button class="btn" type="submit" id="fbSend">Odeslat</button><button class="btn ghost" type="button" id="fbClose">Zavřít</button></div>
+  </form>
+</dialog>
+</body>
+</html>

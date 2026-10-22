@@ -1,0 +1,527 @@
+{
+  "banks": 8,
+  "channel": 0,
+  "controls": [
+    {
+      "index": 0,
+      "kind": "fader",
+      "msg": "cc",
+      "number": 19,
+      "slot": "fader"
+    },
+    {
+      "index": 1,
+      "kind": "fader",
+      "msg": "cc",
+      "number": 23,
+      "slot": "fader"
+    },
+    {
+      "index": 2,
+      "kind": "fader",
+      "msg": "cc",
+      "number": 27,
+      "slot": "fader"
+    },
+    {
+      "index": 3,
+      "kind": "fader",
+      "msg": "cc",
+      "number": 31,
+      "slot": "fader"
+    },
+    {
+      "index": 4,
+      "kind": "fader",
+      "msg": "cc",
+      "number": 49,
+      "slot": "fader"
+    },
+    {
+      "index": 5,
+      "kind": "fader",
+      "msg": "cc",
+      "number": 53,
+      "slot": "fader"
+    },
+    {
+      "index": 6,
+      "kind": "fader",
+      "msg": "cc",
+      "number": 57,
+      "slot": "fader"
+    },
+    {
+      "index": 7,
+      "kind": "fader",
+      "msg": "cc",
+      "number": 61,
+      "slot": "fader"
+    },
+    {
+      "kind": "fader",
+      "msg": "cc",
+      "number": 62,
+      "slot": "master"
+    },
+    {
+      "index": 0,
+      "kind": "knob",
+      "msg": "cc",
+      "number": 16,
+      "slot": "knob"
+    },
+    {
+      "index": 1,
+      "kind": "knob",
+      "msg": "cc",
+      "number": 20,
+      "slot": "knob"
+    },
+    {
+      "index": 2,
+      "kind": "knob",
+      "msg": "cc",
+      "number": 24,
+      "slot": "knob"
+    },
+    {
+      "index": 3,
+      "kind": "knob",
+      "msg": "cc",
+      "number": 28,
+      "slot": "knob"
+    },
+    {
+      "index": 4,
+      "kind": "knob",
+      "msg": "cc",
+      "number": 46,
+      "slot": "knob"
+    },
+    {
+      "index": 5,
+      "kind": "knob",
+      "msg": "cc",
+      "number": 50,
+      "slot": "knob"
+    },
+    {
+      "index": 6,
+      "kind": "knob",
+      "msg": "cc",
+      "number": 54,
+      "slot": "knob"
+    },
+    {
+      "index": 7,
+      "kind": "knob",
+      "msg": "cc",
+      "number": 58,
+      "slot": "knob"
+    },
+    {
+      "index": 0,
+      "kind": "knob",
+      "msg": "cc",
+      "number": 17,
+      "slot": "knob2"
+    },
+    {
+      "index": 1,
+      "kind": "knob",
+      "msg": "cc",
+      "number": 21,
+      "slot": "knob2"
+    },
+    {
+      "index": 2,
+      "kind": "knob",
+      "msg": "cc",
+      "number": 25,
+      "slot": "knob2"
+    },
+    {
+      "index": 3,
+      "kind": "knob",
+      "msg": "cc",
+      "number": 29,
+      "slot": "knob2"
+    },
+    {
+      "index": 4,
+      "kind": "knob",
+      "msg": "cc",
+      "number": 47,
+      "slot": "knob2"
+    },
+    {
+      "index": 5,
+      "kind": "knob",
+      "msg": "cc",
+      "number": 51,
+      "slot": "knob2"
+    },
+    {
+      "index": 6,
+      "kind": "knob",
+      "msg": "cc",
+      "number": 55,
+      "slot": "knob2"
+    },
+    {
+      "index": 7,
+      "kind": "knob",
+      "msg": "cc",
+      "number": 59,
+      "slot": "knob2"
+    },
+    {
+      "index": 0,
+      "kind": "knob",
+      "msg": "cc",
+      "number": 18,
+      "slot": "knob3"
+    },
+    {
+      "index": 1,
+      "kind": "knob",
+      "msg": "cc",
+      "number": 22,
+      "slot": "knob3"
+    },
+    {
+      "index": 2,
+      "kind": "knob",
+      "msg": "cc",
+      "number": 26,
+      "slot": "knob3"
+    },
+    {
+      "index": 3,
+      "kind": "knob",
+      "msg": "cc",
+      "number": 30,
+      "slot": "knob3"
+    },
+    {
+      "index": 4,
+      "kind": "knob",
+      "msg": "cc",
+      "number": 48,
+      "slot": "knob3"
+    },
+    {
+      "index": 5,
+      "kind": "knob",
+      "msg": "cc",
+      "number": 52,
+      "slot": "knob3"
+    },
+    {
+      "index": 6,
+      "kind": "knob",
+      "msg": "cc",
+      "number": 56,
+      "slot": "knob3"
+    },
+    {
+      "index": 7,
+      "kind": "knob",
+      "msg": "cc",
+      "number": 60,
+      "slot": "knob3"
+    },
+    {
+      "index": 0,
+      "kind": "button",
+      "led": {
+        "msg": "note",
+        "off": 0,
+        "on": 127
+      },
+      "msg": "note",
+      "number": 1,
+      "slot": "mute"
+    },
+    {
+      "index": 1,
+      "kind": "button",
+      "led": {
+        "msg": "note",
+        "off": 0,
+        "on": 127
+      },
+      "msg": "note",
+      "number": 4,
+      "slot": "mute"
+    },
+    {
+      "index": 2,
+      "kind": "button",
+      "led": {
+        "msg": "note",
+        "off": 0,
+        "on": 127
+      },
+      "msg": "note",
+      "number": 7,
+      "slot": "mute"
+    },
+    {
+      "index": 3,
+      "kind": "button",
+      "led": {
+        "msg": "note",
+        "off": 0,
+        "on": 127
+      },
+      "msg": "note",
+      "number": 10,
+      "slot": "mute"
+    },
+    {
+      "index": 4,
+      "kind": "button",
+      "led": {
+        "msg": "note",
+        "off": 0,
+        "on": 127
+      },
+      "msg": "note",
+      "number": 13,
+      "slot": "mute"
+    },
+    {
+      "index": 5,
+      "kind": "button",
+      "led": {
+        "msg": "note",
+        "off": 0,
+        "on": 127
+      },
+      "msg": "note",
+      "number": 16,
+      "slot": "mute"
+    },
+    {
+      "index": 6,
+      "kind": "button",
+      "led": {
+        "msg": "note",
+        "off": 0,
+        "on": 127
+      },
+      "msg": "note",
+      "number": 19,
+      "slot": "mute"
+    },
+    {
+      "index": 7,
+      "kind": "button",
+      "led": {
+        "msg": "note",
+        "off": 0,
+        "on": 127
+      },
+      "msg": "note",
+      "number": 22,
+      "slot": "mute"
+    },
+    {
+      "index": 0,
+      "kind": "button",
+      "msg": "note",
+      "number": 2,
+      "slot": "solo"
+    },
+    {
+      "index": 1,
+      "kind": "button",
+      "msg": "note",
+      "number": 5,
+      "slot": "solo"
+    },
+    {
+      "index": 2,
+      "kind": "button",
+      "msg": "note",
+      "number": 8,
+      "slot": "solo"
+    },
+    {
+      "index": 3,
+      "kind": "button",
+      "msg": "note",
+      "number": 11,
+      "slot": "solo"
+    },
+    {
+      "index": 4,
+      "kind": "button",
+      "msg": "note",
+      "number": 14,
+      "slot": "solo"
+    },
+    {
+      "index": 5,
+      "kind": "button",
+      "msg": "note",
+      "number": 17,
+      "slot": "solo"
+    },
+    {
+      "index": 6,
+      "kind": "button",
+      "msg": "note",
+      "number": 20,
+      "slot": "solo"
+    },
+    {
+      "index": 7,
+      "kind": "button",
+      "msg": "note",
+      "number": 23,
+      "slot": "solo"
+    },
+    {
+      "index": 0,
+      "kind": "button",
+      "led": {
+        "msg": "note",
+        "off": 0,
+        "on": 127
+      },
+      "msg": "note",
+      "number": 3,
+      "slot": "rec"
+    },
+    {
+      "index": 1,
+      "kind": "button",
+      "led": {
+        "msg": "note",
+        "off": 0,
+        "on": 127
+      },
+      "msg": "note",
+      "number": 6,
+      "slot": "rec"
+    },
+    {
+      "index": 2,
+      "kind": "button",
+      "led": {
+        "msg": "note",
+        "off": 0,
+        "on": 127
+      },
+      "msg": "note",
+      "number": 9,
+      "slot": "rec"
+    },
+    {
+      "index": 3,
+      "kind": "button",
+      "led": {
+        "msg": "note",
+        "off": 0,
+        "on": 127
+      },
+      "msg": "note",
+      "number": 12,
+      "slot": "rec"
+    },
+    {
+      "index": 4,
+      "kind": "button",
+      "led": {
+        "msg": "note",
+        "off": 0,
+        "on": 127
+      },
+      "msg": "note",
+      "number": 15,
+      "slot": "rec"
+    },
+    {
+      "index": 5,
+      "kind": "button",
+      "led": {
+        "msg": "note",
+        "off": 0,
+        "on": 127
+      },
+      "msg": "note",
+      "number": 18,
+      "slot": "rec"
+    },
+    {
+      "index": 6,
+      "kind": "button",
+      "led": {
+        "msg": "note",
+        "off": 0,
+        "on": 127
+      },
+      "msg": "note",
+      "number": 21,
+      "slot": "rec"
+    },
+    {
+      "index": 7,
+      "kind": "button",
+      "led": {
+        "msg": "note",
+        "off": 0,
+        "on": 127
+      },
+      "msg": "note",
+      "number": 24,
+      "slot": "rec"
+    },
+    {
+      "kind": "button",
+      "led": {
+        "msg": "note",
+        "off": 0,
+        "on": 127
+      },
+      "msg": "note",
+      "number": 25,
+      "slot": "bankLeft"
+    },
+    {
+      "kind": "button",
+      "led": {
+        "msg": "note",
+        "off": 0,
+        "on": 127
+      },
+      "msg": "note",
+      "number": 26,
+      "slot": "bankRight"
+    },
+    {
+      "kind": "button",
+      "msg": "note",
+      "number": 27,
+      "slot": "soloMode"
+    }
+  ],
+  "id": "akai-midimix",
+  "match": {
+    "deviceInquiry": [
+      71
+    ],
+    "manufacturer": "AKAI",
+    "names": [
+      "MIDI Mix",
+      "MIDIMIX"
+    ]
+  },
+  "motorized": false,
+  "name": "Akai MIDImix",
+  "notes": "Tovární rozpis (Akai MIDImix Editor), kanál 1 – Akai MIDI implementaci nevydává, čísla jen ze sekundárních zdrojů. Solo = Shift (tlačítko SOLO) + Mute. LED tlačítek zvenku note on 127 / 0. SEND ALL pošle polohy všech faderů a knobů (pro pickup po připojení). Device Inquiry odpověď nedoložena.",
+  "verified": false
+}
