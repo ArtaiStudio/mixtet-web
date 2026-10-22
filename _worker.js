@@ -22,6 +22,10 @@ let ready = false;
 async function ensureSchema(db) {
   if (ready) return;
   await db.batch(SCHEMA.map((s) => db.prepare(s)));
+  // Přidané sloupce (starší tabulka je nemá) – „duplicate column“ znamená, že už tam jsou.
+  for (const sql of ['ALTER TABLE signups ADD COLUMN app_lang TEXT']) {
+    try { await db.prepare(sql).run(); } catch (err) { if (!/duplicate column/i.test(String(err))) throw err; }
+  }
   ready = true;
 }
 
@@ -71,6 +75,7 @@ async function signup(req, env) {
     members: pick(String(b.members || ''), ['2', '3', '4', '5', '6', '7+'], ''),
     iem: pick(b.iem, ['yes', 'planning', 'no'], ''),
     country: clip(b.country, 60),
+    app_lang: pick(b.app_lang, ['cs', 'en', 'de', 'es', 'pl', 'fr', 'it', 'other'], ''),
     note: clip(b.note, 1000),
     source: clip(b.source, 60) || 'direct',
   };
@@ -79,11 +84,11 @@ async function signup(req, env) {
   await ensureSchema(env.DB);
   // Stejný e-mail podruhý = aktualizace (žádné duplicity, žádná chyba pro uživatele).
   await env.DB.prepare(
-    `INSERT INTO signups (created_at, lang, email, band, mixer, hub, members, iem, country, note, source, consent)
-     VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, 1)
+    `INSERT INTO signups (created_at, lang, email, band, mixer, hub, members, iem, country, note, source, consent, app_lang)
+     VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, 1, ?12)
      ON CONFLICT(email) DO UPDATE SET updated_at = ?1, lang = ?2, band = ?4, mixer = ?5, hub = ?6,
-       members = ?7, iem = ?8, country = ?9, note = ?10`
-  ).bind(now, row.lang, row.email, row.band, row.mixer, row.hub, row.members, row.iem, row.country, row.note, row.source).run();
+       members = ?7, iem = ?8, country = ?9, note = ?10, app_lang = ?12`
+  ).bind(now, row.lang, row.email, row.band, row.mixer, row.hub, row.members, row.iem, row.country, row.note, row.source, row.app_lang).run();
   return json({ ok: true });
 }
 
@@ -200,7 +205,7 @@ h1{font-size:26px;margin:0 0 4px}h2{font-size:19px;margin:28px 0 8px}a{color:#CD
 <p>Přihlášky: ${s.length} · Zpětná vazba: ${f.length} · <a href="/admin/signups.csv">přihlášky CSV</a> · <a href="/admin/feedback.csv">zpětná vazba CSV</a></p>
 <h2>Odkud</h2><div class="k">${chips(count('source'))}</div><h2>Pult</h2><div class="k">${chips(count('mixer'))}</div>
 <h2>Na čem by běžel hub</h2><div class="k">${chips(hubCount)}</div><h2>Jazyk</h2><div class="k">${chips(count('lang'))}</div>
-<h2>Přihlášky</h2><div class="t">${table(s, ['created_at', 'email', 'band', 'mixer', 'hub', 'members', 'iem', 'country', 'lang', 'source', 'note', 'status'])}</div>
+<h2>Přihlášky</h2><div class="t">${table(s, ['created_at', 'email', 'band', 'mixer', 'hub', 'members', 'iem', 'country', 'app_lang', 'lang', 'source', 'note', 'status'])}</div>
 <h2>Zpětná vazba</h2><div class="t">${table(f, ['created_at', 'kind', 'severity', 'message', 'email', 'app_version', 'os', 'mixer', 'source'])}</div>
 <h2>Ukázka /demo/ (počty za den, bez sledování)</h2><div class="k">${chips(demoTotal)}</div><div class="t">${table(demoDays, ['day', ...DEMO_EVENTS])}</div>
 </main></body></html>`;

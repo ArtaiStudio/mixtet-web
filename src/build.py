@@ -63,6 +63,7 @@ def page(lang):
                        for v, lbl in opts)
 
     mixers = chips("mixer", [("xr18", "XR18"), ("xr16", "XR16"), ("xr12", "XR12"), ("mr18", "MR18"), ("x32", "X32 / M32"), ("other", t["oOther"])])
+    langs = "".join(f'<option value="{v}"{" selected" if v == lang else ""}>{e(n)}</option>' for v, n in [("cs", "Čeština"), ("en", "English"), ("de", "Deutsch"), ("es", "Español"), ("pl", "Polski"), ("fr", "Français"), ("it", "Italiano"), ("other", t["oLangOther"])])
     hubs = chips("hub", [("mac", "Mac"), ("ipad", "iPad"), ("windows", "Windows"), ("android", t["oAndroid"]), ("unsure", t["oUnsure"])], "checkbox")
     members = chips("members", [(v, v) for v in ["2", "3", "4", "5", "6", "7+"]])
     iem = chips("iem", [("yes", t["oYes"]), ("planning", t["oPlanning"]), ("no", t["oNo"])])
@@ -197,6 +198,7 @@ def page(lang):
         <fieldset class="f"><legend>{e(t["fMembers"])}</legend><div class="chips">{members}</div></fieldset>
         <fieldset class="f"><legend>{e(t["fIem"])}</legend><div class="chips">{iem}</div></fieldset>
       </div>
+      <div class="f"><label for="app_lang">{e(t["fAppLang"])}</label><select id="app_lang" name="app_lang">{langs}</select></div>
       <details class="more"><summary>{e(t["fMore"])}</summary>
         <div class="f2">
           <div class="f"><label for="band">{e(t["fBand"])}</label><input id="band" name="band" autocomplete="organization" maxlength="80"></div>

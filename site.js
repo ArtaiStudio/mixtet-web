@@ -73,7 +73,7 @@
 
     var body = {
       email: email, mixer: fd.get('mixer'), hub: fd.getAll('hub'), members: fd.get('members') || '',
-      iem: fd.get('iem') || '', band: fd.get('band') || '', country: fd.get('country') || '',
+      iem: fd.get('iem') || '', band: fd.get('band') || '', country: fd.get('country') || '', app_lang: fd.get('app_lang') || '',
       note: fd.get('note') || '', consent: true, web: fd.get('web') || '',
       lang: M.lang, source: source, t: loadedAt
     };
